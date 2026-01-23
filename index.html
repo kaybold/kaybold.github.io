@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
 
   <style>
     :root{
+      /* Dark blue + white theme */
       --blue:#0b1f3b;
       --blue2:#0a2a52;
       --bg:#ffffff;
@@ -295,6 +297,7 @@
     @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
 
     .contact-card{
+      position: relative;
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -351,10 +354,9 @@
           and move from priorities to implementation.
         </p>
 
+        <!-- UPDATED: only View Services button in hero -->
         <div class="hero-cta">
-          <a class="btn" href="#contact">Request a Consultation</a>
           <a class="btn btn-outline" href="#services">View Services</a>
-          <a class="btn btn-outline" href="Benita_Kayembe_CV.pdf" target="_blank" rel="noreferrer">View CV</a>
         </div>
       </div>
 
@@ -375,14 +377,14 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Engagements & pricing</h2>
-        <p class="lead">Select an option to pre-fill the inquiry form.</p>
+        <p class="lead">Select an option to pre-fill the inquiry form. All engagements are scoped to your timeline, decision point, and constraints.</p>
       </div>
 
       <div class="grid3">
         <a class="clickable tile" href="#contact" data-engagement="Strategic Consultation">
           <h3>Strategic Consultation</h3>
-          <p>60–90 minute senior advisory session to clarify options, constraints, and next steps.</p>
-          <div class="deliver"><b>Deliverable:</b> decision memo with options, risks, and next steps.</div>
+          <p>60–90 minute senior advisory session to clarify options, constraints, and next steps. Includes a short follow-up note.</p>
+          <div class="deliver"><b>Deliverable:</b> decision memo (1–2 pages) with options, risks, and recommended next steps.</div>
           <div class="tile-meta">
             <span>Typical: 1 week</span>
             <span class="price">$750</span>
@@ -391,8 +393,8 @@
 
         <a class="clickable tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
           <h3>Policy & Political Economy Diagnostic</h3>
-          <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs.</p>
-          <div class="deliver"><b>Deliverable:</b> stakeholder map and feasibility brief.</div>
+          <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs—delivered as a concise leadership briefing.</p>
+          <div class="deliver"><b>Deliverable:</b> stakeholder map + feasibility/risk brief + implementation implications.</div>
           <div class="tile-meta">
             <span>Typical: 2–3 weeks</span>
             <span class="price">$4,500</span>
@@ -401,8 +403,8 @@
 
         <a class="clickable tile" href="#contact" data-engagement="Strategic Advisory Engagement">
           <h3>Strategic Advisory Engagement</h3>
-          <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives.</p>
-          <div class="deliver"><b>Deliverables:</b> sequencing roadmap and senior briefs.</div>
+          <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives: prioritization, delivery strategy, and executive counsel.</p>
+          <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior-level briefs as decisions arise.</div>
           <div class="tile-meta">
             <span>Typical: 4–12+ weeks</span>
             <span class="price">From $9,500</span>
@@ -411,8 +413,8 @@
 
         <a class="clickable tile" href="#contact" data-engagement="Case Study Development">
           <h3>Case Study Development</h3>
-          <p>Decision-grade case studies designed for senior leadership use.</p>
-          <div class="deliver"><b>Deliverable:</b> leadership-ready case and discussion guide.</div>
+          <p>End-to-end development of decision-grade case studies designed for senior leadership use (government, development partners, investors).</p>
+          <div class="deliver"><b>Deliverable:</b> leadership-ready case + discussion guide + actionable options and trade-offs.</div>
           <div class="tile-meta">
             <span>Per case</span>
             <span class="price">$22,000</span>
@@ -421,14 +423,18 @@
 
         <a class="clickable tile" href="#contact" data-engagement="DRC Market & Government Connections">
           <h3>DRC Market & Government Connections</h3>
-          <p>Targeted introductions and on-the-ground access across key stakeholders.</p>
-          <div class="deliver"><b>Deliverable:</b> curated introductions and briefing notes.</div>
+          <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the DRC.</p>
+          <div class="deliver"><b>Deliverable:</b> curated stakeholder list + introductions + meeting briefs and follow-up support.</div>
           <div class="tile-meta">
             <span>Scope-dependent</span>
             <span class="price">Reach out for pricing</span>
           </div>
         </a>
       </div>
+
+      <p class="note" style="margin-top:12px;">
+        Pricing shown is a standard starting point; scope, urgency, and travel requirements may adjust final fees.
+      </p>
     </div>
   </section>
 
@@ -436,13 +442,15 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Approach</h2>
-        <p class="lead">Helping leaders make confident decisions under real constraints.</p>
+        <p class="lead">
+          We help leaders make confident decisions under real constraints—political feasibility, institutional capacity, and implementation risk.
+        </p>
       </div>
 
       <div class="about-box">
-        <p class="small">
-          KayBold Consulting works with senior decision-makers on reform, policy, and investment choices across African markets,
-          emphasizing feasibility, clarity, and delivery.
+        <p class="small" style="margin:0;">
+          KayBold Consulting works with senior decision-makers on reform, policy, and investment choices across African markets.
+          Our work emphasizes <b>decision clarity</b>, <b>feasibility</b>, and <b>delivery</b>—so strategies translate into executable action.
         </p>
 
         <div class="grid2-lite">
@@ -452,19 +460,28 @@
               <li>Government leaders and delivery units</li>
               <li>Development partners and implementers</li>
               <li>Mission-driven organizations and investors</li>
+              <li>Energy transition and supply-chain stakeholders</li>
             </ul>
           </div>
 
           <div class="panel" style="box-shadow:none;">
             <p class="card-title">How we work</p>
             <ul class="bullets">
-              <li>Start with the decision point</li>
-              <li>Surface constraints and incentives</li>
-              <li>Translate findings into options</li>
-              <li>Support delivery and sequencing</li>
+              <li>Start with the decision point and timeline</li>
+              <li>Surface constraints, stakeholders, and political incentives</li>
+              <li>Translate findings into options, trade-offs, and next steps</li>
+              <li>Support delivery: sequencing, governance, and accountability</li>
             </ul>
           </div>
         </div>
+
+        <p class="card-title" style="margin-top:14px;">Core capabilities</p>
+        <ul class="bullets">
+          <li>Ministerial and senior leadership advisory</li>
+          <li>Political economy and reform feasibility analysis</li>
+          <li>Policy design and implementation support</li>
+          <li>Energy transition and critical minerals strategy</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -481,7 +498,19 @@
           <div class="contact-title">
             <h3>Direct contact</h3>
           </div>
-          <a class="btn" href="mailto:kayboldllc@gmail.com">Email KayBold Consulting</a>
+          <p class="small" style="margin:0 0 14px;">
+            Prefer email? Reach us directly and we’ll reply with scheduling options.
+          </p>
+
+          <a
+            class="btn"
+            href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry"
+            onclick="window.location.href=this.href; return false;"
+          >
+            Email KayBold Consulting
+          </a>
+
+          <p class="note">Typical response time: 1–2 business days.</p>
         </div>
 
         <div class="contact-card">
@@ -489,22 +518,46 @@
             <h3>Inquiry form</h3>
           </div>
 
-          <form action="https://formspree.io/f/xeeakvvd" method="POST">
+          <form id="inquiryForm" action="https://formspree.io/f/xeeakvvd" method="POST">
+            <input type="hidden" id="selected_engagement" name="selected_engagement" value="" />
+
             <div class="row2">
               <div>
-                <label>Name</label>
-                <input name="name" required />
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
               </div>
               <div>
-                <label>Email</label>
-                <input name="email" type="email" required />
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
 
-            <label>What are you working on?</label>
-            <textarea name="message" required></textarea>
+            <div class="row2">
+              <div>
+                <label for="org">Organization</label>
+                <input id="org" name="organization" type="text" autocomplete="organization" />
+              </div>
+              <div>
+                <label for="type">Engagement type</label>
+                <select id="type" name="engagement_type" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option>Strategic Consultation</option>
+                  <option>Policy & Political Economy Diagnostic</option>
+                  <option>Strategic Advisory Engagement</option>
+                  <option>Case Study Development</option>
+                  <option>DRC Market & Government Connections</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">What are you working on?</label>
+              <textarea id="message" name="message" placeholder="Context, objective, country/region, decision needed, timeline, and key constraints (if any)." required></textarea>
+            </div>
 
             <button class="btn" type="submit">Send inquiry</button>
+            <p class="note" id="formStatus" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -516,14 +569,35 @@
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
         <div>© <span id="y"></span> KayBold Consulting</div>
         <div>
-          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Footer year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Clicking a service card preselects engagement type + sets hidden field
+    const engagementSelect = document.getElementById("type");
+    const selectedEngagement = document.getElementById("selected_engagement");
+
+    document.querySelectorAll("[data-engagement]").forEach(card => {
+      card.addEventListener("click", () => {
+        const val = card.getAttribute("data-engagement");
+        engagementSelect.value = val;
+        selectedEngagement.value = val;
+      });
+    });
+
+    // Status message
+    const form = document.getElementById("inquiryForm");
+    const statusEl = document.getElementById("formStatus");
+    form.addEventListener("submit", () => {
+      statusEl.textContent = "Sending…";
+    });
   </script>
 </body>
 </html>
+```
