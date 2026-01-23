@@ -305,7 +305,7 @@
 
         <div class="tile">
           <h3>Inquiry form</h3>
-          <form action="https://formspree.io/f/xeeakvvd>
+          <form action="https://formspree.io/f/xeeakvvd" method="POST">
             <div class="row2">
               <div>
                 <label for="name">Name</label>
