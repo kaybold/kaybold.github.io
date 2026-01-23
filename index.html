@@ -276,12 +276,13 @@
     @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
 
     .contact-card{
-      background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: var(--shadow);
-    }
+  position: relative; /* 👈 ADD THIS */
+  background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+}
     .contact-title{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px;
