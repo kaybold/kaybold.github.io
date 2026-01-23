@@ -13,18 +13,18 @@
 
   <style>
     :root{
-      --bg:#0b0c0f;
-      --text:#ffffff;
-      --muted:#c9cbd4;
-      --muted2:#9aa0ad;
-      --line:rgba(255,255,255,0.10);
-      --panel:rgba(17,19,25,0.55);
-      --panel2:rgba(17,19,25,0.42);
-      --btn:#ffffff;
-      --btnText:#000000;
-      --max:1120px;
+      --bg:#ffffff;
+      --text:#0b0c0f;
+      --muted:#55585f;
+      --muted2:#7a7f8a;
+      --line:rgba(0,0,0,0.10);
+      --panel:#ffffff;
+      --panel2:#f6f7f9;
+      --btn:#0b0c0f;
+      --btnText:#ffffff;
+      --max:none;                 /* full width */
       --radius:14px;
-      --shadow: 0 24px 90px rgba(0,0,0,0.50);
+      --shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
 
     *{box-sizing:border-box}
@@ -32,26 +32,32 @@
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
-      background:
-        radial-gradient(900px 520px at 20% -10%, rgba(255,255,255,0.07) 0%, rgba(11,12,15,0) 60%),
-        radial-gradient(780px 520px at 85% 0%, rgba(255,255,255,0.06) 0%, rgba(11,12,15,0) 55%),
-        var(--bg);
+      background:var(--bg);
       color:var(--text);
       line-height:1.55;
     }
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
+
+    /* FULL-WIDTH LAYOUT */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 48px;
+    }
+    @media (max-width: 700px){
+      .wrap{padding:0 20px}
+    }
 
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,0.92);
       backdrop-filter:saturate(140%) blur(10px);
-      background:rgba(11,12,15,0.72);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      height:70px; gap:16px;
+      height:72px; gap:16px;
     }
     .brand{font-weight:700; letter-spacing:0.2px; white-space:nowrap;}
     .links{
@@ -63,34 +69,43 @@
       padding:8px 10px;
       border-radius:10px;
     }
-    .links a:hover{ background:rgba(255,255,255,0.06); color:var(--text);}
+    .links a:hover{ background:rgba(0,0,0,0.04); color:var(--text);}
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 16px; border-radius:999px;
+      padding:11px 18px; border-radius:999px;
       background:var(--btn); color:var(--btnText);
       text-decoration:none; font-weight:700; font-size:14px;
-      border:1px solid rgba(255,255,255,0.06);
+      border:1px solid rgba(0,0,0,0.06);
       cursor:pointer;
       transition: transform .12s ease, opacity .12s ease;
     }
-    .btn:hover{ opacity:0.94; transform: translateY(-1px); }
+    .btn:hover{ opacity:0.95; transform: translateY(-1px); }
     .btn-outline{
       background:transparent; color:var(--text);
-      border:1px solid rgba(255,255,255,0.18);
+      border:1px solid var(--line);
     }
 
     @media (max-width: 880px){ .links{display:none} }
 
-    /* HERO */
-    .hero{ padding:76px 0 24px; }
+    /* HERO — FULL SCREEN */
+    .hero{
+      min-height:100vh;              /* use entire screen */
+      display:flex;
+      align-items:center;
+      padding:88px 0 56px;
+    }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap:26px;
+      gap:28px;
       align-items:start;
+      width:100%;
     }
-    @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
+    @media (max-width: 980px){
+      .hero{min-height:auto; padding:76px 0 24px;}
+      .hero-grid{grid-template-columns:1fr}
+    }
 
     .kicker{
       color:var(--muted2);
@@ -101,7 +116,7 @@
     }
     h1{
       font-size:56px;
-      line-height:1.03;
+      line-height:1.05;
       margin:0 0 14px;
       letter-spacing:-0.03em;
     }
@@ -109,13 +124,13 @@
     .sub{
       color:var(--muted);
       font-size:18px;
-      max-width:52rem;
+      max-width:56rem;
       margin:0 0 22px;
     }
     .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
 
     .panel{
-      background:var(--panel);
+      background:var(--panel2);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
@@ -124,7 +139,7 @@
     .card-title{ font-weight:700; margin:0 0 10px; }
     .small{ color:var(--muted); font-size:14px; margin:0; }
 
-    /* More restrained focus list (less “UI widget”) */
+    /* Focus list */
     .focus-list{
       margin:14px 0 0;
       padding-left:18px;
@@ -134,16 +149,16 @@
     .focus-list li{ margin:8px 0; }
 
     /* SECTIONS */
-    section{ padding:34px 0; }
+    section{ padding:64px 0; }
     .section-head{ margin-bottom:16px; }
-    h2{ margin:0; font-size:26px; letter-spacing:-0.01em; }
-    .lead{ margin:8px 0 0; color:var(--muted); max-width:66rem; }
+    h2{ margin:0; font-size:28px; letter-spacing:-0.01em; }
+    .lead{ margin:8px 0 0; color:var(--muted); max-width:70rem; }
 
     /* SERVICES */
     .grid3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:16px;
+      gap:18px;
     }
     @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
 
@@ -154,11 +169,12 @@
       padding:18px;
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
       min-height: 180px;
+      box-shadow: var(--shadow);
     }
     .tile:hover{
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.18);
-      background:rgba(17,19,25,0.52);
+      border-color: rgba(0,0,0,0.16);
+      background:#ffffff;
     }
     .tile h3{ margin:0 0 8px; font-size:16px; letter-spacing:-0.01em; }
     .tile p{ margin:0; color:var(--muted); font-size:14px; }
@@ -181,6 +197,7 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
+      box-shadow: var(--shadow);
     }
     .bullets{
       margin:14px 0 0;
@@ -194,7 +211,7 @@
     .grid2{
       display:grid;
       grid-template-columns:1fr 1.2fr;
-      gap:16px;
+      gap:18px;
       align-items:start;
     }
     @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
@@ -206,12 +223,12 @@
       padding:12px 12px;
       border-radius:12px;
       border:1px solid var(--line);
-      background:rgba(9,10,13,0.85);
+      background:#ffffff;
       color:var(--text);
       font-size:14px;
       outline:none;
     }
-    textarea{ min-height:96px; resize:vertical; }
+    textarea{ min-height:110px; resize:vertical; }
     .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
 
@@ -220,6 +237,7 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
+      box-shadow: var(--shadow);
     }
 
     .contact-title{
@@ -317,7 +335,6 @@
           </div>
         </a>
 
-        <!-- NEW -->
         <a class="clickable tile" href="#contact" data-engagement="Case Study Development">
           <h3>Case Study Development</h3>
           <p>End-to-end development of decision-grade case studies for governments, development partners, or investors—designed for senior leadership use.</p>
@@ -327,7 +344,6 @@
           </div>
         </a>
 
-        <!-- NEW -->
         <a class="clickable tile" href="#contact" data-engagement="DRC Market & Government Connections">
           <h3>DRC Market & Government Connections</h3>
           <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the Democratic Republic of the Congo.</p>
