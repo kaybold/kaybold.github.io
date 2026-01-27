@@ -12,7 +12,7 @@
 
   <style>
     :root{
-      /* Blue + White theme */
+      /* Blue + white theme */
       --blue:#0b1f3b;
       --blue2:#0a2a52;
       --bg:#ffffff;
@@ -290,7 +290,7 @@
     }
     .lead{ margin:8px 0 0; color:var(--muted); max-width:72rem; }
 
-    #services, #contact, #blog{
+    #services, #contact{
       background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
 
@@ -370,58 +370,6 @@
     }
     @media (max-width: 980px){ .grid2-lite{grid-template-columns:1fr} }
 
-    /* BLOG */
-    .blog-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-    @media (max-width: 980px){ .blog-grid{grid-template-columns:1fr} }
-    .post{
-      background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: var(--shadow);
-      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
-      text-decoration:none;
-      display:block;
-    }
-    .post:hover{
-      transform: translateY(-2px);
-      border-color: rgba(11,31,59,0.22);
-      box-shadow: 0 22px 70px rgba(11,31,59,0.14);
-    }
-    .post .tag{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(11,31,59,0.18);
-      background:#fff;
-      color:var(--blue2);
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:0.02em;
-      margin-bottom:10px;
-    }
-    .post h3{
-      margin:0 0 8px;
-      color:var(--blue);
-      font-weight:950;
-      font-size:16px;
-    }
-    .post p{ margin:0; color:var(--muted); font-size:14px; }
-    .post .meta{
-      margin-top:12px;
-      padding-top:12px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      color:var(--muted2);
-      font-size:13px;
-      gap:10px;
-    }
-
     /* CONTACT */
     .grid2{
       display:grid;
@@ -498,7 +446,6 @@
       <div class="links" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#about">Approach</a>
-        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -515,7 +462,6 @@
       <div class="drawer-body">
         <a href="#services" class="mLink">Services <span>›</span></a>
         <a href="#about" class="mLink">Approach <span>›</span></a>
-        <a href="#blog" class="mLink">Blog <span>›</span></a>
         <a href="#contact" class="mLink">Contact <span>›</span></a>
         <a href="#contact" class="btn drawer-cta mLink" style="justify-content:center;">Request a Consultation</a>
       </div>
@@ -660,38 +606,6 @@
           <li>Policy design and implementation support</li>
           <li>Energy transition and critical minerals strategy</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="blog">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Blog</h2>
-        <p class="lead">Short notes on political economy, delivery, and investment decisions across African markets.</p>
-      </div>
-
-      <div class="blog-grid">
-        <a class="post" href="#" aria-label="Read blog post: Political economy: what changes implementation">
-          <span class="tag">Political economy</span>
-          <h3>What actually changes implementation outcomes</h3>
-          <p>A quick framework for mapping incentives, veto points, and what’s “credible” in a given reform window.</p>
-          <div class="meta"><span>5 min read</span><span>Draft</span></div>
-        </a>
-
-        <a class="post" href="#" aria-label="Read blog post: Delivery: sequencing for results">
-          <span class="tag">Delivery</span>
-          <h3>Sequencing reforms when timelines are real</h3>
-          <p>How to choose a first wave that builds momentum, protects legitimacy, and reduces execution risk.</p>
-          <div class="meta"><span>6 min read</span><span>Draft</span></div>
-        </a>
-
-        <a class="post" href="#" aria-label="Read blog post: Energy transition: critical minerals decisions">
-          <span class="tag">Energy transition</span>
-          <h3>Critical minerals: decision points that matter</h3>
-          <p>From permitting to value-add, a checklist for aligning policy ambition with institutional capacity.</p>
-          <div class="meta"><span>7 min read</span><span>Draft</span></div>
-        </a>
       </div>
     </div>
   </section>
