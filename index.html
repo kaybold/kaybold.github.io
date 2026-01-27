@@ -13,19 +13,19 @@
 
   <style>
     :root{
-      /* Dark blue + white theme */
-      --blue:#0b1f3b;
-      --blue2:#0a2a52;
+      /* White + Green theme */
+      --green:#0f7a4a;
+      --green2:#0a5f39;
       --bg:#ffffff;
       --text:#0b0c0f;
       --muted:#4d5562;
       --muted2:#6b7280;
 
-      --line:rgba(11,31,59,0.14);
+      --line:rgba(15,122,74,0.18);
       --panel:#ffffff;
-      --panel2:#f4f7fb;
+      --panel2:#f3fbf7;
 
-      --btn:var(--blue);
+      --btn:var(--green);
       --btnText:#ffffff;
 
       --radius:14px;
@@ -56,21 +56,28 @@
 
     /* NAV */
     .nav{
-      position:sticky; top:0; z-index:10;
+      position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
       backdrop-filter:saturate(140%) blur(10px);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      height:68px; gap:16px;
+      height:68px; gap:14px;
     }
+
+    .left{
+      display:flex; align-items:center; gap:10px;
+      min-width:0;
+    }
+
     .brand{
-      font-weight:800;
+      font-weight:900;
       letter-spacing:0.2px;
       white-space:nowrap;
-      color:var(--blue);
+      color:var(--green2);
     }
+
     .links{
       display:flex; gap:14px; align-items:center;
       font-size:14px; color:var(--muted);
@@ -81,42 +88,131 @@
       border-radius:10px;
     }
     .links a:hover{
-      background:rgba(11,31,59,0.06);
-      color:var(--blue);
+      background:rgba(15,122,74,0.08);
+      color:var(--green2);
     }
+
+    /* Hamburger (3 lines) */
+    .hamburger{
+      width:44px; height:44px;
+      border-radius:12px;
+      border:1px solid rgba(15,122,74,0.18);
+      background:#fff;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow: 0 8px 22px rgba(11,31,59,0.08);
+    }
+    .hamburger:hover{ background:rgba(15,122,74,0.04); }
+    .hamburger span{
+      display:block;
+      width:18px;
+      height:2px;
+      background:var(--green2);
+      border-radius:999px;
+      position:relative;
+    }
+    .hamburger span::before,
+    .hamburger span::after{
+      content:"";
+      position:absolute; left:0;
+      width:18px; height:2px;
+      background:var(--green2);
+      border-radius:999px;
+    }
+    .hamburger span::before{ top:-6px; }
+    .hamburger span::after{ top:6px; }
+
+    /* Mobile menu drawer */
+    .drawer{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.35);
+      display:none;
+      z-index:50;
+    }
+    .drawer.open{ display:block; }
+    .drawer-panel{
+      position:absolute;
+      top:12px; left:12px; right:12px;
+      max-width:520px;
+      margin:0 auto;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+      overflow:hidden;
+    }
+    .drawer-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%, var(--panel2) 100%);
+    }
+    .drawer-head .brand{ font-size:15px; }
+    .drawer-close{
+      width:40px; height:40px;
+      border-radius:12px;
+      border:1px solid rgba(15,122,74,0.18);
+      background:#fff;
+      cursor:pointer;
+    }
+    .drawer-close:hover{ background:rgba(15,122,74,0.05); }
+    .drawer-body{
+      padding:10px 10px 14px;
+      display:grid;
+      gap:8px;
+    }
+    .drawer-body a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      text-decoration:none;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(15,122,74,0.12);
+      background:#fff;
+      color:var(--green2);
+      font-weight:800;
+    }
+    .drawer-body a:hover{ background:rgba(15,122,74,0.06); }
+    .drawer-cta{ margin-top:2px; }
 
     /* BUTTONS */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:11px 18px; border-radius:999px;
       background:var(--btn); color:var(--btnText);
-      text-decoration:none; font-weight:800; font-size:14px;
-      border:1px solid rgba(11,31,59,0.08);
+      text-decoration:none; font-weight:900; font-size:14px;
+      border:1px solid rgba(15,122,74,0.18);
       cursor:pointer;
       transition: transform .12s ease, opacity .12s ease, box-shadow .12s ease;
-      box-shadow: 0 10px 24px rgba(11,31,59,0.12);
-      position:relative;
-      z-index:5;
-      pointer-events:auto;
+      box-shadow: 0 10px 24px rgba(15,122,74,0.18);
       gap:8px;
     }
-    .btn:hover{ opacity:0.95; transform: translateY(-1px); }
+    .btn:hover{ opacity:0.96; transform: translateY(-1px); }
     .btn-outline{
       background:#ffffff;
-      color:var(--blue);
-      border:1px solid rgba(11,31,59,0.18);
+      color:var(--green2);
+      border:1px solid rgba(15,122,74,0.22);
       box-shadow:none;
     }
-    .btn-outline:hover{ background:rgba(11,31,59,0.04); }
+    .btn-outline:hover{ background:rgba(15,122,74,0.05); }
 
-    @media (max-width: 880px){ .links{display:none} }
+    /* Responsive nav behavior */
+    @media (max-width: 880px){
+      .links{display:none}
+      .hamburger{display:inline-flex}
+    }
 
     /* HERO */
     .hero{
       padding:52px 0 34px;
       background:
-        radial-gradient(900px 520px at 15% -10%, rgba(11,31,59,0.10) 0%, rgba(255,255,255,0) 60%),
-        radial-gradient(780px 520px at 85% 0%, rgba(11,31,59,0.07) 0%, rgba(255,255,255,0) 55%),
+        radial-gradient(900px 520px at 15% -10%, rgba(15,122,74,0.12) 0%, rgba(255,255,255,0) 60%),
+        radial-gradient(780px 520px at 85% 0%, rgba(15,122,74,0.08) 0%, rgba(255,255,255,0) 55%),
         #ffffff;
       border-bottom:1px solid var(--line);
     }
@@ -132,19 +228,19 @@
     }
 
     .kicker{
-      color:var(--blue2);
+      color:var(--green2);
       font-size:12px;
       letter-spacing:0.18em;
       text-transform:uppercase;
       margin-bottom:12px;
-      font-weight:700;
+      font-weight:800;
     }
     h1{
       font-size:52px;
       line-height:1.05;
       margin:0 0 12px;
       letter-spacing:-0.03em;
-      color:var(--blue);
+      color:var(--green2);
     }
     @media (max-width: 520px){ h1{font-size:38px} }
 
@@ -164,9 +260,9 @@
       box-shadow: var(--shadow);
     }
     .card-title{
-      font-weight:900;
+      font-weight:950;
       margin:0 0 10px;
-      color:var(--blue);
+      color:var(--green2);
     }
     .small{ color:var(--muted); font-size:14px; margin:0; }
     .focus-list{
@@ -184,12 +280,12 @@
       margin:0;
       font-size:26px;
       letter-spacing:-0.01em;
-      color:var(--blue);
+      color:var(--green2);
     }
     .lead{ margin:8px 0 0; color:var(--muted); max-width:72rem; }
 
-    #services, #contact{
-      background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
+    #services, #contact, #blog{
+      background: linear-gradient(180deg, rgba(15,122,74,0.06) 0%, rgba(255,255,255,0) 100%);
     }
 
     /* SERVICES */
@@ -208,24 +304,27 @@
       transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
       min-height: 180px;
       box-shadow: var(--shadow);
+      text-decoration:none;
+      display:block;
+      height:100%;
     }
     .tile:hover{
       transform: translateY(-2px);
-      border-color: rgba(11,31,59,0.22);
-      box-shadow: 0 22px 70px rgba(11,31,59,0.14);
+      border-color: rgba(15,122,74,0.30);
+      box-shadow: 0 22px 70px rgba(15,122,74,0.16);
     }
     .tile h3{
       margin:0 0 8px;
       font-size:16px;
       letter-spacing:-0.01em;
-      color:var(--blue);
-      font-weight:900;
+      color:var(--green2);
+      font-weight:950;
     }
     .tile p{ margin:0; color:var(--muted); font-size:14px; }
     .deliver{
       margin-top:10px;
       padding-top:10px;
-      border-top:1px dashed rgba(11,31,59,0.18);
+      border-top:1px dashed rgba(15,122,74,0.28);
       color:var(--muted2);
       font-size:13px;
     }
@@ -239,8 +338,7 @@
       color:var(--muted2);
       font-size:13px;
     }
-    .price{ color:var(--blue); font-weight:900; white-space:nowrap; }
-    .clickable{ text-decoration:none; display:block; height:100%; }
+    .price{ color:var(--green2); font-weight:950; white-space:nowrap; }
 
     /* ABOUT */
     .about-box{
@@ -266,6 +364,58 @@
     }
     @media (max-width: 980px){ .grid2-lite{grid-template-columns:1fr} }
 
+    /* BLOG */
+    .blog-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    @media (max-width: 980px){ .blog-grid{grid-template-columns:1fr} }
+    .post{
+      background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      text-decoration:none;
+      display:block;
+    }
+    .post:hover{
+      transform: translateY(-2px);
+      border-color: rgba(15,122,74,0.30);
+      box-shadow: 0 22px 70px rgba(15,122,74,0.16);
+    }
+    .post .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(15,122,74,0.22);
+      background:#fff;
+      color:var(--green2);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:0.02em;
+      margin-bottom:10px;
+    }
+    .post h3{
+      margin:0 0 8px;
+      color:var(--green2);
+      font-weight:950;
+      font-size:16px;
+    }
+    .post p{ margin:0; color:var(--muted); font-size:14px; }
+    .post .meta{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      color:var(--muted2);
+      font-size:13px;
+      gap:10px;
+    }
+
     /* CONTACT */
     .grid2{
       display:grid;
@@ -281,15 +431,15 @@
       width:100%;
       padding:12px 12px;
       border-radius:12px;
-      border:1px solid rgba(11,31,59,0.16);
+      border:1px solid rgba(15,122,74,0.22);
       background:#ffffff;
       color:var(--text);
       font-size:14px;
       outline:none;
     }
     input:focus, textarea:focus, select:focus{
-      border-color: rgba(11,31,59,0.38);
-      box-shadow: 0 0 0 4px rgba(11,31,59,0.08);
+      border-color: rgba(15,122,74,0.55);
+      box-shadow: 0 0 0 4px rgba(15,122,74,0.10);
     }
     textarea{ min-height:110px; resize:vertical; }
 
@@ -297,7 +447,6 @@
     @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
 
     .contact-card{
-      position: relative;
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -313,8 +462,8 @@
     .contact-title h3{
       margin:0;
       font-size:16px;
-      color:var(--blue);
-      font-weight:900;
+      color:var(--green2);
+      font-weight:950;
     }
     .note{ margin:10px 0 0; color:var(--muted2); font-size:12px; }
 
@@ -325,7 +474,7 @@
       font-size:13px;
       background:#ffffff;
     }
-    .footer a{ color:var(--blue2); text-decoration:none; }
+    .footer a{ color:var(--green2); text-decoration:none; }
     .footer a:hover{ text-decoration:underline; }
   </style>
 </head>
@@ -333,13 +482,40 @@
 <body>
   <div class="nav">
     <div class="wrap nav-inner">
-      <div class="brand">KayBold Consulting</div>
-      <div class="links">
+      <div class="left">
+        <!-- 3-line menu button -->
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span>
+        </button>
+
+        <div class="brand">KayBold Consulting</div>
+      </div>
+
+      <div class="links" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#about">Approach</a>
+        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
       </div>
+
       <a class="btn" href="#contact">Request a Consultation</a>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div class="brand">KayBold Consulting</div>
+        <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-body">
+        <a href="#services" class="mLink">Services <span>›</span></a>
+        <a href="#about" class="mLink">Approach <span>›</span></a>
+        <a href="#blog" class="mLink">Blog <span>›</span></a>
+        <a href="#contact" class="mLink">Contact <span>›</span></a>
+        <a href="#contact" class="btn drawer-cta mLink" style="justify-content:center;">Request a Consultation</a>
+      </div>
     </div>
   </div>
 
@@ -354,7 +530,6 @@
           and move from priorities to implementation.
         </p>
 
-        <!-- UPDATED: only View Services button in hero -->
         <div class="hero-cta">
           <a class="btn btn-outline" href="#services">View Services</a>
         </div>
@@ -381,7 +556,7 @@
       </div>
 
       <div class="grid3">
-        <a class="clickable tile" href="#contact" data-engagement="Strategic Consultation">
+        <a class="tile" href="#contact" data-engagement="Strategic Consultation">
           <h3>Strategic Consultation</h3>
           <p>60–90 minute senior advisory session to clarify options, constraints, and next steps. Includes a short follow-up note.</p>
           <div class="deliver"><b>Deliverable:</b> decision memo (1–2 pages) with options, risks, and recommended next steps.</div>
@@ -391,7 +566,7 @@
           </div>
         </a>
 
-        <a class="clickable tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
+        <a class="tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
           <h3>Policy & Political Economy Diagnostic</h3>
           <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs—delivered as a concise leadership briefing.</p>
           <div class="deliver"><b>Deliverable:</b> stakeholder map + feasibility/risk brief + implementation implications.</div>
@@ -401,7 +576,7 @@
           </div>
         </a>
 
-        <a class="clickable tile" href="#contact" data-engagement="Strategic Advisory Engagement">
+        <a class="tile" href="#contact" data-engagement="Strategic Advisory Engagement">
           <h3>Strategic Advisory Engagement</h3>
           <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives: prioritization, delivery strategy, and executive counsel.</p>
           <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior-level briefs as decisions arise.</div>
@@ -411,7 +586,7 @@
           </div>
         </a>
 
-        <a class="clickable tile" href="#contact" data-engagement="Case Study Development">
+        <a class="tile" href="#contact" data-engagement="Case Study Development">
           <h3>Case Study Development</h3>
           <p>End-to-end development of decision-grade case studies designed for senior leadership use (government, development partners, investors).</p>
           <div class="deliver"><b>Deliverable:</b> leadership-ready case + discussion guide + actionable options and trade-offs.</div>
@@ -421,7 +596,7 @@
           </div>
         </a>
 
-        <a class="clickable tile" href="#contact" data-engagement="DRC Market & Government Connections">
+        <a class="tile" href="#contact" data-engagement="DRC Market & Government Connections">
           <h3>DRC Market & Government Connections</h3>
           <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the DRC.</p>
           <div class="deliver"><b>Deliverable:</b> curated stakeholder list + introductions + meeting briefs and follow-up support.</div>
@@ -483,6 +658,52 @@
           <li>Energy transition and critical minerals strategy</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- BLOG (added) -->
+  <section id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Blog</h2>
+        <p class="lead">Short notes on political economy, delivery, and investment decisions across African markets.</p>
+      </div>
+
+      <div class="blog-grid">
+        <a class="post" href="#" aria-label="Read blog post: Political economy: what changes implementation">
+          <span class="tag">Political economy</span>
+          <h3>What actually changes implementation outcomes</h3>
+          <p>A quick framework for mapping incentives, veto points, and what’s “credible” in a given reform window.</p>
+          <div class="meta">
+            <span>5 min read</span>
+            <span>Draft</span>
+          </div>
+        </a>
+
+        <a class="post" href="#" aria-label="Read blog post: Delivery: sequencing for results">
+          <span class="tag">Delivery</span>
+          <h3>Sequencing reforms when timelines are real</h3>
+          <p>How to choose a first wave that builds momentum, protects legitimacy, and reduces execution risk.</p>
+          <div class="meta">
+            <span>6 min read</span>
+            <span>Draft</span>
+          </div>
+        </a>
+
+        <a class="post" href="#" aria-label="Read blog post: Energy transition: critical minerals decisions">
+          <span class="tag">Energy transition</span>
+          <h3>Critical minerals: decision points that matter</h3>
+          <p>From permitting to value-add, a checklist for aligning policy ambition with institutional capacity.</p>
+          <div class="meta">
+            <span>7 min read</span>
+            <span>Draft</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="note" style="margin-top:12px;">
+        Replace the “Draft” posts with real links (or wire these to a /blog page) when you’re ready.
+      </p>
     </div>
   </section>
 
@@ -596,6 +817,40 @@
     const statusEl = document.getElementById("formStatus");
     form.addEventListener("submit", () => {
       statusEl.textContent = "Sending…";
+    });
+
+    // Mobile menu (hamburger)
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    function openMenu(){
+      mobileMenu.classList.add("open");
+      menuBtn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function shutMenu(){
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    menuBtn.addEventListener("click", openMenu);
+    closeMenu.addEventListener("click", shutMenu);
+
+    // Close when clicking backdrop
+    mobileMenu.addEventListener("click", (e) => {
+      if (e.target === mobileMenu) shutMenu();
+    });
+
+    // Close when clicking a link
+    document.querySelectorAll(".mLink").forEach(a => {
+      a.addEventListener("click", shutMenu);
+    });
+
+    // Close with ESC
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("open")) shutMenu();
     });
   </script>
 </body>
