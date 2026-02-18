@@ -6,13 +6,10 @@
   <title>KayBold Consulting | Decision-ready advisory for African markets</title>
   <meta name="description" content="Decision-ready policy, political economy, and delivery advisory for African markets. We help leaders make clear choices, manage trade-offs, and move from priorities to implementation." />
 
-  <!-- Social sharing -->
   <meta property="og:title" content="KayBold Consulting" />
   <meta property="og:description" content="Decision-ready policy, political economy, and delivery advisory for African markets." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://YOUR_DOMAIN.com/" />
-  <!-- Optional: create an image (1200x630) and set og:image -->
-  <!-- <meta property="og:image" content="https://YOUR_DOMAIN.com/og-image.png" /> -->
 
   <meta name="theme-color" content="#0b1f3b" />
   <meta http-equiv="Cache-Control" content="no-store" />
@@ -27,7 +24,7 @@
 
       --blue:#0b1f3b;
       --blue2:#0a2a52;
-      --accent:#0ea5e9; /* subtle modern accent */
+      --accent:#0ea5e9;
       --bg:#ffffff;
       --panel:#ffffff;
       --panel2:#f5f7fb;
@@ -53,7 +50,6 @@
     a{color:inherit}
     img{max-width:100%; display:block}
 
-    /* Accessibility */
     .skip-link{
       position:absolute;
       left:-999px;
@@ -83,7 +79,6 @@
       .wrap{padding:0 28px}
     }
 
-    /* NAV */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
@@ -147,7 +142,6 @@
       color:var(--blue);
     }
 
-    /* Hamburger */
     .hamburger{
       width:44px; height:44px;
       border-radius:12px;
@@ -179,7 +173,6 @@
     .hamburger span::before{ top:-6px; }
     .hamburger span::after{ top:6px; }
 
-    /* Drawer */
     .drawer{
       position:fixed; inset:0;
       background:rgba(0,0,0,0.35);
@@ -232,7 +225,6 @@
     }
     .drawer-body a:hover{ background:rgba(11,31,59,0.06); }
 
-    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 18px;
@@ -259,7 +251,6 @@
     .btn-outline:hover{ background:rgba(11,31,59,0.04); }
     .btn-small{ padding:10px 14px; font-size:13px; }
 
-    /* Responsive nav */
     @media (max-width: 900px){
       .links{display:none}
       .hamburger{display:inline-flex}
@@ -269,7 +260,6 @@
       .brand span{display:none}
     }
 
-    /* HERO */
     .hero{
       padding:60px 0 36px;
       background:
@@ -281,13 +271,13 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap:22px;
+      grid-template-columns: 1fr;
+      gap:16px;
       align-items:start;
+      max-width: 860px;
     }
     @media (max-width: 980px){
       .hero{padding:44px 0 28px;}
-      .hero-grid{grid-template-columns:1fr}
     }
 
     .badge{
@@ -330,7 +320,7 @@
 
     .trust{
       display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:18px;
+      margin-top:14px;
       color:var(--muted2);
       font-size:13px;
     }
@@ -357,14 +347,6 @@
     }
     .small{ color:var(--muted); font-size:14px; margin:0; }
 
-    .focus-list{
-      margin:12px 0 0;
-      padding-left:18px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .focus-list li{ margin:8px 0; }
-
     .stats{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -386,7 +368,6 @@
     }
     .stat span{ color:var(--muted2); font-size:12px; }
 
-    /* Sections */
     main section{ padding:44px 0; }
     .section-head{ margin-bottom:16px; }
     h2{
@@ -406,7 +387,6 @@
       background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
 
-    /* Services */
     .grid3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -427,6 +407,7 @@
       height:100%;
       position:relative;
       overflow:hidden;
+      cursor:pointer;
     }
     .tile::after{
       content:"";
@@ -481,7 +462,6 @@
     }
     .price{ color:var(--blue); font-weight:950; white-space:nowrap; }
 
-    /* Process */
     .grid3-process{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -510,7 +490,6 @@
     .step h3{ margin:0 0 6px; color:var(--blue); font-weight:950; font-size:16px; }
     .step p{ margin:0; color:var(--muted); font-size:14px; }
 
-    /* Focus areas */
     .chips{
       display:flex; flex-wrap:wrap; gap:10px;
       margin-top:14px;
@@ -525,7 +504,6 @@
       font-size:13px;
     }
 
-    /* About */
     .about-box{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
@@ -548,7 +526,6 @@
     }
     .bullets li{ margin:8px 0; }
 
-    /* Contact */
     .grid2{
       display:grid;
       grid-template-columns:1fr 1.2fr;
@@ -605,7 +582,6 @@
       line-height:1.5;
     }
 
-    /* Footer */
     .footer{
       padding:24px 0 40px;
       border-top:1px solid var(--line);
@@ -616,8 +592,36 @@
     .footer a{ color:var(--blue2); text-decoration:none; font-weight:850; }
     .footer a:hover{ text-decoration:underline; }
 
-    /* Tiny helpers */
-    .spacer{ height:6px; }
+    details.more{
+      grid-column:1 / -1;
+      border:1px solid rgba(11,31,59,0.12);
+      border-radius:18px;
+      background:#fff;
+      padding:12px;
+      box-shadow: var(--shadow);
+    }
+    details.more > summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 10px;
+      border-radius:14px;
+      font-weight:950;
+      color:var(--blue);
+    }
+    details.more > summary::-webkit-details-marker{ display:none; }
+    .more-body{ padding:12px 4px 4px; }
+
+    .tiny-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .tiny-grid{grid-template-columns:1fr} }
   </style>
 </head>
 
@@ -639,8 +643,8 @@
 
       <nav class="links" aria-label="Primary navigation">
         <a href="blog.html">Blog</a>
-        <a href="#services">Services</a>
         <a href="#approach">Approach</a>
+        <a href="#services">Services</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -661,8 +665,8 @@
         <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
       </div>
       <div class="drawer-body">
-        <a href="#services" class="mLink">Services <span>›</span></a>
         <a href="#approach" class="mLink">Approach <span>›</span></a>
+        <a href="#services" class="mLink">Services <span>›</span></a>
         <a href="blog.html" class="mLink">Blog <span>›</span></a>
         <a href="#contact" class="mLink">Contact <span>›</span></a>
         <a href="#contact" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
@@ -673,135 +677,70 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="badge"><span class="dot"></span> Decision-grade advisory</div>
+        <div class="badge"><span class="dot"></span> Decision grade advisory</div>
         <h1>Decision-ready advisory for African markets.</h1>
         <p class="sub">
-          KayBold Consulting supports governments, development partners, and mission-driven organizations navigating
-          high-stakes reforms and complex political economy environments—helping leaders make clear choices, manage trade-offs,
-          and move from priorities to implementation.
+          We help leaders make clear choices, map feasibility, and move from priorities to delivery across complex policy and political economy environments.
         </p>
 
         <div class="hero-cta">
           <a class="btn" href="#contact">Request a Consultation →</a>
-          <a class="btn btn-outline" href="#services">View Services</a>
+          <a class="btn btn-outline" href="#approach">See the approach</a>
         </div>
 
         <div class="trust" aria-label="Trust signals">
           <div class="pill">Senior decision support</div>
-          <div class="pill">Feasibility & risk</div>
+          <div class="pill">Feasibility and risk</div>
           <div class="pill">Delivery roadmaps</div>
-          <div class="pill">Energy transition strategy</div>
         </div>
       </div>
-
-      <aside class="panel" aria-label="What we help you do">
-        <p class="card-title">What we help you do</p>
-        <p class="small">Clear decisions, credible feasibility, and a path to delivery.</p>
-        <ul class="focus-list">
-          <li><b>Executive counsel:</b> prioritization, sequencing, and implementation trade-offs</li>
-          <li><b>Political economy:</b> stakeholder mapping, risk, and feasibility diagnostics</li>
-          <li><b>Delivery support:</b> roadmaps, governance, and accountability mechanisms</li>
-          <li><b>Energy transition:</b> critical minerals strategy and supply-chain policy</li>
-        </ul>
-
-        <div class="stats" aria-label="Outcomes">
-          <div class="stat">
-            <strong>Decision clarity</strong>
-            <span>Options + trade-offs in plain language</span>
-          </div>
-          <div class="stat">
-            <strong>Feasibility</strong>
-            <span>Political/institutional constraints mapped</span>
-          </div>
-        </div>
-      </aside>
     </div>
   </header>
 
-  <main id="main">
-    <section id="services">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Engagements & pricing</h2>
-          <p class="lead">
-            Choose an option to pre-fill the inquiry form. All engagements are scoped to your timeline, decision point, and constraints.
+  <section aria-label="What we help you do">
+    <div class="wrap">
+      <div class="tiny-grid">
+        <div class="about-box" style="box-shadow: var(--shadow);">
+          <h2 style="margin:0 0 6px;">What we help you do</h2>
+          <p class="lead" style="margin-top:0;">
+            Decision clarity, credible feasibility, and a path to delivery.
           </p>
+          <ul class="bullets">
+            <li><b>Executive counsel:</b> prioritization, sequencing, and implementation trade-offs</li>
+            <li><b>Political economy:</b> stakeholder mapping, risk, and feasibility diagnostics</li>
+            <li><b>Delivery support:</b> roadmaps, governance, and accountability mechanisms</li>
+            <li><b>Energy transition:</b> critical minerals strategy and supply chain policy</li>
+          </ul>
         </div>
 
-        <div class="grid3">
-          <a class="tile" href="#contact" data-engagement="Strategic Consultation">
-            <h3>Strategic Consultation</h3>
-            <p>60–90 minute senior advisory session to clarify options, constraints, and next steps. Includes a short follow-up note.</p>
-            <div class="deliver"><b>Deliverable:</b> decision memo (1–2 pages) with options, risks, and next steps.</div>
-            <div class="tile-meta">
-              <span>Typical: 1 week</span>
-              <span class="price">$750</span>
+        <div class="panel" style="box-shadow: var(--shadow);">
+          <p class="card-title">Outcomes</p>
+          <div class="stats" style="margin-top:0;">
+            <div class="stat">
+              <strong>Decision clarity</strong>
+              <span>Options and trade-offs in plain language</span>
             </div>
-          </a>
-
-          <a class="tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
-            <h3>Policy & Political Economy Diagnostic</h3>
-            <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs—delivered as a concise leadership briefing.</p>
-            <div class="deliver"><b>Deliverable:</b> stakeholder map + feasibility/risk brief + implementation implications.</div>
-            <div class="tile-meta">
-              <span>Typical: 2–3 weeks</span>
-              <span class="price">$4,500</span>
-            </div>
-          </a>
-
-          <a class="tile" href="#contact" data-engagement="Strategic Advisory Engagement">
-            <h3>Strategic Advisory Engagement</h3>
-            <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives: prioritization, delivery strategy, and executive counsel.</p>
-            <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior-level briefs as decisions arise.</div>
-            <div class="tile-meta">
-              <span>Typical: 4–12+ weeks</span>
-              <span class="price">From $9,500</span>
-            </div>
-          </a>
-
-          <a class="tile" href="#contact" data-engagement="Case Study Development">
-            <h3>Case Study Development</h3>
-            <p>End-to-end development of decision-grade case studies designed for senior leadership use (government, development partners, investors).</p>
-            <div class="deliver"><b>Deliverable:</b> leadership-ready case + discussion guide + actionable options and trade-offs.</div>
-            <div class="tile-meta">
-              <span>Per case</span>
-              <span class="price">$22,000</span>
-            </div>
-          </a>
-
-          <a class="tile" href="#contact" data-engagement="DRC Market & Government Connections">
-            <h3>DRC Market & Government Connections</h3>
-            <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the DRC.</p>
-            <div class="deliver"><b>Deliverable:</b> curated stakeholder list + introductions + meeting briefs and follow-up support.</div>
-            <div class="tile-meta">
-              <span>Scope-dependent</span>
-              <span class="price">Reach out for pricing</span>
-            </div>
-          </a>
-
-          <div class="tile" style="cursor:default;">
-            <h3>Need something custom?</h3>
-            <p>We regularly support fast-moving, high-sensitivity decisions. If your need doesn’t fit a package, we’ll scope it quickly.</p>
-            <div class="deliver"><b>Best for:</b> urgent decisions, sensitive stakeholder environments, and complex delivery constraints.</div>
-            <div class="tile-meta">
-              <span>Response: 1–2 days</span>
-              <span class="price"><span style="color:var(--muted2);font-weight:850;">Custom scope</span></span>
+            <div class="stat">
+              <strong>Feasibility</strong>
+              <span>Constraints and incentives mapped</span>
             </div>
           </div>
+
+          <p class="small" style="margin-top:12px;">
+            Work is scoped to your decision point, timeline, and constraints.
+          </p>
         </div>
-
-        <p class="note" style="margin-top:12px;">
-          Pricing shown is a standard starting point; scope, urgency, and travel requirements may adjust final fees.
-        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <main id="main">
     <section id="approach">
       <div class="wrap">
         <div class="section-head">
           <h2>Approach</h2>
           <p class="lead">
-            We help leaders make confident decisions under real constraints—political feasibility, institutional capacity, and implementation risk.
+            We start from the decision, map constraints and incentives, and deliver options you can act on.
           </p>
         </div>
 
@@ -809,24 +748,24 @@
           <div class="step">
             <div class="num">1</div>
             <h3>Start with the decision</h3>
-            <p>We define the decision point, success criteria, and the timeline—so work stays relevant and executive-ready.</p>
+            <p>We define the decision point, success criteria, and timeline so the work stays relevant and executive-ready.</p>
           </div>
           <div class="step">
             <div class="num">2</div>
-            <h3>Map constraints & incentives</h3>
-            <p>We surface stakeholders, risks, feasibility barriers, and institutional capacity to clarify what’s possible.</p>
+            <h3>Map constraints and incentives</h3>
+            <p>We surface stakeholders, risks, feasibility barriers, and institutional capacity to clarify what is possible.</p>
           </div>
           <div class="step">
             <div class="num">3</div>
             <h3>Deliver options you can act on</h3>
-            <p>We translate analysis into clear options, trade-offs, and a delivery path—with governance and accountability.</p>
+            <p>We translate analysis into clear options, trade-offs, and a delivery path with governance and accountability.</p>
           </div>
         </div>
 
         <div class="about-box" style="margin-top:16px;">
           <p class="small" style="margin:0;">
             KayBold Consulting works with senior decision-makers on reform, policy, and investment choices across African markets.
-            Our work emphasizes <b>decision clarity</b>, <b>feasibility</b>, and <b>delivery</b>—so strategies translate into executable action.
+            Our work emphasizes <b>decision clarity</b>, <b>feasibility</b>, and <b>delivery</b> so strategies translate into executable action.
           </p>
 
           <div class="grid2-lite">
@@ -836,7 +775,7 @@
                 <li>Government leaders and delivery units</li>
                 <li>Development partners and implementers</li>
                 <li>Mission-driven organizations and investors</li>
-                <li>Energy transition and supply-chain stakeholders</li>
+                <li>Energy transition and supply chain stakeholders</li>
               </ul>
             </div>
 
@@ -855,13 +794,101 @@
           <div class="chips" aria-label="Focus areas">
             <span class="chip">Critical minerals policy</span>
             <span class="chip">Industrial strategy</span>
-            <span class="chip">Delivery units & execution</span>
+            <span class="chip">Delivery units and execution</span>
             <span class="chip">Stakeholder mapping</span>
             <span class="chip">Reform feasibility</span>
-            <span class="chip">Public–private coordination</span>
+            <span class="chip">Public private coordination</span>
             <span class="chip">Investment readiness</span>
-            <span class="chip">Governance & accountability</span>
+            <span class="chip">Governance and accountability</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Engagement options</h2>
+          <p class="lead">
+            Pick an option to prefill the inquiry form. Scope is confirmed after a short intake.
+          </p>
+        </div>
+
+        <div class="grid3">
+          <a class="tile" href="#contact" data-engagement="Strategic Consultation">
+            <h3>Strategic Consultation</h3>
+            <p>A senior advisory session to clarify options, constraints, and next steps. Includes a short follow up note.</p>
+            <div class="deliver"><b>Deliverable:</b> decision memo with options, risks, and next steps.</div>
+            <div class="tile-meta">
+              <span>Typical timeline: 1 week</span>
+              <span class="price">$750</span>
+            </div>
+          </a>
+
+          <a class="tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
+            <h3>Policy and Political Economy Diagnostic</h3>
+            <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs delivered as a concise leadership briefing.</p>
+            <div class="deliver"><b>Deliverable:</b> stakeholder map plus feasibility and risk brief with delivery implications.</div>
+            <div class="tile-meta">
+              <span>Typical timeline: 2 to 3 weeks</span>
+              <span class="price">$4,500</span>
+            </div>
+          </a>
+
+          <a class="tile" href="#contact" data-engagement="Strategic Advisory Engagement">
+            <h3>Strategic Advisory Engagement</h3>
+            <p>Ongoing support for high stakes reforms and multi stakeholder initiatives, including prioritization and delivery strategy.</p>
+            <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior briefs as decisions arise.</div>
+            <div class="tile-meta">
+              <span>Typical timeline: 4 to 12 weeks</span>
+              <span class="price">From $9,500</span>
+            </div>
+          </a>
+
+          <details class="more">
+            <summary>
+              More engagement options
+              <span style="color:var(--muted2); font-weight:850;">Open</span>
+            </summary>
+
+            <div class="more-body">
+              <div class="grid3">
+                <a class="tile" href="#contact" data-engagement="Case Study Development">
+                  <h3>Case Study Development</h3>
+                  <p>End to end development of decision grade case studies designed for senior leadership use.</p>
+                  <div class="deliver"><b>Deliverable:</b> leadership-ready case with discussion guide and actionable options.</div>
+                  <div class="tile-meta">
+                    <span>Per case</span>
+                    <span class="price">$22,000</span>
+                  </div>
+                </a>
+
+                <a class="tile" href="#contact" data-engagement="DRC Market & Government Connections">
+                  <h3>DRC Market and Government Connections</h3>
+                  <p>Targeted introductions and on the ground access across government, private sector, and institutions in the DRC.</p>
+                  <div class="deliver"><b>Deliverable:</b> curated list, introductions, meeting briefs, and follow up support.</div>
+                  <div class="tile-meta">
+                    <span>Scope dependent</span>
+                    <span class="price">Reach out</span>
+                  </div>
+                </a>
+
+                <div class="tile" style="cursor:default;">
+                  <h3>Custom scope</h3>
+                  <p>For urgent decisions and sensitive stakeholder environments, we can scope quickly and move fast.</p>
+                  <div class="deliver"><b>Best for:</b> time sensitive choices with complex delivery constraints.</div>
+                  <div class="tile-meta">
+                    <span>Response: 1 to 2 days</span>
+                    <span class="price"><span style="color:var(--muted2);font-weight:850;">Custom</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="note" style="margin-top:12px;">
+                Pricing shown is a starting point. Scope, urgency, and travel requirements may adjust final fees.
+              </p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -870,23 +897,23 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Request a consultation</h2>
-          <p class="lead">Share a few details and we’ll respond with next steps.</p>
+          <p class="lead">Share a few details and we will respond with next steps.</p>
         </div>
 
         <div class="grid2">
           <div class="contact-card">
             <div class="contact-title"><h3>Direct contact</h3></div>
             <p class="small" style="margin:0 0 14px;">
-              Prefer email? Reach us directly and we’ll reply with scheduling options.
+              Prefer email. Reach us directly and we will reply with scheduling options.
             </p>
 
             <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
               Email KayBold Consulting →
             </a>
 
-            <p class="note">Typical response time: 1–2 business days.</p>
+            <p class="note">Typical response time: 1 to 2 business days.</p>
             <div class="fineprint">
-              If your inquiry is time-sensitive, include your deadline and preferred meeting windows.
+              If your inquiry is time sensitive, include your deadline and preferred meeting windows.
             </div>
           </div>
 
@@ -927,8 +954,8 @@
               </div>
 
               <div>
-                <label for="message">What are you working on?</label>
-                <textarea id="message" name="message" placeholder="Context, objective, country/region, decision needed, timeline, and key constraints (if any)." required></textarea>
+                <label for="message">What are you working on</label>
+                <textarea id="message" name="message" placeholder="Context, objective, country or region, decision needed, timeline, and key constraints." required></textarea>
               </div>
 
               <button class="btn" id="submitBtn" type="submit">Send inquiry →</button>
@@ -961,10 +988,8 @@
   </footer>
 
   <script>
-    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Preselect engagement type when clicking a service card
     const engagementSelect = document.getElementById("type");
     const selectedEngagement = document.getElementById("selected_engagement");
 
@@ -976,7 +1001,6 @@
       });
     });
 
-    // Mobile menu
     const menuBtn = document.getElementById("menuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const closeMenu = document.getElementById("closeMenu");
@@ -992,19 +1016,20 @@
       document.body.style.overflow = "";
     }
 
-    menuBtn?.addEventListener("click", openMenu);
-    closeMenu?.addEventListener("click", shutMenu);
+    if (menuBtn) menuBtn.addEventListener("click", openMenu);
+    if (closeMenu) closeMenu.addEventListener("click", shutMenu);
 
-    mobileMenu?.addEventListener("click", (e) => {
-      if (e.target === mobileMenu) shutMenu();
-    });
+    if (mobileMenu){
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) shutMenu();
+      });
+    }
 
     document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", shutMenu));
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && mobileMenu.classList.contains("open")) shutMenu();
     });
 
-    // Better form UX (works with Formspree)
     const form = document.getElementById("inquiryForm");
     const statusEl = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
@@ -1024,7 +1049,7 @@
         });
 
         if(res.ok){
-          statusEl.textContent = "Thanks — we received your inquiry. We’ll reply with next steps shortly.";
+          statusEl.textContent = "Thanks. We received your inquiry and will reply with next steps.";
           form.reset();
           selectedEngagement.value = "";
         } else {
@@ -1040,3 +1065,4 @@
   </script>
 </body>
 </html>
+
