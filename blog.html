@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog | KayBold Consulting</title>
-  <meta name="description" content="Notes, publications, and contributions on political economy, delivery, and investment decisions across African markets." />
+  <meta name="description" content="Published writing, publications, and contributions on political economy, delivery, and investment decisions across African markets." />
 
   <style>
     :root{
@@ -163,17 +163,35 @@
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:18px;
       box-shadow:var(--shadow);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-      position:relative;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 280px;
     }
     .card:hover{
       transform:translateY(-2px);
       box-shadow:0 22px 70px rgba(11,31,59,0.14);
       border-color:rgba(11,31,59,0.22);
     }
+
+    .thumb{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      display:block;
+      background:#e9eef7;
+      border-bottom:1px solid var(--line);
+    }
+
+    .card-body{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
     .tag{
       display:inline-flex;
       align-items:center;
@@ -186,6 +204,7 @@
       color:var(--blue2);
       margin-bottom:10px;
       background:#fff;
+      width:max-content;
     }
     .tag .dot{
       width:8px; height:8px;
@@ -193,6 +212,7 @@
       background:rgba(14,165,233,0.9);
       box-shadow:0 0 0 4px rgba(14,165,233,0.18);
     }
+
     .card h3{
       font-size:16px;
       margin:0 0 8px;
@@ -204,8 +224,9 @@
       font-size:14px;
       color:var(--muted);
     }
+
     .meta{
-      margin-top:12px;
+      margin-top:auto;
       padding-top:12px;
       border-top:1px solid var(--line);
       display:flex;
@@ -215,13 +236,6 @@
       color:var(--muted2);
       align-items:center;
       flex-wrap:wrap;
-    }
-    .meta .right{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-weight:800;
-      color:var(--blue2);
     }
     .ext{
       display:inline-flex;
@@ -264,16 +278,16 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="kicker">Writing and contributions</div>
+      <div class="kicker">Published work</div>
       <h1>Blog and publications</h1>
       <p class="sub">
-        Notes, publications, and contributions on political economy, delivery, and decision making across African markets.
+        Published writing, publications, and contributions.
       </p>
 
       <div class="section-nav" aria-label="Jump to section">
         <a class="pill" href="#publications">Publications</a>
+        <a class="pill" href="#contributions">Contributions</a>
         <a class="pill" href="#case-studies">Case studies</a>
-        <a class="pill" href="#notes">Notes</a>
       </div>
     </div>
   </header>
@@ -284,137 +298,73 @@
       <section id="publications" class="block" aria-label="Publications">
         <h2>Publications</h2>
         <p>
-          Peer reviewed and formal publications. Each link opens on the publisher site.
+          Peer reviewed and formal publications.
         </p>
 
         <div class="grid">
           <a class="card" href="https://www.sciencedirect.com/science/article/pii/S2211467X25000896" target="_blank" rel="noreferrer">
-            <span class="tag"><span class="dot"></span> Publication</span>
-            <h3>ScienceDirect article</h3>
-            <p>
-              View the publication on ScienceDirect.
-            </p>
-            <div class="meta">
-              <span>External</span>
-              <span class="right">
-                <span class="ext" aria-label="Open publication">Open ↗</span>
-              </span>
+            <div class="card-body">
+              <span class="tag"><span class="dot"></span> Publication</span>
+              <h3>Sustainable futures: Aligning climate actions and socio economic justice through the just energy transition</h3>
+              <p>
+                Energy Strategy Reviews. Open access.
+              </p>
+              <div class="meta">
+                <span>ScienceDirect</span>
+                <span class="ext">Open ↗</span>
+              </div>
             </div>
           </a>
+        </div>
+      </section>
 
-          <div class="card" style="cursor:default;">
-            <span class="tag"><span class="dot"></span> Add more</span>
-            <h3>Add another publication</h3>
-            <p>
-              Duplicate this card and update the title, description, and link for each paper you want to include.
-            </p>
-            <div class="meta">
-              <span>Tip</span>
-              <span class="right">Copy card</span>
-            </div>
-          </div>
+      <section id="contributions" class="block" aria-label="Contributions">
+        <h2>Contributions</h2>
+        <p>
+          Published articles where you are cited or included as a contributor.
+        </p>
 
-          <div class="card" style="cursor:default;">
-            <span class="tag"><span class="dot"></span> Coming soon</span>
-            <h3>Working papers and briefs</h3>
-            <p>
-              Add working papers, policy briefs, and presentations here as you publish them.
-            </p>
-            <div class="meta">
-              <span>Update anytime</span>
-              <span class="right">Draft</span>
+        <div class="grid">
+          <a class="card" href="https://www.weforum.org/stories/2024/11/14-experts-on-how-to-implement-responsible-resource-use-as-the-energy-transition-accelerates/" target="_blank" rel="noreferrer">
+            <img
+              class="thumb"
+              src="https://assets.weforum.org/article/image/large_LVukmsZkuMjbOScsiiUAfXIG570co8kl6zKgxXocfYw.jpg"
+              alt="Solar park image used on the World Economic Forum article"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <span class="tag"><span class="dot"></span> World Economic Forum</span>
+              <h3>14 experts on implementing responsible resource use as the energy transition accelerates</h3>
+              <p>
+                A World Economic Forum story that includes expert perspectives on responsible resource use.
+              </p>
+              <div class="meta">
+                <span>Published Nov 22, 2024</span>
+                <span class="ext">Open ↗</span>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
       <section id="case-studies" class="block" aria-label="Case studies">
-        <h2>Case studies and teaching materials</h2>
+        <h2>Case studies</h2>
         <p>
-          Materials developed for leadership learning and decision support.
+          Published case studies and teaching materials.
         </p>
 
         <div class="grid">
           <a class="card" href="https://ministerialleadership.harvard.edu/wp-content/uploads/2023/10/2023-Forum_Sierra-Leone-Case-Study_FINAL.pdf" target="_blank" rel="noreferrer">
-            <span class="tag"><span class="dot"></span> Case study</span>
-            <h3>Ministerial Leadership Forum case study</h3>
-            <p>
-              Sierra Leone case study PDF hosted by Harvard Ministerial Leadership Program.
-            </p>
-            <div class="meta">
-              <span>PDF</span>
-              <span class="right">
-                <span class="ext" aria-label="Open case study PDF">Open ↗</span>
-              </span>
-            </div>
-          </a>
-
-          <div class="card" style="cursor:default;">
-            <span class="tag"><span class="dot"></span> Add more</span>
-            <h3>Add another case study</h3>
-            <p>
-              Add any case, memo, or learning note you contributed to or authored.
-            </p>
-            <div class="meta">
-              <span>Tip</span>
-              <span class="right">Copy card</span>
-            </div>
-          </div>
-
-          <div class="card" style="cursor:default;">
-            <span class="tag"><span class="dot"></span> Optional</span>
-            <h3>Presentations and talks</h3>
-            <p>
-              Add slide decks, conference sessions, and panel appearances with links or PDFs.
-            </p>
-            <div class="meta">
-              <span>Update anytime</span>
-              <span class="right">Draft</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="notes" class="block" aria-label="Notes">
-        <h2>Notes</h2>
-        <p>
-          Short writing for operators and decision makers. These can link to full posts later.
-        </p>
-
-        <div class="grid">
-          <a class="card" href="#" aria-disabled="true">
-            <span class="tag"><span class="dot"></span> Political economy</span>
-            <h3>What actually changes implementation outcomes</h3>
-            <p>
-              A framework for mapping incentives, veto points, and what is credible in reform windows.
-            </p>
-            <div class="meta">
-              <span>Draft</span>
-              <span class="right">Coming soon</span>
-            </div>
-          </a>
-
-          <a class="card" href="#" aria-disabled="true">
-            <span class="tag"><span class="dot"></span> Delivery</span>
-            <h3>Sequencing reforms when timelines are real</h3>
-            <p>
-              How to choose a first wave that builds momentum and reduces execution risk.
-            </p>
-            <div class="meta">
-              <span>Draft</span>
-              <span class="right">Coming soon</span>
-            </div>
-          </a>
-
-          <a class="card" href="#" aria-disabled="true">
-            <span class="tag"><span class="dot"></span> Energy transition</span>
-            <h3>Critical minerals decision points that matter</h3>
-            <p>
-              A checklist for aligning policy ambition with institutional capacity.
-            </p>
-            <div class="meta">
-              <span>Draft</span>
-              <span class="right">Coming soon</span>
+            <div class="card-body">
+              <span class="tag"><span class="dot"></span> Case study</span>
+              <h3>Ministerial Leadership Forum case study: Sierra Leone</h3>
+              <p>
+                Published PDF hosted by the Harvard Ministerial Leadership Program.
+              </p>
+              <div class="meta">
+                <span>PDF</span>
+                <span class="ext">Open ↗</span>
+              </div>
             </div>
           </a>
         </div>
