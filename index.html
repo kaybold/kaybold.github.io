@@ -18,6 +18,7 @@
       --accent:#0ea5e9;
 
       --bg:#ffffff;
+      --panel:#ffffff;
       --panel2:#f5f7fb;
       --line:rgba(11,31,59,0.12);
 
@@ -43,13 +44,14 @@
       line-height:1.6;
     }
     a{color:inherit}
+    img{max-width:100%; display:block}
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
 
     .wrap{ max-width:var(--content); margin:0 auto; padding:0 22px; }
     @media (min-width: 1200px){ .wrap{padding:0 28px} }
     section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
-    /* NAV (shared) */
+    /* NAV (shared across pages) */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
@@ -61,7 +63,6 @@
       height:var(--navH); gap:14px;
     }
     .left{ display:flex; align-items:center; gap:12px; min-width:0; }
-
     .mark{
       width:38px; height:38px; border-radius:12px;
       display:grid; place-items:center;
@@ -71,15 +72,8 @@
       flex:0 0 auto;
     }
     .brand{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
-    .brand strong{
-      font-weight:950; color:var(--blue);
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-    .brand span{
-      font-size:12px; color:var(--muted2);
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-      margin-top:2px;
-    }
+    .brand strong{ font-weight:950; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .brand span{ font-size:12px; color:var(--muted2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
 
     .links{ display:flex; gap:12px; align-items:center; font-size:14px; color:var(--muted); }
     .links a{ text-decoration:none; padding:9px 10px; border-radius:12px; font-weight:750; }
@@ -96,6 +90,7 @@
       transition: transform .12s ease, opacity .12s ease;
       box-shadow: 0 12px 26px rgba(11,31,59,0.14);
       gap:10px; white-space:nowrap;
+      position:relative; z-index:2;
     }
     .btn:hover{ opacity:0.97; transform: translateY(-1px); }
     .btn-outline{
@@ -105,7 +100,7 @@
     }
     .btn-outline:hover{ background:rgba(11,31,59,0.04); }
 
-    /* Hamburger + Drawer */
+    /* Hamburger + Drawer (shared) */
     .hamburger{
       width:44px; height:44px;
       border-radius:12px;
@@ -116,6 +111,7 @@
       justify-content:center;
       cursor:pointer;
       box-shadow: 0 10px 26px rgba(11,31,59,0.08);
+      position:relative; z-index:3;
     }
     .hamburger:hover{ background:rgba(11,31,59,0.04); }
     .hamburger span{
@@ -184,16 +180,16 @@
 
     @media (max-width: 900px){
       .links{display:none}
-      .hamburger{display:inline-flex} /* ✅ bring back 3 lines */
+      .hamburger{display:inline-flex}
     }
     @media (max-width: 560px){
       .nav .btn{display:none}
       .brand span{display:none}
     }
 
-    /* HERO */
+    /* Hero */
     .hero{
-      padding:58px 0 34px;
+      padding:60px 0 36px;
       background:
         radial-gradient(900px 520px at 15% -10%, rgba(11,31,59,0.10) 0%, rgba(255,255,255,0) 60%),
         radial-gradient(780px 520px at 85% 0%, rgba(14,165,233,0.10) 0%, rgba(255,255,255,0) 55%),
@@ -219,19 +215,14 @@
       margin:14px 0 12px;
       letter-spacing:-0.04em;
       color:var(--blue);
-      max-width: 22ch;
     }
     @media (max-width: 520px){ h1{font-size:40px} }
-    .sub{ color:var(--muted); font-size:17px; max-width:62rem; margin:0 0 18px; }
+    .sub{ color:var(--muted); font-size:17px; max-width:60rem; margin:0 0 18px; }
+    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
 
-    .grid-hero{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      align-items:start;
-      margin-top:18px;
-    }
-    @media (max-width: 980px){ .grid-hero{ grid-template-columns:1fr; } }
+    main section{ padding:44px 0; }
+    h2{ margin:0; font-size:28px; letter-spacing:-0.02em; color:var(--blue); }
+    .lead{ margin:10px 0 0; color:var(--muted); max-width:72rem; font-size:15px; }
 
     .panel{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
@@ -240,26 +231,12 @@
       padding:18px;
       box-shadow: var(--shadow2);
     }
-    h2{ margin:0; font-size:22px; letter-spacing:-0.02em; color:var(--blue); }
-    .small{ color:var(--muted); font-size:14px; margin:10px 0 0; }
-
-    .bullets{ margin:12px 0 0; padding-left:18px; color:var(--muted); font-size:14px; }
-    .bullets li{ margin:8px 0; }
-
-    main section{ padding:44px 0; }
-    .section-head{ margin-bottom:16px; }
-    .lead{ margin:10px 0 0; color:var(--muted); max-width:72rem; font-size:15px; }
-
-    /* ✅ Services should land cleanly when clicked */
-    #services{
-      padding-top: 56px; /* gives a nicer “snap” feel */
-      background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
-    }
 
     .grid3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:16px;
+      margin-top:16px;
     }
     @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
 
@@ -276,6 +253,7 @@
       height:100%;
       position:relative;
       overflow:hidden;
+      cursor:pointer;
     }
     .tile:hover{
       transform: translateY(-2px);
@@ -288,16 +266,14 @@
       color:var(--blue);
       font-weight:950;
       letter-spacing:-0.01em;
-      position:relative;
-      z-index:1;
     }
-    .tile p{ margin:0; color:var(--muted); font-size:14px; position:relative; z-index:1; }
+    .tile p{ margin:0; color:var(--muted); font-size:14px; }
     .tile-meta{
       display:flex; justify-content:space-between; gap:10px;
       margin-top:14px; padding-top:14px;
       border-top:1px solid var(--line);
-      color:var(--muted2); font-size:13px;
-      position:relative; z-index:1;
+      color:var(--muted2);
+      font-size:13px;
     }
     .price{ color:var(--blue); font-weight:950; white-space:nowrap; }
 
@@ -329,6 +305,7 @@
 
       <nav class="links" aria-label="Primary navigation">
         <a class="active" href="index.html">Home</a>
+        <a href="#approach">Approach</a>
         <a href="#services">Services</a>
         <a href="blog.html">Publications</a>
         <a href="contact.html">Contact</a>
@@ -338,7 +315,6 @@
     </div>
   </div>
 
-  <!-- Mobile drawer -->
   <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer-panel">
       <div class="drawer-head">
@@ -353,7 +329,8 @@
       </div>
       <div class="drawer-body">
         <a href="index.html" class="mLink">Home <span>›</span></a>
-        <a href="#services" class="mLink">Services <span>›</span></a>
+        <a href="index.html#approach" class="mLink">Approach <span>›</span></a>
+        <a href="index.html#services" class="mLink">Services <span>›</span></a>
         <a href="blog.html" class="mLink">Publications <span>›</span></a>
         <a href="contact.html" class="mLink">Contact <span>›</span></a>
         <a href="contact.html#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
@@ -368,97 +345,75 @@
       <p class="sub">
         KayBold Consulting supports governments, development partners, and mission-driven organizations with decision-ready policy, political economy, and delivery advisory across African markets.
       </p>
-
-      <div class="grid-hero">
-        <div class="panel">
-          <h2>Who we are</h2>
-          <p class="small">
-            We are a specialist advisory working at the intersection of policy choices, institutional feasibility, and delivery.
-            Outputs are concise, practical, and action-oriented.
-          </p>
-        </div>
-
-        <div class="panel">
-          <h2>What we offer</h2>
-          <ul class="bullets">
-            <li><b>Executive counsel:</b> prioritization, sequencing, and implementation choices</li>
-            <li><b>Political economy:</b> stakeholder mapping, risk assessment, and feasibility diagnostics</li>
-            <li><b>Delivery support:</b> roadmaps, governance, and accountability routines</li>
-            <li><b>Energy transition:</b> critical minerals strategy and supply chain policy</li>
-          </ul>
-
-          <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-outline" href="#services">Explore services →</a>
-            <a class="btn" href="contact.html#inquiry">Contact →</a>
-          </div>
-        </div>
+      <div class="hero-cta">
+        <a class="btn" href="contact.html#inquiry">Request a Consultation →</a>
+        <a class="btn btn-outline" href="#services">Explore services</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section id="services">
+    <section id="approach">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Services</h2>
-          <p class="lead">
-            Select a service to begin. We scope engagements quickly and confirm deliverables before work begins.
-          </p>
+        <h2>Who we are</h2>
+        <p class="lead">
+          We are a specialist advisory working at the intersection of policy choices, institutional feasibility, and delivery. Outputs are concise, practical, and action-oriented.
+        </p>
+
+        <div class="panel" style="margin-top:16px;">
+          <h2 style="font-size:24px;margin:0 0 8px;">What we offer</h2>
+          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+            <li><b>Executive counsel:</b> prioritization, sequencing, and implementation choices</li>
+            <li><b>Political economy:</b> stakeholder mapping, risk assessment, and feasibility diagnostics</li>
+            <li><b>Delivery support:</b> roadmaps, governance, and accountability routines</li>
+            <li><b>Energy transition:</b> critical minerals strategy and supply chain policy</li>
+          </ul>
         </div>
+      </div>
+    </section>
+
+    <section id="services" style="background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);">
+      <div class="wrap">
+        <h2>Services</h2>
+        <p class="lead">
+          Select a service to begin. We scope engagements quickly and confirm deliverables before work begins.
+        </p>
 
         <div class="grid3">
           <a class="tile" href="contact.html?engagement=Strategic%20Consultation#inquiry">
             <h3>Strategic Consultation</h3>
             <p>A senior session to clarify the decision, options, and next steps.</p>
-            <div class="tile-meta">
-              <span>Typical timeline: 1 week</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <div class="tile-meta"><span>Typical timeline: 1 week</span><span class="price">Pricing on request</span></div>
           </a>
 
           <a class="tile" href="contact.html?engagement=Policy%20%26%20Political%20Economy%20Diagnostic#inquiry">
             <h3>Policy & Political Economy Diagnostic</h3>
             <p>Stakeholder mapping, feasibility analysis, and implementation risks.</p>
-            <div class="tile-meta">
-              <span>Typical timeline: 2–3 weeks</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <div class="tile-meta"><span>Typical timeline: 2–3 weeks</span><span class="price">Pricing on request</span></div>
           </a>
 
           <a class="tile" href="contact.html?engagement=Strategic%20Advisory%20Engagement#inquiry">
             <h3>Strategic Advisory Engagement</h3>
             <p>Ongoing support for reforms and multi-stakeholder initiatives.</p>
-            <div class="tile-meta">
-              <span>Typical timeline: 4–12 weeks</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <div class="tile-meta"><span>Typical timeline: 4–12 weeks</span><span class="price">Pricing on request</span></div>
           </a>
 
           <a class="tile" href="contact.html?engagement=Case%20Study%20Development#inquiry">
             <h3>Case Study Development</h3>
             <p>Decision-grade cases and teaching materials for leaders.</p>
-            <div class="tile-meta">
-              <span>Timeline: scoped per case</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <div class="tile-meta"><span>Timeline: scoped per case</span><span class="price">Pricing on request</span></div>
           </a>
 
           <a class="tile" href="contact.html?engagement=DRC%20Market%20%26%20Government%20Connections#inquiry">
             <h3>DRC Market & Government Connections</h3>
             <p>Introductions and curated access across public and private stakeholders.</p>
-            <div class="tile-meta">
-              <span>Scope dependent</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <div class="tile-meta"><span>Scope dependent</span><span class="price">Pricing on request</span></div>
           </a>
 
           <a class="tile" href="contact.html?engagement=Not%20sure%20yet#inquiry">
             <h3>Not sure yet</h3>
-            <p>Start with the decision, timeline, and constraints. We will propose the right scope.</p>
-            <div class="tile-meta">
-              <span>Response: 1–2 business days</span>
-              <span class="price">Pricing on request</span>
-            </div>
+            <p>Start with the decision, timeline, and constraints. We’ll propose the right scope.</p>
+            <div class="tile-meta"><span>Response: 1–2 business days</span><span class="price">Pricing on request</span></div>
           </a>
         </div>
       </div>
@@ -484,51 +439,38 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Mobile menu
+    // Mobile menu (shared)
     const menuBtn = document.getElementById("menuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const closeMenu = document.getElementById("closeMenu");
 
     function openMenu(){
       mobileMenu.classList.add("open");
-      menuBtn.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
+      menuBtn.setAttribute("aria-expanded","true");
+      document.body.style.overflow="hidden";
     }
     function shutMenu(){
       mobileMenu.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
+      menuBtn.setAttribute("aria-expanded","false");
+      document.body.style.overflow="";
     }
 
     if (menuBtn) menuBtn.addEventListener("click", openMenu);
     if (closeMenu) closeMenu.addEventListener("click", shutMenu);
     if (mobileMenu){
-      mobileMenu.addEventListener("click", (e) => { if (e.target === mobileMenu) shutMenu(); });
+      mobileMenu.addEventListener("click", (e)=>{ if(e.target===mobileMenu) shutMenu(); });
     }
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && mobileMenu.classList.contains("open")) shutMenu();
-    });
-    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", () => {
-      if (mobileMenu.classList.contains("open")) shutMenu();
-    }));
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && mobileMenu.classList.contains("open")) shutMenu(); });
+    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", shutMenu));
 
-    // Smooth scroll for in-page anchors (keeps the landing clean)
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href");
-        if (!href || href === "#") return;
-        e.preventDefault();
-        const el = document.querySelector(href);
+    // Hash “nudge” to ensure correct offset after load
+    window.addEventListener("load", () => {
+      if (location.hash){
+        const id = location.hash.slice(1);
+        const el = document.getElementById(id);
         if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
-        history.pushState(null, "", href);
-      });
+      }
     });
-
-    // If page loads with #services etc.
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
-      if (el) setTimeout(() => el.scrollIntoView({behavior:"smooth", block:"start"}), 50);
-    }
   </script>
 </body>
 </html>
