@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog | KayBold Consulting</title>
-  <meta name="description" content="Published writing, publications, and contributions on political economy, delivery, and investment decisions across African markets." />
+  <title>Publications & Contributions | KayBold Consulting</title>
+  <meta name="description" content="Selected publications, institutional contributions, and case studies across political economy, delivery, and investment decisions in African markets." />
 
   <style>
     :root{
@@ -38,11 +38,7 @@
     a{color:inherit;text-decoration:none}
     a:focus-visible{outline:none; box-shadow:var(--focus); border-radius:12px}
 
-    .wrap{
-      max-width:var(--content);
-      margin:0 auto;
-      padding:0 24px;
-    }
+    .wrap{ max-width:var(--content); margin:0 auto; padding:0 24px; }
 
     /* NAV */
     .nav{
@@ -52,25 +48,15 @@
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      height:68px;
-      gap:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:68px; gap:14px;
     }
     .brand{
-      font-weight:900;
-      color:var(--blue);
-      letter-spacing:0.2px;
-      white-space:nowrap;
+      font-weight:900; color:var(--blue); letter-spacing:0.2px; white-space:nowrap;
     }
     .links{
-      display:flex;
-      gap:14px;
-      font-size:14px;
-      color:var(--muted);
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      display:flex; gap:14px; font-size:14px; color:var(--muted);
+      flex-wrap:wrap; justify-content:flex-end;
     }
     .links a:hover{ color:var(--blue); }
 
@@ -84,45 +70,26 @@
       border-bottom:1px solid var(--line);
     }
     .kicker{
-      font-size:12px;
-      letter-spacing:0.18em;
-      text-transform:uppercase;
-      font-weight:800;
-      color:var(--blue2);
-      margin-bottom:10px;
+      font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+      font-weight:800; color:var(--blue2); margin-bottom:10px;
     }
     h1{
-      font-size:42px;
-      margin:0 0 10px;
-      color:var(--blue);
-      letter-spacing:-0.03em;
+      font-size:42px; margin:0 0 10px; color:var(--blue); letter-spacing:-0.03em;
     }
     .sub{
-      color:var(--muted);
-      font-size:16px;
-      max-width:60rem;
-      margin:0;
+      color:var(--muted); font-size:16px; max-width:60rem; margin:0;
     }
 
     /* SECTION NAV */
     .section-nav{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
+      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;
     }
     .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 12px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px; border-radius:999px;
       border:1px solid rgba(11,31,59,0.16);
-      background:#fff;
-      color:var(--blue2);
-      font-weight:900;
-      font-size:13px;
+      background:#fff; color:var(--blue2);
+      font-weight:900; font-size:13px;
     }
     .pill:hover{ background:rgba(11,31,59,0.04); }
 
@@ -131,19 +98,21 @@
       padding:28px 0 46px;
       background:linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
-    .block{
-      margin-top:18px;
-    }
+    .block{ margin-top:18px; }
     .block h2{
-      margin:0;
-      font-size:20px;
-      color:var(--blue);
-      letter-spacing:-0.01em;
+      margin:0; font-size:20px; color:var(--blue); letter-spacing:-0.01em;
     }
     .block p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:14px;
+      margin:8px 0 0; color:var(--muted); font-size:14px; max-width:70rem;
+    }
+    .hint{
+      margin-top:8px;
+      padding:10px 12px;
+      border:1px dashed rgba(11,31,59,0.20);
+      border-radius:12px;
+      color:var(--muted2);
+      background:rgba(255,255,255,0.7);
+      font-size:13px;
       max-width:70rem;
     }
 
@@ -168,7 +137,7 @@
       overflow:hidden;
       display:flex;
       flex-direction:column;
-      min-height: 280px;
+      min-height: 320px;
     }
     .card:hover{
       transform:translateY(-2px);
@@ -214,16 +183,9 @@
     }
 
     .card h3{
-      font-size:16px;
-      margin:0 0 8px;
-      color:var(--blue);
-      letter-spacing:-0.01em;
+      font-size:16px; margin:0 0 8px; color:var(--blue); letter-spacing:-0.01em;
     }
-    .card p{
-      margin:0;
-      font-size:14px;
-      color:var(--muted);
-    }
+    .card p{ margin:0; font-size:14px; color:var(--muted); }
 
     .meta{
       margin-top:auto;
@@ -260,6 +222,15 @@
       background:#fff;
     }
     .footer a{color:var(--blue2); font-weight:800}
+
+    /* Small utility */
+    .sr-only{
+      position:absolute !important;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
   </style>
 </head>
 
@@ -270,7 +241,7 @@
       <div class="links">
         <a href="index.html#approach">Approach</a>
         <a href="index.html#services">Services</a>
-        <a href="blog.html" style="color:var(--blue);font-weight:900;">Blog</a>
+        <a href="blog.html" style="color:var(--blue);font-weight:900;">Publications</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
@@ -278,10 +249,10 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="kicker">Published work</div>
-      <h1>Blog and publications</h1>
+      <div class="kicker">Selected work</div>
+      <h1>Publications & contributions</h1>
       <p class="sub">
-        Published writing, publications, and contributions.
+        A curated selection of peer-reviewed publications, institutional contributions, and published case studies.
       </p>
 
       <div class="section-nav" aria-label="Jump to section">
@@ -295,22 +266,44 @@
   <main class="section">
     <div class="wrap">
 
+      <!-- PUBLICATIONS -->
       <section id="publications" class="block" aria-label="Publications">
         <h2>Publications</h2>
-        <p>
-          Peer reviewed and formal publications.
-        </p>
+        <p>Peer-reviewed and formal publications (author / co-author).</p>
+
+        <div class="hint">
+          Publications = you are an author or co-author. Reports where you are cited or provided expert input belong under Contributions.
+        </div>
 
         <div class="grid">
           <a class="card" href="https://www.sciencedirect.com/science/article/pii/S2211467X25000896" target="_blank" rel="noreferrer">
+            <!-- Branded thumbnail (no broken images, consistent look) -->
+            <img class="thumb"
+              alt="Publication thumbnail: Sustainable futures (Energy Strategy Reviews)"
+              loading="lazy"
+              src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+                <defs>
+                  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="%230b1f3b"/>
+                    <stop offset="1" stop-color="%230a2a52"/>
+                  </linearGradient>
+                </defs>
+                <rect width="1200" height="600" fill="url(%23g)"/>
+                <circle cx="980" cy="150" r="240" fill="rgba(14,165,233,0.22)"/>
+                <circle cx="250" cy="520" r="310" fill="rgba(255,255,255,0.10)"/>
+                <text x="72" y="150" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">Publication</text>
+                <text x="72" y="230" font-family="Inter, Arial" font-size="40" fill="white" font-weight="900">Sustainable futures</text>
+                <text x="72" y="288" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Just energy transition • climate action • justice</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Energy Strategy Reviews (ScienceDirect)</text>
+              </svg>' />
+
             <div class="card-body">
-              <span class="tag"><span class="dot"></span> Publication</span>
+              <span class="tag"><span class="dot"></span> Elsevier / ScienceDirect</span>
               <h3>Sustainable futures: Aligning climate actions and socio economic justice through the just energy transition</h3>
-              <p>
-                Energy Strategy Reviews. Open access.
-              </p>
+              <p>Energy Strategy Reviews. Open access.</p>
               <div class="meta">
-                <span>ScienceDirect</span>
+                <span>Peer-reviewed</span>
                 <span class="ext">Open ↗</span>
               </div>
             </div>
@@ -318,13 +311,45 @@
         </div>
       </section>
 
+      <!-- CONTRIBUTIONS -->
       <section id="contributions" class="block" aria-label="Contributions">
         <h2>Contributions</h2>
-        <p>
-          Published articles where you are cited or included as a contributor.
-        </p>
+        <p>Institutional reports and published articles where you are cited, interviewed, or otherwise included as a contributor.</p>
 
         <div class="grid">
+          <!-- Featured: WEF Report (PDF) — should be first -->
+          <a class="card" href="https://reports.weforum.org/docs/WEF_Powering_the_Future_2025.pdf" target="_blank" rel="noreferrer">
+            <img class="thumb"
+              alt="Contribution thumbnail: World Economic Forum report Powering the Future 2025"
+              loading="lazy"
+              src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+                <defs>
+                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="%230a2a52"/>
+                    <stop offset="1" stop-color="%230b1f3b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="1200" height="600" fill="url(%23g2)"/>
+                <rect x="70" y="70" width="1060" height="460" rx="26" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.20)"/>
+                <text x="110" y="165" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">World Economic Forum</text>
+                <text x="110" y="245" font-family="Inter, Arial" font-size="46" fill="white" font-weight="900">Powering the Future 2025</text>
+                <text x="110" y="305" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Institutional report (PDF)</text>
+                <text x="110" y="500" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Contribution / citation</text>
+              </svg>' />
+
+            <div class="card-body">
+              <span class="tag"><span class="dot"></span> World Economic Forum</span>
+              <h3>Powering the Future 2025 (report)</h3>
+              <p>Institutional report (PDF). Include here if you are cited or contributed expert input.</p>
+              <div class="meta">
+                <span>PDF</span>
+                <span class="ext">Open ↗</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- WEF Article -->
           <a class="card" href="https://www.weforum.org/stories/2024/11/14-experts-on-how-to-implement-responsible-resource-use-as-the-energy-transition-accelerates/" target="_blank" rel="noreferrer">
             <img
               class="thumb"
@@ -335,32 +360,48 @@
             <div class="card-body">
               <span class="tag"><span class="dot"></span> World Economic Forum</span>
               <h3>14 experts on implementing responsible resource use as the energy transition accelerates</h3>
-              <p>
-                A World Economic Forum story that includes expert perspectives on responsible resource use.
-              </p>
+              <p>A World Economic Forum story compiling expert perspectives on responsible resource use.</p>
               <div class="meta">
-                <span>Published Nov 22, 2024</span>
+                <span>Published Nov 2024</span>
                 <span class="ext">Open ↗</span>
               </div>
             </div>
           </a>
+
+          <!-- Optional: add more contributions here using the same pattern -->
         </div>
       </section>
 
+      <!-- CASE STUDIES -->
       <section id="case-studies" class="block" aria-label="Case studies">
         <h2>Case studies</h2>
-        <p>
-          Published case studies and teaching materials.
-        </p>
+        <p>Published case studies and teaching materials.</p>
 
         <div class="grid">
           <a class="card" href="https://ministerialleadership.harvard.edu/wp-content/uploads/2023/10/2023-Forum_Sierra-Leone-Case-Study_FINAL.pdf" target="_blank" rel="noreferrer">
+            <img class="thumb"
+              alt="Case study thumbnail: Ministerial Leadership Forum Sierra Leone"
+              loading="lazy"
+              src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+                <defs>
+                  <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="%230b1f3b"/>
+                    <stop offset="1" stop-color="%23123a6b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="1200" height="600" fill="url(%23g3)"/>
+                <circle cx="220" cy="180" r="190" fill="rgba(14,165,233,0.22)"/>
+                <text x="72" y="150" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">Case study</text>
+                <text x="72" y="230" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">Sierra Leone</text>
+                <text x="72" y="290" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Ministerial Leadership Forum</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Harvard Ministerial Leadership Program (PDF)</text>
+              </svg>' />
+
             <div class="card-body">
-              <span class="tag"><span class="dot"></span> Case study</span>
+              <span class="tag"><span class="dot"></span> Harvard MLP</span>
               <h3>Ministerial Leadership Forum case study: Sierra Leone</h3>
-              <p>
-                Published PDF hosted by the Harvard Ministerial Leadership Program.
-              </p>
+              <p>Published PDF hosted by the Harvard Ministerial Leadership Program.</p>
               <div class="meta">
                 <span>PDF</span>
                 <span class="ext">Open ↗</span>
