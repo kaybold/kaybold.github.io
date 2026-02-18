@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KayBold Consulting</title>
-  <meta name="description" content="Decision-ready policy, political economy, and delivery advisory for African markets." />
+  <title>KayBold Consulting | Decision-ready advisory for African markets</title>
+  <meta name="description" content="Decision-ready policy, political economy, and delivery advisory for African markets. We help leaders make clear choices, manage trade-offs, and move from priorities to implementation." />
 
+  <!-- Social sharing -->
+  <meta property="og:title" content="KayBold Consulting" />
+  <meta property="og:description" content="Decision-ready policy, political economy, and delivery advisory for African markets." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/" />
+  <!-- Optional: create an image (1200x630) and set og:image -->
+  <!-- <meta property="og:image" content="https://YOUR_DOMAIN.com/og-image.png" /> -->
+
+  <meta name="theme-color" content="#0b1f3b" />
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
   <style>
     :root{
-      /* Blue + white theme */
-      --blue:#0b1f3b;
-      --blue2:#0a2a52;
-      --bg:#ffffff;
-      --text:#0b0c0f;
-      --muted:#4d5562;
+      --ink:#0b0c0f;
+      --muted:#4b5563;
       --muted2:#6b7280;
 
-      --line:rgba(11,31,59,0.14);
+      --blue:#0b1f3b;
+      --blue2:#0a2a52;
+      --accent:#0ea5e9; /* subtle modern accent */
+      --bg:#ffffff;
       --panel:#ffffff;
-      --panel2:#f4f7fb;
+      --panel2:#f5f7fb;
+      --line:rgba(11,31,59,0.12);
 
-      --btn:var(--blue);
-      --btnText:#ffffff;
-
-      --radius:14px;
+      --radius:16px;
       --shadow: 0 18px 55px rgba(11,31,59,0.10);
+      --shadow2: 0 26px 90px rgba(11,31,59,0.12);
 
-      --content:1180px;
+      --content:1160px;
+      --focus: 0 0 0 4px rgba(14,165,233,0.22);
     }
 
     *{box-sizing:border-box}
@@ -39,15 +47,37 @@
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
       background:var(--bg);
-      color:var(--text);
-      line-height:1.55;
+      color:var(--ink);
+      line-height:1.6;
     }
     a{color:inherit}
+    img{max-width:100%; display:block}
+
+    /* Accessibility */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#fff;
+      color:var(--blue);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:12px;
+      z-index:1000;
+      box-shadow: var(--shadow);
+    }
+    .skip-link:focus{ left:10px; outline:none; box-shadow: var(--focus); }
+
+    :focus-visible{
+      outline:none;
+      box-shadow: var(--focus);
+      border-radius:12px;
+    }
 
     .wrap{
       max-width:var(--content);
       margin:0 auto;
-      padding:0 24px;
+      padding:0 22px;
     }
     @media (min-width: 1200px){
       .wrap{padding:0 28px}
@@ -62,46 +92,72 @@
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      height:68px; gap:14px;
+      height:72px; gap:14px;
     }
 
     .left{
-      display:flex; align-items:center; gap:10px;
+      display:flex; align-items:center; gap:12px;
       min-width:0;
     }
 
+    .mark{
+      width:38px; height:38px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg, rgba(11,31,59,1), rgba(10,42,82,1));
+      color:#fff;
+      font-weight:950;
+      letter-spacing:0.02em;
+      box-shadow: 0 14px 35px rgba(11,31,59,0.20);
+      flex:0 0 auto;
+    }
     .brand{
-      font-weight:900;
-      letter-spacing:0.2px;
-      white-space:nowrap;
+      display:flex; flex-direction:column;
+      line-height:1.05;
+      min-width:0;
+    }
+    .brand strong{
+      font-weight:950;
       color:var(--blue);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand span{
+      font-size:12px;
+      color:var(--muted2);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      margin-top:2px;
     }
 
     .links{
-      display:flex; gap:14px; align-items:center;
+      display:flex; gap:12px; align-items:center;
       font-size:14px; color:var(--muted);
     }
     .links a{
       text-decoration:none;
-      padding:8px 10px;
-      border-radius:10px;
+      padding:9px 10px;
+      border-radius:12px;
+      font-weight:750;
     }
     .links a:hover{
       background:rgba(11,31,59,0.06);
       color:var(--blue);
     }
 
-    /* Hamburger (3 lines) */
+    /* Hamburger */
     .hamburger{
       width:44px; height:44px;
       border-radius:12px;
-      border:1px solid rgba(11,31,59,0.18);
+      border:1px solid rgba(11,31,59,0.16);
       background:#fff;
       display:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
-      box-shadow: 0 8px 22px rgba(11,31,59,0.08);
+      box-shadow: 0 10px 26px rgba(11,31,59,0.08);
     }
     .hamburger:hover{ background:rgba(11,31,59,0.04); }
     .hamburger span{
@@ -123,10 +179,9 @@
     .hamburger span::before{ top:-6px; }
     .hamburger span::after{ top:6px; }
 
-    /* Mobile menu drawer */
+    /* Drawer */
     .drawer{
-      position:fixed;
-      inset:0;
+      position:fixed; inset:0;
       background:rgba(0,0,0,0.35);
       display:none;
       z-index:50;
@@ -135,25 +190,24 @@
     .drawer-panel{
       position:absolute;
       top:12px; left:12px; right:12px;
-      max-width:520px;
+      max-width:540px;
       margin:0 auto;
       background:#fff;
       border:1px solid var(--line);
-      border-radius:18px;
-      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+      border-radius:20px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.22);
       overflow:hidden;
     }
     .drawer-head{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 14px;
+      padding:14px;
       border-bottom:1px solid var(--line);
       background:linear-gradient(180deg,#ffffff 0%, var(--panel2) 100%);
     }
-    .drawer-head .brand{ font-size:15px; }
     .drawer-close{
       width:40px; height:40px;
       border-radius:12px;
-      border:1px solid rgba(11,31,59,0.18);
+      border:1px solid rgba(11,31,59,0.16);
       background:#fff;
       cursor:pointer;
     }
@@ -170,29 +224,32 @@
       gap:10px;
       text-decoration:none;
       padding:12px 12px;
-      border-radius:12px;
+      border-radius:14px;
       border:1px solid rgba(11,31,59,0.12);
       background:#fff;
       color:var(--blue2);
-      font-weight:800;
+      font-weight:900;
     }
     .drawer-body a:hover{ background:rgba(11,31,59,0.06); }
-    .drawer-cta{ margin-top:2px; }
 
-    /* BUTTONS */
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:11px 18px; border-radius:999px;
-      background:var(--btn); color:var(--btnText);
-      text-decoration:none; font-weight:900; font-size:14px;
+      padding:12px 18px;
+      border-radius:999px;
+      background:var(--blue);
+      color:#fff;
+      text-decoration:none;
+      font-weight:950;
+      font-size:14px;
       border:1px solid rgba(11,31,59,0.10);
       cursor:pointer;
       transition: transform .12s ease, opacity .12s ease, box-shadow .12s ease;
-      box-shadow: 0 10px 24px rgba(11,31,59,0.12);
-      gap:8px;
+      box-shadow: 0 12px 26px rgba(11,31,59,0.14);
+      gap:10px;
       white-space:nowrap;
     }
-    .btn:hover{ opacity:0.96; transform: translateY(-1px); }
+    .btn:hover{ opacity:0.97; transform: translateY(-1px); }
     .btn-outline{
       background:#ffffff;
       color:var(--blue);
@@ -200,28 +257,28 @@
       box-shadow:none;
     }
     .btn-outline:hover{ background:rgba(11,31,59,0.04); }
+    .btn-small{ padding:10px 14px; font-size:13px; }
 
-    /* Responsive nav behavior */
-    @media (max-width: 880px){
+    /* Responsive nav */
+    @media (max-width: 900px){
       .links{display:none}
       .hamburger{display:inline-flex}
     }
-    /* Prevent the big CTA pill overlapping the brand on small screens */
-    @media (max-width: 520px){
-      .nav-inner{gap:10px}
-      .nav .btn{display:none} /* CTA still exists in the hamburger menu */
-      .brand{font-size:16px}
+    @media (max-width: 560px){
+      .nav .btn{display:none}
+      .brand span{display:none}
     }
 
     /* HERO */
     .hero{
-      padding:52px 0 34px;
+      padding:60px 0 36px;
       background:
         radial-gradient(900px 520px at 15% -10%, rgba(11,31,59,0.10) 0%, rgba(255,255,255,0) 60%),
-        radial-gradient(780px 520px at 85% 0%, rgba(11,31,59,0.07) 0%, rgba(255,255,255,0) 55%),
-        #ffffff;
+        radial-gradient(780px 520px at 85% 0%, rgba(14,165,233,0.10) 0%, rgba(255,255,255,0) 55%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(11,31,59,0.03) 100%);
       border-bottom:1px solid var(--line);
     }
+
     .hero-grid{
       display:grid;
       grid-template-columns: 1.25fr 0.75fr;
@@ -229,48 +286,77 @@
       align-items:start;
     }
     @media (max-width: 980px){
-      .hero{padding:40px 0 24px;}
+      .hero{padding:44px 0 28px;}
       .hero-grid{grid-template-columns:1fr}
     }
 
-    .kicker{
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(11,31,59,0.14);
+      background:rgba(255,255,255,0.9);
       color:var(--blue2);
+      font-weight:900;
       font-size:12px;
-      letter-spacing:0.18em;
+      letter-spacing:0.08em;
       text-transform:uppercase;
-      margin-bottom:12px;
-      font-weight:800;
     }
+    .dot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.18);
+    }
+
     h1{
-      font-size:52px;
-      line-height:1.05;
-      margin:0 0 12px;
-      letter-spacing:-0.03em;
+      font-size:56px;
+      line-height:1.04;
+      margin:14px 0 12px;
+      letter-spacing:-0.04em;
       color:var(--blue);
     }
-    @media (max-width: 520px){ h1{font-size:38px} }
+    @media (max-width: 520px){ h1{font-size:40px} }
 
     .sub{
       color:var(--muted);
       font-size:17px;
-      max-width:56rem;
-      margin:0 0 16px;
+      max-width:60rem;
+      margin:0 0 18px;
     }
-    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+    .trust{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+      color:var(--muted2);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid rgba(11,31,59,0.12);
+      background:rgba(255,255,255,0.8);
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:750;
+    }
 
     .panel{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
     }
     .card-title{
       font-weight:950;
       margin:0 0 10px;
       color:var(--blue);
+      letter-spacing:-0.01em;
     }
     .small{ color:var(--muted); font-size:14px; margin:0; }
+
     .focus-list{
       margin:12px 0 0;
       padding-left:18px;
@@ -279,22 +365,48 @@
     }
     .focus-list li{ margin:8px 0; }
 
-    /* SECTIONS */
-    section{ padding:40px 0; }
-    .section-head{ margin-bottom:14px; }
+    .stats{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .stat{
+      border:1px solid rgba(11,31,59,0.12);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,0.85);
+    }
+    .stat strong{
+      display:block;
+      color:var(--blue);
+      font-weight:950;
+      font-size:14px;
+      letter-spacing:-0.01em;
+    }
+    .stat span{ color:var(--muted2); font-size:12px; }
+
+    /* Sections */
+    main section{ padding:44px 0; }
+    .section-head{ margin-bottom:16px; }
     h2{
       margin:0;
-      font-size:26px;
-      letter-spacing:-0.01em;
+      font-size:28px;
+      letter-spacing:-0.02em;
       color:var(--blue);
     }
-    .lead{ margin:8px 0 0; color:var(--muted); max-width:72rem; }
+    .lead{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:72rem;
+      font-size:15px;
+    }
 
     #services, #contact{
       background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
 
-    /* SERVICES */
+    /* Services */
     .grid3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -308,31 +420,52 @@
       border-radius:var(--radius);
       padding:18px;
       transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
-      min-height: 180px;
+      min-height: 190px;
       box-shadow: var(--shadow);
       text-decoration:none;
       display:block;
       height:100%;
+      position:relative;
+      overflow:hidden;
+    }
+    .tile::after{
+      content:"";
+      position:absolute;
+      inset:auto -30% -70% -30%;
+      height:220px;
+      background: radial-gradient(closest-side, rgba(14,165,233,0.16), rgba(255,255,255,0));
+      transform: rotate(8deg);
+      pointer-events:none;
     }
     .tile:hover{
       transform: translateY(-2px);
       border-color: rgba(11,31,59,0.22);
-      box-shadow: 0 22px 70px rgba(11,31,59,0.14);
+      box-shadow: 0 24px 80px rgba(11,31,59,0.14);
     }
     .tile h3{
       margin:0 0 8px;
       font-size:16px;
-      letter-spacing:-0.01em;
       color:var(--blue);
       font-weight:950;
+      letter-spacing:-0.01em;
+      position:relative;
+      z-index:1;
     }
-    .tile p{ margin:0; color:var(--muted); font-size:14px; }
+    .tile p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      position:relative;
+      z-index:1;
+    }
     .deliver{
       margin-top:10px;
       padding-top:10px;
       border-top:1px dashed rgba(11,31,59,0.18);
       color:var(--muted2);
       font-size:13px;
+      position:relative;
+      z-index:1;
     }
     .tile-meta{
       display:flex;
@@ -343,17 +476,70 @@
       border-top:1px solid var(--line);
       color:var(--muted2);
       font-size:13px;
+      position:relative;
+      z-index:1;
     }
     .price{ color:var(--blue); font-weight:950; white-space:nowrap; }
 
-    /* ABOUT */
-    .about-box{
+    /* Process */
+    .grid3-process{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:14px;
+    }
+    @media (max-width: 980px){ .grid3-process{grid-template-columns:1fr} }
+
+    .step{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
       box-shadow: var(--shadow);
     }
+    .step .num{
+      width:34px; height:34px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      background:rgba(14,165,233,0.14);
+      color:var(--blue2);
+      font-weight:950;
+      margin-bottom:10px;
+      border:1px solid rgba(14,165,233,0.25);
+    }
+    .step h3{ margin:0 0 6px; color:var(--blue); font-weight:950; font-size:16px; }
+    .step p{ margin:0; color:var(--muted); font-size:14px; }
+
+    /* Focus areas */
+    .chips{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
+    }
+    .chip{
+      border:1px solid rgba(11,31,59,0.12);
+      border-radius:999px;
+      padding:10px 12px;
+      background:#fff;
+      color:var(--blue2);
+      font-weight:850;
+      font-size:13px;
+    }
+
+    /* About */
+    .about-box{
+      background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+    .grid2-lite{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 980px){ .grid2-lite{grid-template-columns:1fr} }
     .bullets{
       margin:12px 0 0;
       padding-left:18px;
@@ -362,15 +548,7 @@
     }
     .bullets li{ margin:8px 0; }
 
-    .grid2-lite{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-      margin-top:16px;
-    }
-    @media (max-width: 980px){ .grid2-lite{grid-template-columns:1fr} }
-
-    /* CONTACT */
+    /* Contact */
     .grid2{
       display:grid;
       grid-template-columns:1fr 1.2fr;
@@ -379,35 +557,13 @@
     }
     @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
 
-    form{ display:grid; gap:12px; }
-    label{ font-size:13px; color:var(--muted2); display:block; margin-bottom:6px; }
-    input, textarea, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(11,31,59,0.16);
-      background:#ffffff;
-      color:var(--text);
-      font-size:14px;
-      outline:none;
-    }
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(11,31,59,0.38);
-      box-shadow: 0 0 0 4px rgba(11,31,59,0.08);
-    }
-    textarea{ min-height:110px; resize:vertical; }
-
-    .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
-
     .contact-card{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
     }
-
     .contact-title{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px;
@@ -419,53 +575,97 @@
       color:var(--blue);
       font-weight:950;
     }
-    .note{ margin:10px 0 0; color:var(--muted2); font-size:12px; }
 
+    form{ display:grid; gap:12px; }
+    label{ font-size:13px; color:var(--muted2); display:block; margin-bottom:6px; font-weight:750; }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#ffffff;
+      color:var(--ink);
+      font-size:14px;
+      outline:none;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(14,165,233,0.55);
+      box-shadow: var(--focus);
+    }
+    textarea{ min-height:120px; resize:vertical; }
+
+    .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
+
+    .note{ margin:10px 0 0; color:var(--muted2); font-size:12px; }
+    .fineprint{
+      margin-top:10px;
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    /* Footer */
     .footer{
-      padding:22px 0 34px;
+      padding:24px 0 40px;
       border-top:1px solid var(--line);
       color:var(--muted2);
       font-size:13px;
       background:#ffffff;
     }
-    .footer a{ color:var(--blue2); text-decoration:none; }
+    .footer a{ color:var(--blue2); text-decoration:none; font-weight:850; }
     .footer a:hover{ text-decoration:underline; }
+
+    /* Tiny helpers */
+    .spacer{ height:6px; }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <div class="nav">
     <div class="wrap nav-inner">
       <div class="left">
         <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
           <span></span>
         </button>
-        <div class="brand">KayBold Consulting</div>
+        <div class="mark" aria-hidden="true">KB</div>
+        <div class="brand">
+          <strong>KayBold Consulting</strong>
+          <span>Policy • Political Economy • Delivery</span>
+        </div>
       </div>
 
-      <div class="links" aria-label="Primary navigation">
+      <nav class="links" aria-label="Primary navigation">
         <a href="blog.html">Blog</a>
         <a href="#services">Services</a>
-        <a href="#about">Approach</a>
+        <a href="#approach">Approach</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
 
-      <a class="btn" href="#contact">Request a Consultation</a>
+      <a class="btn" href="#contact">Request a Consultation →</a>
     </div>
   </div>
 
   <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer-panel">
       <div class="drawer-head">
-        <div class="brand">KayBold Consulting</div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div class="brand" style="gap:0;">
+            <strong>KayBold Consulting</strong>
+            <span style="display:block">Menu</span>
+          </div>
+        </div>
         <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
       </div>
       <div class="drawer-body">
         <a href="#services" class="mLink">Services <span>›</span></a>
-        <a href="#about" class="mLink">Approach <span>›</span></a>
+        <a href="#approach" class="mLink">Approach <span>›</span></a>
         <a href="blog.html" class="mLink">Blog <span>›</span></a>
         <a href="#contact" class="mLink">Contact <span>›</span></a>
-        <a href="#contact" class="btn drawer-cta mLink" style="justify-content:center;">Request a Consultation</a>
+        <a href="#contact" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
       </div>
     </div>
   </div>
@@ -473,7 +673,7 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="kicker">Policy • Political Economy • Delivery</div>
+        <div class="badge"><span class="dot"></span> Decision-grade advisory</div>
         <h1>Decision-ready advisory for African markets.</h1>
         <p class="sub">
           KayBold Consulting supports governments, development partners, and mission-driven organizations navigating
@@ -482,11 +682,19 @@
         </p>
 
         <div class="hero-cta">
+          <a class="btn" href="#contact">Request a Consultation →</a>
           <a class="btn btn-outline" href="#services">View Services</a>
+        </div>
+
+        <div class="trust" aria-label="Trust signals">
+          <div class="pill">Senior decision support</div>
+          <div class="pill">Feasibility & risk</div>
+          <div class="pill">Delivery roadmaps</div>
+          <div class="pill">Energy transition strategy</div>
         </div>
       </div>
 
-      <aside class="panel">
+      <aside class="panel" aria-label="What we help you do">
         <p class="card-title">What we help you do</p>
         <p class="small">Clear decisions, credible feasibility, and a path to delivery.</p>
         <ul class="focus-list">
@@ -495,209 +703,268 @@
           <li><b>Delivery support:</b> roadmaps, governance, and accountability mechanisms</li>
           <li><b>Energy transition:</b> critical minerals strategy and supply-chain policy</li>
         </ul>
+
+        <div class="stats" aria-label="Outcomes">
+          <div class="stat">
+            <strong>Decision clarity</strong>
+            <span>Options + trade-offs in plain language</span>
+          </div>
+          <div class="stat">
+            <strong>Feasibility</strong>
+            <span>Political/institutional constraints mapped</span>
+          </div>
+        </div>
       </aside>
     </div>
   </header>
 
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Engagements & pricing</h2>
-        <p class="lead">Select an option to pre-fill the inquiry form. All engagements are scoped to your timeline, decision point, and constraints.</p>
-      </div>
-
-      <div class="grid3">
-        <a class="tile" href="#contact" data-engagement="Strategic Consultation">
-          <h3>Strategic Consultation</h3>
-          <p>60–90 minute senior advisory session to clarify options, constraints, and next steps. Includes a short follow-up note.</p>
-          <div class="deliver"><b>Deliverable:</b> decision memo (1–2 pages) with options, risks, and recommended next steps.</div>
-          <div class="tile-meta">
-            <span>Typical: 1 week</span>
-            <span class="price">$750</span>
-          </div>
-        </a>
-
-        <a class="tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
-          <h3>Policy & Political Economy Diagnostic</h3>
-          <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs—delivered as a concise leadership briefing.</p>
-          <div class="deliver"><b>Deliverable:</b> stakeholder map + feasibility/risk brief + implementation implications.</div>
-          <div class="tile-meta">
-            <span>Typical: 2–3 weeks</span>
-            <span class="price">$4,500</span>
-          </div>
-        </a>
-
-        <a class="tile" href="#contact" data-engagement="Strategic Advisory Engagement">
-          <h3>Strategic Advisory Engagement</h3>
-          <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives: prioritization, delivery strategy, and executive counsel.</p>
-          <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior-level briefs as decisions arise.</div>
-          <div class="tile-meta">
-            <span>Typical: 4–12+ weeks</span>
-            <span class="price">From $9,500</span>
-          </div>
-        </a>
-
-        <a class="tile" href="#contact" data-engagement="Case Study Development">
-          <h3>Case Study Development</h3>
-          <p>End-to-end development of decision-grade case studies designed for senior leadership use (government, development partners, investors).</p>
-          <div class="deliver"><b>Deliverable:</b> leadership-ready case + discussion guide + actionable options and trade-offs.</div>
-          <div class="tile-meta">
-            <span>Per case</span>
-            <span class="price">$22,000</span>
-          </div>
-        </a>
-
-        <a class="tile" href="#contact" data-engagement="DRC Market & Government Connections">
-          <h3>DRC Market & Government Connections</h3>
-          <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the DRC.</p>
-          <div class="deliver"><b>Deliverable:</b> curated stakeholder list + introductions + meeting briefs and follow-up support.</div>
-          <div class="tile-meta">
-            <span>Scope-dependent</span>
-            <span class="price">Reach out for pricing</span>
-          </div>
-        </a>
-      </div>
-
-      <p class="note" style="margin-top:12px;">
-        Pricing shown is a standard starting point; scope, urgency, and travel requirements may adjust final fees.
-      </p>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Approach</h2>
-        <p class="lead">
-          We help leaders make confident decisions under real constraints—political feasibility, institutional capacity, and implementation risk.
-        </p>
-      </div>
-
-      <div class="about-box">
-        <p class="small" style="margin:0;">
-          KayBold Consulting works with senior decision-makers on reform, policy, and investment choices across African markets.
-          Our work emphasizes <b>decision clarity</b>, <b>feasibility</b>, and <b>delivery</b>—so strategies translate into executable action.
-        </p>
-
-        <div class="grid2-lite">
-          <div class="panel" style="box-shadow:none;">
-            <p class="card-title">Who we serve</p>
-            <ul class="bullets">
-              <li>Government leaders and delivery units</li>
-              <li>Development partners and implementers</li>
-              <li>Mission-driven organizations and investors</li>
-              <li>Energy transition and supply-chain stakeholders</li>
-            </ul>
-          </div>
-
-          <div class="panel" style="box-shadow:none;">
-            <p class="card-title">How we work</p>
-            <ul class="bullets">
-              <li>Start with the decision point and timeline</li>
-              <li>Surface constraints, stakeholders, and political incentives</li>
-              <li>Translate findings into options, trade-offs, and next steps</li>
-              <li>Support delivery: sequencing, governance, and accountability</li>
-            </ul>
-          </div>
+  <main id="main">
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Engagements & pricing</h2>
+          <p class="lead">
+            Choose an option to pre-fill the inquiry form. All engagements are scoped to your timeline, decision point, and constraints.
+          </p>
         </div>
 
-        <p class="card-title" style="margin-top:14px;">Core capabilities</p>
-        <ul class="bullets">
-          <li>Ministerial and senior leadership advisory</li>
-          <li>Political economy and reform feasibility analysis</li>
-          <li>Policy design and implementation support</li>
-          <li>Energy transition and critical minerals strategy</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Request a consultation</h2>
-        <p class="lead">Share a few details and we’ll respond with next steps.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="contact-card">
-          <div class="contact-title"><h3>Direct contact</h3></div>
-          <p class="small" style="margin:0 0 14px;">
-            Prefer email? Reach us directly and we’ll reply with scheduling options.
-          </p>
-
-          <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry"
-             onclick="window.location.href=this.href; return false;">
-            Email KayBold Consulting
+        <div class="grid3">
+          <a class="tile" href="#contact" data-engagement="Strategic Consultation">
+            <h3>Strategic Consultation</h3>
+            <p>60–90 minute senior advisory session to clarify options, constraints, and next steps. Includes a short follow-up note.</p>
+            <div class="deliver"><b>Deliverable:</b> decision memo (1–2 pages) with options, risks, and next steps.</div>
+            <div class="tile-meta">
+              <span>Typical: 1 week</span>
+              <span class="price">$750</span>
+            </div>
           </a>
 
-          <p class="note">Typical response time: 1–2 business days.</p>
+          <a class="tile" href="#contact" data-engagement="Policy & Political Economy Diagnostic">
+            <h3>Policy & Political Economy Diagnostic</h3>
+            <p>Targeted analysis of stakeholders, feasibility, risks, and trade-offs—delivered as a concise leadership briefing.</p>
+            <div class="deliver"><b>Deliverable:</b> stakeholder map + feasibility/risk brief + implementation implications.</div>
+            <div class="tile-meta">
+              <span>Typical: 2–3 weeks</span>
+              <span class="price">$4,500</span>
+            </div>
+          </a>
+
+          <a class="tile" href="#contact" data-engagement="Strategic Advisory Engagement">
+            <h3>Strategic Advisory Engagement</h3>
+            <p>Ongoing support for high-stakes reforms and multi-stakeholder initiatives: prioritization, delivery strategy, and executive counsel.</p>
+            <div class="deliver"><b>Deliverables:</b> sequencing roadmap, governance model, and senior-level briefs as decisions arise.</div>
+            <div class="tile-meta">
+              <span>Typical: 4–12+ weeks</span>
+              <span class="price">From $9,500</span>
+            </div>
+          </a>
+
+          <a class="tile" href="#contact" data-engagement="Case Study Development">
+            <h3>Case Study Development</h3>
+            <p>End-to-end development of decision-grade case studies designed for senior leadership use (government, development partners, investors).</p>
+            <div class="deliver"><b>Deliverable:</b> leadership-ready case + discussion guide + actionable options and trade-offs.</div>
+            <div class="tile-meta">
+              <span>Per case</span>
+              <span class="price">$22,000</span>
+            </div>
+          </a>
+
+          <a class="tile" href="#contact" data-engagement="DRC Market & Government Connections">
+            <h3>DRC Market & Government Connections</h3>
+            <p>Targeted introductions and on-the-ground access across government, private sector, and institutional stakeholders in the DRC.</p>
+            <div class="deliver"><b>Deliverable:</b> curated stakeholder list + introductions + meeting briefs and follow-up support.</div>
+            <div class="tile-meta">
+              <span>Scope-dependent</span>
+              <span class="price">Reach out for pricing</span>
+            </div>
+          </a>
+
+          <div class="tile" style="cursor:default;">
+            <h3>Need something custom?</h3>
+            <p>We regularly support fast-moving, high-sensitivity decisions. If your need doesn’t fit a package, we’ll scope it quickly.</p>
+            <div class="deliver"><b>Best for:</b> urgent decisions, sensitive stakeholder environments, and complex delivery constraints.</div>
+            <div class="tile-meta">
+              <span>Response: 1–2 days</span>
+              <span class="price"><span style="color:var(--muted2);font-weight:850;">Custom scope</span></span>
+            </div>
+          </div>
         </div>
 
-        <div class="contact-card">
-          <div class="contact-title"><h3>Inquiry form</h3></div>
+        <p class="note" style="margin-top:12px;">
+          Pricing shown is a standard starting point; scope, urgency, and travel requirements may adjust final fees.
+        </p>
+      </div>
+    </section>
 
-          <form id="inquiryForm" action="https://formspree.io/f/xeeakvvd" method="POST">
-            <input type="hidden" id="selected_engagement" name="selected_engagement" value="" />
+    <section id="approach">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Approach</h2>
+          <p class="lead">
+            We help leaders make confident decisions under real constraints—political feasibility, institutional capacity, and implementation risk.
+          </p>
+        </div>
 
-            <div class="row2">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
+        <div class="grid3-process" aria-label="How we work">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Start with the decision</h3>
+            <p>We define the decision point, success criteria, and the timeline—so work stays relevant and executive-ready.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Map constraints & incentives</h3>
+            <p>We surface stakeholders, risks, feasibility barriers, and institutional capacity to clarify what’s possible.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Deliver options you can act on</h3>
+            <p>We translate analysis into clear options, trade-offs, and a delivery path—with governance and accountability.</p>
+          </div>
+        </div>
+
+        <div class="about-box" style="margin-top:16px;">
+          <p class="small" style="margin:0;">
+            KayBold Consulting works with senior decision-makers on reform, policy, and investment choices across African markets.
+            Our work emphasizes <b>decision clarity</b>, <b>feasibility</b>, and <b>delivery</b>—so strategies translate into executable action.
+          </p>
+
+          <div class="grid2-lite">
+            <div class="panel" style="box-shadow:none;">
+              <p class="card-title">Who we serve</p>
+              <ul class="bullets">
+                <li>Government leaders and delivery units</li>
+                <li>Development partners and implementers</li>
+                <li>Mission-driven organizations and investors</li>
+                <li>Energy transition and supply-chain stakeholders</li>
+              </ul>
             </div>
 
-            <div class="row2">
-              <div>
-                <label for="org">Organization</label>
-                <input id="org" name="organization" type="text" autocomplete="organization" />
-              </div>
-              <div>
-                <label for="type">Engagement type</label>
-                <select id="type" name="engagement_type" required>
-                  <option value="" disabled selected>Select an option</option>
-                  <option>Strategic Consultation</option>
-                  <option>Policy & Political Economy Diagnostic</option>
-                  <option>Strategic Advisory Engagement</option>
-                  <option>Case Study Development</option>
-                  <option>DRC Market & Government Connections</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
+            <div class="panel" style="box-shadow:none;">
+              <p class="card-title">Core capabilities</p>
+              <ul class="bullets">
+                <li>Ministerial and senior leadership advisory</li>
+                <li>Political economy and reform feasibility analysis</li>
+                <li>Policy design and implementation support</li>
+                <li>Energy transition and critical minerals strategy</li>
+              </ul>
             </div>
+          </div>
 
-            <div>
-              <label for="message">What are you working on?</label>
-              <textarea id="message" name="message" placeholder="Context, objective, country/region, decision needed, timeline, and key constraints (if any)." required></textarea>
-            </div>
-
-            <button class="btn" type="submit">Send inquiry</button>
-            <p class="note" id="formStatus" aria-live="polite"></p>
-          </form>
+          <p class="card-title" style="margin-top:14px;">Selected focus areas</p>
+          <div class="chips" aria-label="Focus areas">
+            <span class="chip">Critical minerals policy</span>
+            <span class="chip">Industrial strategy</span>
+            <span class="chip">Delivery units & execution</span>
+            <span class="chip">Stakeholder mapping</span>
+            <span class="chip">Reform feasibility</span>
+            <span class="chip">Public–private coordination</span>
+            <span class="chip">Investment readiness</span>
+            <span class="chip">Governance & accountability</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Request a consultation</h2>
+          <p class="lead">Share a few details and we’ll respond with next steps.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="contact-card">
+            <div class="contact-title"><h3>Direct contact</h3></div>
+            <p class="small" style="margin:0 0 14px;">
+              Prefer email? Reach us directly and we’ll reply with scheduling options.
+            </p>
+
+            <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
+              Email KayBold Consulting →
+            </a>
+
+            <p class="note">Typical response time: 1–2 business days.</p>
+            <div class="fineprint">
+              If your inquiry is time-sensitive, include your deadline and preferred meeting windows.
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-title"><h3>Inquiry form</h3></div>
+
+            <form id="inquiryForm" action="https://formspree.io/f/xeeakvvd" method="POST">
+              <input type="hidden" id="selected_engagement" name="selected_engagement" value="" />
+
+              <div class="row2">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" autocomplete="name" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="row2">
+                <div>
+                  <label for="org">Organization</label>
+                  <input id="org" name="organization" type="text" autocomplete="organization" />
+                </div>
+                <div>
+                  <label for="type">Engagement type</label>
+                  <select id="type" name="engagement_type" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option>Strategic Consultation</option>
+                    <option>Policy & Political Economy Diagnostic</option>
+                    <option>Strategic Advisory Engagement</option>
+                    <option>Case Study Development</option>
+                    <option>DRC Market & Government Connections</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message">What are you working on?</label>
+                <textarea id="message" name="message" placeholder="Context, objective, country/region, decision needed, timeline, and key constraints (if any)." required></textarea>
+              </div>
+
+              <button class="btn" id="submitBtn" type="submit">Send inquiry →</button>
+              <p class="note" id="formStatus" aria-live="polite"></p>
+
+              <div class="fineprint">
+                By submitting, you agree KayBold Consulting may contact you about this inquiry.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="wrap">
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>© <span id="y"></span> KayBold Consulting</div>
-        <div>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div>© <span id="y"></span> KayBold Consulting</div>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="blog.html">Blog</a>
           <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Clicking a service card preselects engagement type + sets hidden field
+    // Preselect engagement type when clicking a service card
     const engagementSelect = document.getElementById("type");
     const selectedEngagement = document.getElementById("selected_engagement");
 
@@ -709,14 +976,7 @@
       });
     });
 
-    // Status message
-    const form = document.getElementById("inquiryForm");
-    const statusEl = document.getElementById("formStatus");
-    form.addEventListener("submit", () => {
-      statusEl.textContent = "Sending…";
-    });
-
-    // Mobile menu (hamburger)
+    // Mobile menu
     const menuBtn = document.getElementById("menuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
     const closeMenu = document.getElementById("closeMenu");
@@ -732,19 +992,50 @@
       document.body.style.overflow = "";
     }
 
-    menuBtn.addEventListener("click", openMenu);
-    closeMenu.addEventListener("click", shutMenu);
+    menuBtn?.addEventListener("click", openMenu);
+    closeMenu?.addEventListener("click", shutMenu);
 
-    mobileMenu.addEventListener("click", (e) => {
+    mobileMenu?.addEventListener("click", (e) => {
       if (e.target === mobileMenu) shutMenu();
     });
 
-    document.querySelectorAll(".mLink").forEach(a => {
-      a.addEventListener("click", shutMenu);
-    });
-
+    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", shutMenu));
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && mobileMenu.classList.contains("open")) shutMenu();
+    });
+
+    // Better form UX (works with Formspree)
+    const form = document.getElementById("inquiryForm");
+    const statusEl = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Sending…";
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.75";
+
+      try{
+        const formData = new FormData(form);
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if(res.ok){
+          statusEl.textContent = "Thanks — we received your inquiry. We’ll reply with next steps shortly.";
+          form.reset();
+          selectedEngagement.value = "";
+        } else {
+          statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
+        }
+      } catch(err){
+        statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "";
+      }
     });
   </script>
 </body>
