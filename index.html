@@ -27,10 +27,14 @@
 
       --content:1160px;
       --focus: 0 0 0 4px rgba(14,165,233,0.22);
+      --navH:72px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top: calc(var(--navH) + 16px);
+    }
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
@@ -40,24 +44,21 @@
     }
     a{color:inherit}
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
-
     .wrap{ max-width:var(--content); margin:0 auto; padding:0 22px; }
     @media (min-width: 1200px){ .wrap{padding:0 28px} }
+    section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
+    /* NAV (same as index.html) */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
       backdrop-filter:saturate(140%) blur(10px);
       border-bottom:1px solid var(--line);
     }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px; gap:14px;
-    }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:var(--navH); gap:14px; }
     .left{ display:flex; align-items:center; gap:12px; min-width:0; }
     .mark{
-      width:38px; height:38px;
-      border-radius:12px;
+      width:38px; height:38px; border-radius:12px;
       display:grid; place-items:center;
       background:linear-gradient(135deg, rgba(11,31,59,1), rgba(10,42,82,1));
       color:#fff; font-weight:950; letter-spacing:0.02em;
@@ -75,27 +76,109 @@
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:var(--blue);
-      color:#fff;
-      text-decoration:none;
-      font-weight:950;
-      font-size:14px;
+      padding:12px 18px; border-radius:999px;
+      background:var(--blue); color:#fff;
+      text-decoration:none; font-weight:950; font-size:14px;
       border:1px solid rgba(11,31,59,0.10);
       cursor:pointer;
       transition: transform .12s ease, opacity .12s ease;
       box-shadow: 0 12px 26px rgba(11,31,59,0.14);
-      gap:10px;
-      white-space:nowrap;
+      gap:10px; white-space:nowrap;
     }
     .btn:hover{ opacity:0.97; transform: translateY(-1px); }
-    .btn-outline{ background:#fff; color:var(--blue); border:1px solid rgba(11,31,59,0.18); box-shadow:none; }
+    .btn-outline{
+      background:#ffffff; color:var(--blue);
+      border:1px solid rgba(11,31,59,0.18);
+      box-shadow:none;
+    }
     .btn-outline:hover{ background:rgba(11,31,59,0.04); }
 
-    @media (max-width: 900px){ .links{display:none} }
-    @media (max-width: 560px){ .brand span{display:none} }
+    .hamburger{
+      width:44px; height:44px;
+      border-radius:12px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow: 0 10px 26px rgba(11,31,59,0.08);
+    }
+    .hamburger:hover{ background:rgba(11,31,59,0.04); }
+    .hamburger span{
+      display:block; width:18px; height:2px;
+      background:var(--blue2);
+      border-radius:999px; position:relative;
+    }
+    .hamburger span::before,
+    .hamburger span::after{
+      content:""; position:absolute; left:0;
+      width:18px; height:2px; background:var(--blue2);
+      border-radius:999px;
+    }
+    .hamburger span::before{ top:-6px; }
+    .hamburger span::after{ top:6px; }
 
+    .drawer{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.35);
+      display:none;
+      z-index:50;
+    }
+    .drawer.open{ display:block; }
+    .drawer-panel{
+      position:absolute;
+      top:12px; left:12px; right:12px;
+      max-width:540px;
+      margin:0 auto;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.22);
+      overflow:hidden;
+    }
+    .drawer-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%, var(--panel2) 100%);
+    }
+    .drawer-close{
+      width:40px; height:40px;
+      border-radius:12px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      cursor:pointer;
+    }
+    .drawer-close:hover{ background:rgba(11,31,59,0.05); }
+    .drawer-body{
+      padding:10px 10px 14px;
+      display:grid;
+      gap:8px;
+    }
+    .drawer-body a{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      text-decoration:none;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(11,31,59,0.12);
+      background:#fff;
+      color:var(--blue2);
+      font-weight:900;
+    }
+    .drawer-body a:hover{ background:rgba(11,31,59,0.06); }
+
+    @media (max-width: 900px){
+      .links{display:none}
+      .hamburger{display:inline-flex}
+    }
+    @media (max-width: 560px){
+      .nav .btn{display:none}
+      .brand span{display:none}
+    }
+
+    /* Page */
     .hero{
       padding:54px 0 26px;
       background:
@@ -118,11 +201,7 @@
       background:var(--accent);
       box-shadow: 0 0 0 4px rgba(14,165,233,0.18);
     }
-    h1{
-      font-size:48px; line-height:1.06;
-      margin:14px 0 10px;
-      letter-spacing:-0.04em; color:var(--blue);
-    }
+    h1{ font-size:48px; line-height:1.06; margin:14px 0 10px; letter-spacing:-0.04em; color:var(--blue); }
     @media (max-width: 520px){ h1{font-size:38px} }
     .sub{ color:var(--muted); font-size:16px; max-width:62rem; margin:0; }
 
@@ -137,7 +216,6 @@
       padding:18px;
       box-shadow: var(--shadow2);
     }
-
     .grid2{
       display:grid;
       grid-template-columns:1fr 1.2fr;
@@ -159,13 +237,7 @@
       flex:0 0 auto;
       box-shadow: var(--shadow);
     }
-    .about-top h3{
-      margin:0;
-      color:var(--blue);
-      font-size:18px;
-      font-weight:950;
-      letter-spacing:-0.01em;
-    }
+    .about-top h3{ margin:0; color:var(--blue); font-size:18px; font-weight:950; letter-spacing:-0.01em; }
     .small{ color:var(--muted); font-size:14px; margin:8px 0 0; }
 
     .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
@@ -231,6 +303,9 @@
   <div class="nav">
     <div class="wrap nav-inner">
       <div class="left">
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span>
+        </button>
         <div class="mark" aria-hidden="true">KB</div>
         <div class="brand">
           <strong>KayBold Consulting</strong>
@@ -239,13 +314,35 @@
       </div>
 
       <nav class="links" aria-label="Primary navigation">
+        <a href="blog.html">Publications</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#services">Services</a>
-        <a href="blog.html">Publications</a>
         <a class="active" href="contact.html">Contact</a>
       </nav>
 
       <a class="btn" href="#inquiry">Request a Consultation →</a>
+    </div>
+  </div>
+
+  <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div class="brand" style="gap:0;">
+            <strong>KayBold Consulting</strong>
+            <span style="display:block">Menu</span>
+          </div>
+        </div>
+        <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-body">
+        <a href="index.html#approach" class="mLink">Approach <span>›</span></a>
+        <a href="index.html#services" class="mLink">Services <span>›</span></a>
+        <a href="blog.html" class="mLink">Publications <span>›</span></a>
+        <a href="contact.html" class="mLink">Contact <span>›</span></a>
+        <a href="#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
+      </div>
     </div>
   </div>
 
@@ -380,10 +477,9 @@
           <div>© <span id="y"></span> KayBold Consulting</div>
         </div>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="index.html#services">Services</a>
           <a href="blog.html">Publications</a>
-          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -392,17 +488,41 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Prefill engagement type from ?engagement=... (from homepage service tiles)
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    function openMenu(){
+      mobileMenu.classList.add("open");
+      menuBtn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function shutMenu(){
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    if (menuBtn) menuBtn.addEventListener("click", openMenu);
+    if (closeMenu) closeMenu.addEventListener("click", shutMenu);
+    if (mobileMenu){
+      mobileMenu.addEventListener("click", (e) => { if (e.target === mobileMenu) shutMenu(); });
+    }
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("open")) shutMenu();
+    });
+
+    // Prefill engagement type from ?engagement=...
     const params = new URLSearchParams(window.location.search);
     const engagement = params.get("engagement");
     const select = document.getElementById("type");
     if (engagement && select) {
-      // If option exists, select it; otherwise set to "Not sure yet"
-      const options = Array.from(select.options).map(o => o.textContent);
-      if (options.includes(engagement)) select.value = engagement;
+      const exists = Array.from(select.options).some(o => o.textContent === engagement);
+      if (exists) select.value = engagement;
     }
 
-    // AJAX form submit (keeps your styling + success message)
+    // AJAX form submit
     const form = document.getElementById("inquiryForm");
     const statusEl = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
@@ -434,6 +554,11 @@
         submitBtn.style.opacity = "";
       }
     });
+
+    // ✅ Close menu when tapping any .mLink
+    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("open")) shutMenu();
+    }));
   </script>
 </body>
 </html>
