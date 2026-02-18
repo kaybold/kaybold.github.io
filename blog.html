@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog | KayBold Consulting</title>
-  <meta name="description" content="Insights on political economy, delivery, and investment decisions across African markets." />
+  <meta name="description" content="Notes, publications, and contributions on political economy, delivery, and investment decisions across African markets." />
 
   <style>
     :root{
@@ -23,9 +23,11 @@
       --shadow: 0 18px 55px rgba(11,31,59,0.10);
 
       --content:1180px;
+      --focus: 0 0 0 4px rgba(14,165,233,0.22);
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
@@ -34,6 +36,7 @@
       line-height:1.55;
     }
     a{color:inherit;text-decoration:none}
+    a:focus-visible{outline:none; box-shadow:var(--focus); border-radius:12px}
 
     .wrap{
       max-width:var(--content);
@@ -53,21 +56,23 @@
       align-items:center;
       justify-content:space-between;
       height:68px;
+      gap:14px;
     }
     .brand{
       font-weight:900;
       color:var(--blue);
       letter-spacing:0.2px;
+      white-space:nowrap;
     }
     .links{
       display:flex;
       gap:14px;
       font-size:14px;
       color:var(--muted);
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .links a:hover{
-      color:var(--blue);
-    }
+    .links a:hover{ color:var(--blue); }
 
     /* HERO */
     .hero{
@@ -99,21 +104,49 @@
       margin:0;
     }
 
-    /* BACK LINK */
-    .back-link{
+    /* SECTION NAV */
+    .section-nav{
       margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
-    .back-link a{
-      font-size:14px;
-      font-weight:700;
-      color:var(--blue);
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      color:var(--blue2);
+      font-weight:900;
+      font-size:13px;
     }
+    .pill:hover{ background:rgba(11,31,59,0.04); }
 
-    /* POSTS */
+    /* SECTIONS */
     .section{
       padding:28px 0 46px;
       background:linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
+    .block{
+      margin-top:18px;
+    }
+    .block h2{
+      margin:0;
+      font-size:20px;
+      color:var(--blue);
+      letter-spacing:-0.01em;
+    }
+    .block p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:70rem;
+    }
+
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -122,22 +155,29 @@
     }
     @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
+      h1{font-size:36px}
     }
 
-    .post{
+    /* CARDS */
+    .card{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
       box-shadow:var(--shadow);
-      transition:transform .12s ease, box-shadow .12s ease;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      position:relative;
+      overflow:hidden;
     }
-    .post:hover{
+    .card:hover{
       transform:translateY(-2px);
       box-shadow:0 22px 70px rgba(11,31,59,0.14);
+      border-color:rgba(11,31,59,0.22);
     }
     .tag{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:6px 10px;
       border-radius:999px;
       border:1px solid rgba(11,31,59,0.18);
@@ -145,13 +185,21 @@
       font-weight:900;
       color:var(--blue2);
       margin-bottom:10px;
+      background:#fff;
     }
-    .post h2{
+    .tag .dot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background:rgba(14,165,233,0.9);
+      box-shadow:0 0 0 4px rgba(14,165,233,0.18);
+    }
+    .card h3{
       font-size:16px;
       margin:0 0 8px;
       color:var(--blue);
+      letter-spacing:-0.01em;
     }
-    .post p{
+    .card p{
       margin:0;
       font-size:14px;
       color:var(--muted);
@@ -162,9 +210,32 @@
       border-top:1px solid var(--line);
       display:flex;
       justify-content:space-between;
+      gap:10px;
       font-size:13px;
       color:var(--muted2);
+      align-items:center;
+      flex-wrap:wrap;
     }
+    .meta .right{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight:800;
+      color:var(--blue2);
+    }
+    .ext{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      font-size:13px;
+      font-weight:900;
+      color:var(--blue2);
+    }
+    .ext:hover{ background:rgba(11,31,59,0.04); }
 
     /* FOOTER */
     .footer{
@@ -174,74 +245,184 @@
       color:var(--muted2);
       background:#fff;
     }
-    .footer a{color:var(--blue2)}
+    .footer a{color:var(--blue2); font-weight:800}
   </style>
 </head>
 
 <body>
-
-  <!-- NAV -->
   <div class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="index.html">KayBold Consulting</a>
       <div class="links">
+        <a href="index.html#approach">Approach</a>
         <a href="index.html#services">Services</a>
-        <a href="index.html#about">Approach</a>
         <a href="blog.html" style="color:var(--blue);font-weight:900;">Blog</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
   </div>
 
-  <!-- HEADER -->
   <header class="hero">
     <div class="wrap">
-      <div class="kicker">Insights</div>
-      <h1>Blog</h1>
+      <div class="kicker">Writing and contributions</div>
+      <h1>Blog and publications</h1>
       <p class="sub">
-        Notes on political economy, delivery, and decision-making across African markets.
+        Notes, publications, and contributions on political economy, delivery, and decision making across African markets.
       </p>
+
+      <div class="section-nav" aria-label="Jump to section">
+        <a class="pill" href="#publications">Publications</a>
+        <a class="pill" href="#case-studies">Case studies</a>
+        <a class="pill" href="#notes">Notes</a>
+      </div>
     </div>
   </header>
 
-  <!-- POSTS -->
   <main class="section">
     <div class="wrap">
-      <div class="grid">
-        <a class="post" href="#">
-          <span class="tag">Political economy</span>
-          <h2>What actually changes implementation outcomes</h2>
-          <p>A framework for mapping incentives, veto points, and what’s credible in reform windows.</p>
-          <div class="meta">
-            <span>5 min read</span>
-            <span>Draft</span>
-          </div>
-        </a>
 
-        <a class="post" href="#">
-          <span class="tag">Delivery</span>
-          <h2>Sequencing reforms when timelines are real</h2>
-          <p>How to choose a first wave that builds momentum and reduces execution risk.</p>
-          <div class="meta">
-            <span>6 min read</span>
-            <span>Draft</span>
-          </div>
-        </a>
+      <section id="publications" class="block" aria-label="Publications">
+        <h2>Publications</h2>
+        <p>
+          Peer reviewed and formal publications. Each link opens on the publisher site.
+        </p>
 
-        <a class="post" href="#">
-          <span class="tag">Energy transition</span>
-          <h2>Critical minerals: decision points that matter</h2>
-          <p>A checklist for aligning policy ambition with institutional capacity.</p>
-          <div class="meta">
-            <span>7 min read</span>
-            <span>Draft</span>
+        <div class="grid">
+          <a class="card" href="https://www.sciencedirect.com/science/article/pii/S2211467X25000896" target="_blank" rel="noreferrer">
+            <span class="tag"><span class="dot"></span> Publication</span>
+            <h3>ScienceDirect article</h3>
+            <p>
+              View the publication on ScienceDirect.
+            </p>
+            <div class="meta">
+              <span>External</span>
+              <span class="right">
+                <span class="ext" aria-label="Open publication">Open ↗</span>
+              </span>
+            </div>
+          </a>
+
+          <div class="card" style="cursor:default;">
+            <span class="tag"><span class="dot"></span> Add more</span>
+            <h3>Add another publication</h3>
+            <p>
+              Duplicate this card and update the title, description, and link for each paper you want to include.
+            </p>
+            <div class="meta">
+              <span>Tip</span>
+              <span class="right">Copy card</span>
+            </div>
           </div>
-        </a>
-      </div>
+
+          <div class="card" style="cursor:default;">
+            <span class="tag"><span class="dot"></span> Coming soon</span>
+            <h3>Working papers and briefs</h3>
+            <p>
+              Add working papers, policy briefs, and presentations here as you publish them.
+            </p>
+            <div class="meta">
+              <span>Update anytime</span>
+              <span class="right">Draft</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="case-studies" class="block" aria-label="Case studies">
+        <h2>Case studies and teaching materials</h2>
+        <p>
+          Materials developed for leadership learning and decision support.
+        </p>
+
+        <div class="grid">
+          <a class="card" href="https://ministerialleadership.harvard.edu/wp-content/uploads/2023/10/2023-Forum_Sierra-Leone-Case-Study_FINAL.pdf" target="_blank" rel="noreferrer">
+            <span class="tag"><span class="dot"></span> Case study</span>
+            <h3>Ministerial Leadership Forum case study</h3>
+            <p>
+              Sierra Leone case study PDF hosted by Harvard Ministerial Leadership Program.
+            </p>
+            <div class="meta">
+              <span>PDF</span>
+              <span class="right">
+                <span class="ext" aria-label="Open case study PDF">Open ↗</span>
+              </span>
+            </div>
+          </a>
+
+          <div class="card" style="cursor:default;">
+            <span class="tag"><span class="dot"></span> Add more</span>
+            <h3>Add another case study</h3>
+            <p>
+              Add any case, memo, or learning note you contributed to or authored.
+            </p>
+            <div class="meta">
+              <span>Tip</span>
+              <span class="right">Copy card</span>
+            </div>
+          </div>
+
+          <div class="card" style="cursor:default;">
+            <span class="tag"><span class="dot"></span> Optional</span>
+            <h3>Presentations and talks</h3>
+            <p>
+              Add slide decks, conference sessions, and panel appearances with links or PDFs.
+            </p>
+            <div class="meta">
+              <span>Update anytime</span>
+              <span class="right">Draft</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes" class="block" aria-label="Notes">
+        <h2>Notes</h2>
+        <p>
+          Short writing for operators and decision makers. These can link to full posts later.
+        </p>
+
+        <div class="grid">
+          <a class="card" href="#" aria-disabled="true">
+            <span class="tag"><span class="dot"></span> Political economy</span>
+            <h3>What actually changes implementation outcomes</h3>
+            <p>
+              A framework for mapping incentives, veto points, and what is credible in reform windows.
+            </p>
+            <div class="meta">
+              <span>Draft</span>
+              <span class="right">Coming soon</span>
+            </div>
+          </a>
+
+          <a class="card" href="#" aria-disabled="true">
+            <span class="tag"><span class="dot"></span> Delivery</span>
+            <h3>Sequencing reforms when timelines are real</h3>
+            <p>
+              How to choose a first wave that builds momentum and reduces execution risk.
+            </p>
+            <div class="meta">
+              <span>Draft</span>
+              <span class="right">Coming soon</span>
+            </div>
+          </a>
+
+          <a class="card" href="#" aria-disabled="true">
+            <span class="tag"><span class="dot"></span> Energy transition</span>
+            <h3>Critical minerals decision points that matter</h3>
+            <p>
+              A checklist for aligning policy ambition with institutional capacity.
+            </p>
+            <div class="meta">
+              <span>Draft</span>
+              <span class="right">Coming soon</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap">
       © <span id="y"></span> KayBold Consulting ·
@@ -252,6 +433,5 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
