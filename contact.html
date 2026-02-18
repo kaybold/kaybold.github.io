@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | KayBold Consulting</title>
   <meta name="description" content="Contact KayBold Consulting. Decision-ready policy, political economy, and delivery advisory for African markets." />
-
   <meta name="theme-color" content="#0b1f3b" />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
 
   <style>
     :root{
@@ -20,6 +16,7 @@
       --blue:#0b1f3b;
       --blue2:#0a2a52;
       --accent:#0ea5e9;
+
       --bg:#ffffff;
       --panel2:#f5f7fb;
       --line:rgba(11,31,59,0.12);
@@ -30,10 +27,14 @@
 
       --content:1160px;
       --focus: 0 0 0 4px rgba(14,165,233,0.22);
+      --navH:72px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top: calc(var(--navH) + 16px);
+    }
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
@@ -42,23 +43,19 @@
       line-height:1.6;
     }
     a{color:inherit}
-    img{max-width:100%; display:block}
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
-
     .wrap{ max-width:var(--content); margin:0 auto; padding:0 22px; }
     @media (min-width: 1200px){ .wrap{padding:0 28px} }
+    section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
-    /* NAV */
+    /* NAV (shared across pages — same as index/blog) */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
       backdrop-filter:saturate(140%) blur(10px);
       border-bottom:1px solid var(--line);
     }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px; gap:14px;
-    }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:var(--navH); gap:14px; }
     .left{ display:flex; align-items:center; gap:12px; min-width:0; }
     .mark{
       width:38px; height:38px; border-radius:12px;
@@ -69,18 +66,11 @@
       flex:0 0 auto;
     }
     .brand{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
-    .brand strong{
-      font-weight:950; color:var(--blue);
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-    .brand span{
-      font-size:12px; color:var(--muted2);
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;
-    }
+    .brand strong{ font-weight:950; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .brand span{ font-size:12px; color:var(--muted2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
+
     .links{ display:flex; gap:12px; align-items:center; font-size:14px; color:var(--muted); }
-    .links a{
-      text-decoration:none; padding:9px 10px; border-radius:12px; font-weight:750;
-    }
+    .links a{ text-decoration:none; padding:9px 10px; border-radius:12px; font-weight:750; }
     .links a:hover{ background:rgba(11,31,59,0.06); color:var(--blue); }
     .active{ background:rgba(11,31,59,0.06); color:var(--blue); }
 
@@ -94,6 +84,7 @@
       transition: transform .12s ease, opacity .12s ease;
       box-shadow: 0 12px 26px rgba(11,31,59,0.14);
       gap:10px; white-space:nowrap;
+      position:relative; z-index:2;
     }
     .btn:hover{ opacity:0.97; transform: translateY(-1px); }
     .btn-outline{
@@ -103,14 +94,94 @@
     }
     .btn-outline:hover{ background:rgba(11,31,59,0.04); }
 
+    /* Hamburger + Drawer */
+    .hamburger{
+      width:44px; height:44px;
+      border-radius:12px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow: 0 10px 26px rgba(11,31,59,0.08);
+      position:relative; z-index:3;
+    }
+    .hamburger:hover{ background:rgba(11,31,59,0.04); }
+    .hamburger span{
+      display:block; width:18px; height:2px;
+      background:var(--blue2);
+      border-radius:999px; position:relative;
+    }
+    .hamburger span::before,
+    .hamburger span::after{
+      content:""; position:absolute; left:0;
+      width:18px; height:2px; background:var(--blue2);
+      border-radius:999px;
+    }
+    .hamburger span::before{ top:-6px; }
+    .hamburger span::after{ top:6px; }
+
+    .drawer{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.35);
+      display:none;
+      z-index:50;
+    }
+    .drawer.open{ display:block; }
+    .drawer-panel{
+      position:absolute;
+      top:12px; left:12px; right:12px;
+      max-width:540px;
+      margin:0 auto;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.22);
+      overflow:hidden;
+    }
+    .drawer-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%, var(--panel2) 100%);
+    }
+    .drawer-close{
+      width:40px; height:40px;
+      border-radius:12px;
+      border:1px solid rgba(11,31,59,0.16);
+      background:#fff;
+      cursor:pointer;
+    }
+    .drawer-close:hover{ background:rgba(11,31,59,0.05); }
+    .drawer-body{
+      padding:10px 10px 14px;
+      display:grid;
+      gap:8px;
+    }
+    .drawer-body a{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      text-decoration:none;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(11,31,59,0.12);
+      background:#fff;
+      color:var(--blue2);
+      font-weight:900;
+    }
+    .drawer-body a:hover{ background:rgba(11,31,59,0.06); }
+
     @media (max-width: 900px){
       .links{display:none}
+      .hamburger{display:inline-flex}
     }
     @media (max-width: 560px){
+      .nav .btn{display:none}
       .brand span{display:none}
     }
 
-    /* HERO */
+    /* Page */
     .hero{
       padding:54px 0 26px;
       background:
@@ -133,15 +204,10 @@
       background:var(--accent);
       box-shadow: 0 0 0 4px rgba(14,165,233,0.18);
     }
-    h1{
-      font-size:48px; line-height:1.06;
-      margin:14px 0 10px;
-      letter-spacing:-0.04em; color:var(--blue);
-    }
+    h1{ font-size:48px; line-height:1.06; margin:14px 0 10px; letter-spacing:-0.04em; color:var(--blue); }
     @media (max-width: 520px){ h1{font-size:38px} }
     .sub{ color:var(--muted); font-size:16px; max-width:62rem; margin:0; }
 
-    /* SECTIONS */
     main section{ padding:40px 0; }
     h2{ margin:0; font-size:26px; letter-spacing:-0.02em; color:var(--blue); }
     .lead{ margin:10px 0 0; color:var(--muted); max-width:72rem; font-size:15px; }
@@ -154,21 +220,7 @@
       box-shadow: var(--shadow2);
     }
 
-    .grid2{
-      display:grid;
-      grid-template-columns:1fr 1.2fr;
-      gap:16px;
-      align-items:start;
-      margin-top:16px;
-    }
-    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
-
-    /* About card */
-    .about-top{
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-    }
+    .about-top{ display:flex; gap:14px; align-items:flex-start; }
     .avatar{
       width:78px; height:78px;
       border-radius:18px;
@@ -180,34 +232,27 @@
       flex:0 0 auto;
       box-shadow: var(--shadow);
     }
-    .about-top h3{
-      margin:0;
-      color:var(--blue);
-      font-size:18px;
-      font-weight:950;
-      letter-spacing:-0.01em;
-    }
+    .about-top h3{ margin:0; color:var(--blue); font-size:18px; font-weight:950; letter-spacing:-0.01em; }
     .small{ color:var(--muted); font-size:14px; margin:8px 0 0; }
 
-    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
-    .chip{
-      border:1px solid rgba(11,31,59,0.12);
-      border-radius:999px;
-      padding:10px 12px;
-      background:#fff;
-      color:var(--blue2);
-      font-weight:850;
-      font-size:13px;
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+      gap:16px;
+      align-items:start;
+      margin-top:16px;
     }
+    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
 
-    /* Contact */
     .contact-card{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
       box-shadow: var(--shadow2);
+      position:relative;
     }
+
     .contact-title{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; margin-bottom:10px;
@@ -231,6 +276,7 @@
       box-shadow: var(--focus);
     }
     textarea{ min-height:120px; resize:vertical; }
+
     .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
 
@@ -253,6 +299,9 @@
   <div class="nav">
     <div class="wrap nav-inner">
       <div class="left">
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span>
+        </button>
         <div class="mark" aria-hidden="true">KB</div>
         <div class="brand">
           <strong>KayBold Consulting</strong>
@@ -261,6 +310,7 @@
       </div>
 
       <nav class="links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#services">Services</a>
         <a href="blog.html">Publications</a>
@@ -271,18 +321,42 @@
     </div>
   </div>
 
+  <!-- Mobile drawer -->
+  <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div class="brand" style="gap:0;">
+            <strong>KayBold Consulting</strong>
+            <span style="display:block">Menu</span>
+          </div>
+        </div>
+        <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-body">
+        <a href="index.html" class="mLink">Home <span>›</span></a>
+        <a href="index.html#approach" class="mLink">Approach <span>›</span></a>
+        <a href="index.html#services" class="mLink">Services <span>›</span></a>
+        <a href="blog.html" class="mLink">Publications <span>›</span></a>
+        <a href="contact.html" class="mLink">Contact <span>›</span></a>
+        <a href="#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
+      </div>
+    </div>
+  </div>
+
   <header class="hero">
     <div class="wrap">
       <div class="badge"><span class="dot"></span> Contact</div>
       <h1>Let’s talk.</h1>
       <p class="sub">
-        For high-stakes decisions, implementation questions, or institutional partnerships—share context and I’ll respond with next steps.
+        Share context and I will respond with next steps.
       </p>
     </div>
   </header>
 
   <main>
-    <!-- ABOUT -->
+    <!-- ABOUT (simplified) -->
     <section aria-label="About">
       <div class="wrap">
         <div class="panel">
@@ -290,19 +364,11 @@
             <div class="avatar" aria-hidden="true">BK</div>
             <div>
               <h3>Benita Kayembe</h3>
-              <p class="small">
-                I advise leaders on policy choices, political economy trade-offs, and delivery—especially where decisions intersect with investment, implementation constraints, and stakeholder incentives across African markets.
+              <p class="small" style="max-width:52rem;">
+                Decision-ready advisory on policy choices, political economy trade-offs, and delivery across African markets.
               </p>
-              <p class="small">
-                My work prioritizes decision clarity, feasibility, and execution: the minimum analysis required to move from priorities to action.
-              </p>
-
-              <div class="chips" aria-label="Focus areas">
-        
-              </div>
-
-              <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
-                <a class="btn btn-outline" href="blog.html">View publications →</a>
+              <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn btn-outline" href="blog.html">Publications →</a>
                 <a class="btn btn-outline" href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
               </div>
             </div>
@@ -310,7 +376,7 @@
         </div>
 
         <p class="lead" style="margin-top:14px;">
-          If you have a deadline, include it. If you have a budget range, include it. If you are not sure what you need yet, that’s fine—start with the decision.
+          If you have a deadline, include it. If you are not sure what you need yet, start with the decision.
         </p>
       </div>
     </section>
@@ -324,13 +390,34 @@
         <div class="grid2">
           <div class="contact-card">
             <div class="contact-title"><h3>Direct contact</h3></div>
+
             <p class="small" style="margin:0 0 14px;">
-              Prefer email. Reach me directly and I’ll reply with scheduling options.
+              Prefer email. Reach me directly and I will reply with scheduling options.
             </p>
 
-            <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
-              Email KayBold Consulting →
-            </a>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
+                Email KayBold Consulting →
+              </a>
+
+              <a class="btn btn-outline"
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry"
+                 target="_blank" rel="noreferrer">
+                Open in Gmail ↗
+              </a>
+
+              <a class="btn btn-outline"
+                 href="https://outlook.office.com/mail/deeplink/compose?to=kayboldllc@gmail.com&subject=KayBold%20Consulting%20Inquiry"
+                 target="_blank" rel="noreferrer">
+                Open in Outlook ↗
+              </a>
+
+              <button class="btn btn-outline" type="button" id="copyEmailBtn">
+                Copy email
+              </button>
+            </div>
+
+            <p class="note" id="copyStatus" aria-live="polite"></p>
 
             <p class="note">Typical response time: 1 to 2 business days.</p>
             <div class="fineprint">
@@ -367,6 +454,7 @@
                     <option>Strategic Advisory Engagement</option>
                     <option>Case Study Development</option>
                     <option>DRC Market & Government Connections</option>
+                    <option>Custom Scope</option>
                     <option>Not sure yet</option>
                   </select>
                 </div>
@@ -398,10 +486,9 @@
           <div>© <span id="y"></span> KayBold Consulting</div>
         </div>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="index.html#services">Services</a>
           <a href="blog.html">Publications</a>
-          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -410,37 +497,95 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    function openMenu(){
+      mobileMenu.classList.add("open");
+      menuBtn.setAttribute("aria-expanded","true");
+      document.body.style.overflow="hidden";
+    }
+    function shutMenu(){
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded","false");
+      document.body.style.overflow="";
+    }
+
+    if (menuBtn) menuBtn.addEventListener("click", openMenu);
+    if (closeMenu) closeMenu.addEventListener("click", shutMenu);
+    if (mobileMenu){
+      mobileMenu.addEventListener("click", (e)=>{ if(e.target===mobileMenu) shutMenu(); });
+    }
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && mobileMenu.classList.contains("open")) shutMenu(); });
+    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", shutMenu));
+
+    // Prefill engagement type from ?engagement=...
+    const params = new URLSearchParams(window.location.search);
+    const engagement = params.get("engagement");
+    const select = document.getElementById("type");
+    if (engagement && select) {
+      const exists = Array.from(select.options).some(o => o.textContent === engagement);
+      if (exists) select.value = engagement;
+    }
+
+    // AJAX form submit
     const form = document.getElementById("inquiryForm");
     const statusEl = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Sending…";
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = "0.75";
+    if (form){
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "Sending…";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.75";
 
-      try{
-        const formData = new FormData(form);
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
+        try{
+          const formData = new FormData(form);
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
 
-        if(res.ok){
-          statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
-          form.reset();
-        } else {
-          statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
+          if(res.ok){
+            statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
+            form.reset();
+          } else {
+            statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
+          }
+        } catch(err){
+          statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "";
         }
-      } catch(err){
-        statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = "";
-      }
-    });
+      });
+    }
+
+    // Copy email
+    const copyBtn = document.getElementById("copyEmailBtn");
+    const copyStatus = document.getElementById("copyStatus");
+    const email = "kayboldllc@gmail.com";
+
+    if (copyBtn){
+      copyBtn.addEventListener("click", async () => {
+        try{
+          await navigator.clipboard.writeText(email);
+          copyStatus.textContent = "Email copied.";
+        } catch(e){
+          const ta = document.createElement("textarea");
+          ta.value = email;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          copyStatus.textContent = "Email copied.";
+        }
+      });
+    }
   </script>
 </body>
 </html>
