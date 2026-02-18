@@ -48,7 +48,7 @@
     @media (min-width: 1200px){ .wrap{padding:0 28px} }
     section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
-    /* NAV (shared) */
+    /* NAV (shared) — keep consistent across pages */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
@@ -288,6 +288,10 @@
     }
     .footer a{ color:var(--blue2); text-decoration:none; font-weight:850; }
     .footer a:hover{ text-decoration:underline; }
+
+    /* Helps ensure buttons are always clickable */
+    .btn{ position:relative; z-index:2; }
+    .contact-card{ position:relative; }
   </style>
 </head>
 
@@ -384,28 +388,34 @@
         <div class="grid2">
           <div class="contact-card">
             <div class="contact-title"><h3>Direct contact</h3></div>
+
             <p class="small" style="margin:0 0 14px;">
-  Prefer email. Reach me directly and I will reply with scheduling options.
-</p>
+              Prefer email. Reach me directly and I will reply with scheduling options.
+            </p>
 
-<div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-  <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
-    Email KayBold Consulting →
-  </a>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
+                Email KayBold Consulting →
+              </a>
 
-  <a class="btn btn-outline"
-     href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry"
-     target="_blank" rel="noreferrer">
-    Open in Gmail ↗
-  </a>
+              <a class="btn btn-outline"
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry"
+                 target="_blank" rel="noreferrer">
+                Open in Gmail ↗
+              </a>
 
-  <button class="btn btn-outline" type="button" id="copyEmailBtn">
-    Copy email
-  </button>
-</div>
+              <a class="btn btn-outline"
+                 href="https://outlook.office.com/mail/deeplink/compose?to=kayboldllc@gmail.com&subject=KayBold%20Consulting%20Inquiry"
+                 target="_blank" rel="noreferrer">
+                Open in Outlook ↗
+              </a>
 
-<p class="note" id="copyStatus" aria-live="polite"></p>
+              <button class="btn btn-outline" type="button" id="copyEmailBtn">
+                Copy email
+              </button>
+            </div>
 
+            <p class="note" id="copyStatus" aria-live="polite"></p>
 
             <p class="note">Typical response time: 1 to 2 business days.</p>
             <div class="fineprint">
@@ -527,56 +537,57 @@
     const statusEl = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Sending…";
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = "0.75";
+    if (form){
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "Sending…";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.75";
 
-      try{
-        const formData = new FormData(form);
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
+        try{
+          const formData = new FormData(form);
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
 
-        if(res.ok){
-          statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
-          form.reset();
-        } else {
-          statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
+          if(res.ok){
+            statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
+            form.reset();
+          } else {
+            statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
+          }
+        } catch(err){
+          statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "";
         }
-      } catch(err){
-        statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = "";
-      }<script>
-  const copyBtn = document.getElementById("copyEmailBtn");
-  const status = document.getElementById("copyStatus");
-  const email = "kayboldllc@gmail.com";
+      });
+    }
 
-  if (copyBtn){
-    copyBtn.addEventListener("click", async () => {
-      try{
-        await navigator.clipboard.writeText(email);
-        status.textContent = "Email copied.";
-      } catch(e){
-        // fallback for older browsers
-        const ta = document.createElement("textarea");
-        ta.value = email;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        status.textContent = "Email copied.";
-      }
-    });
-  }
-</script>
+    // Copy email button
+    const copyBtn = document.getElementById("copyEmailBtn");
+    const copyStatus = document.getElementById("copyStatus");
+    const email = "kayboldllc@gmail.com";
 
-    });
+    if (copyBtn){
+      copyBtn.addEventListener("click", async () => {
+        try{
+          await navigator.clipboard.writeText(email);
+          copyStatus.textContent = "Email copied.";
+        } catch(e){
+          const ta = document.createElement("textarea");
+          ta.value = email;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          copyStatus.textContent = "Email copied.";
+        }
+      });
+    }
   </script>
 </body>
 </html>
