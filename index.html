@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | KayBold Consulting</title>
-  <meta name="description" content="Contact KayBold Consulting. Decision-ready policy, political economy, and delivery advisory for African markets." />
+  <title>KayBold Consulting | Decision-ready advisory for African markets</title>
+  <meta name="description" content="Decision-ready policy, political economy, and delivery advisory for African markets. We help leaders make clear choices, manage trade-offs, and move from priorities to implementation." />
   <meta name="theme-color" content="#0b1f3b" />
 
   <style>
@@ -44,19 +44,24 @@
     }
     a{color:inherit}
     :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
+
     .wrap{ max-width:var(--content); margin:0 auto; padding:0 22px; }
     @media (min-width: 1200px){ .wrap{padding:0 28px} }
     section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
-    /* NAV (shared) — keep consistent across pages */
+    /* NAV (shared) */
     .nav{
       position:sticky; top:0; z-index:30;
       background:rgba(255,255,255,0.92);
       backdrop-filter:saturate(140%) blur(10px);
       border-bottom:1px solid var(--line);
     }
-    .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:var(--navH); gap:14px; }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      height:var(--navH); gap:14px;
+    }
     .left{ display:flex; align-items:center; gap:12px; min-width:0; }
+
     .mark{
       width:38px; height:38px; border-radius:12px;
       display:grid; place-items:center;
@@ -66,8 +71,15 @@
       flex:0 0 auto;
     }
     .brand{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
-    .brand strong{ font-weight:950; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .brand span{ font-size:12px; color:var(--muted2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
+    .brand strong{
+      font-weight:950; color:var(--blue);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .brand span{
+      font-size:12px; color:var(--muted2);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      margin-top:2px;
+    }
 
     .links{ display:flex; gap:12px; align-items:center; font-size:14px; color:var(--muted); }
     .links a{ text-decoration:none; padding:9px 10px; border-radius:12px; font-weight:750; }
@@ -172,16 +184,16 @@
 
     @media (max-width: 900px){
       .links{display:none}
-      .hamburger{display:inline-flex}
+      .hamburger{display:inline-flex} /* ✅ bring back 3 lines */
     }
     @media (max-width: 560px){
       .nav .btn{display:none}
       .brand span{display:none}
     }
 
-    /* Page */
+    /* HERO */
     .hero{
-      padding:54px 0 26px;
+      padding:58px 0 34px;
       background:
         radial-gradient(900px 520px at 15% -10%, rgba(11,31,59,0.10) 0%, rgba(255,255,255,0) 60%),
         radial-gradient(780px 520px at 85% 0%, rgba(14,165,233,0.10) 0%, rgba(255,255,255,0) 55%),
@@ -202,13 +214,24 @@
       background:var(--accent);
       box-shadow: 0 0 0 4px rgba(14,165,233,0.18);
     }
-    h1{ font-size:48px; line-height:1.06; margin:14px 0 10px; letter-spacing:-0.04em; color:var(--blue); }
-    @media (max-width: 520px){ h1{font-size:38px} }
-    .sub{ color:var(--muted); font-size:16px; max-width:62rem; margin:0; }
+    h1{
+      font-size:56px; line-height:1.04;
+      margin:14px 0 12px;
+      letter-spacing:-0.04em;
+      color:var(--blue);
+      max-width: 22ch;
+    }
+    @media (max-width: 520px){ h1{font-size:40px} }
+    .sub{ color:var(--muted); font-size:17px; max-width:62rem; margin:0 0 18px; }
 
-    main section{ padding:40px 0; }
-    h2{ margin:0; font-size:26px; letter-spacing:-0.02em; color:var(--blue); }
-    .lead{ margin:10px 0 0; color:var(--muted); max-width:72rem; font-size:15px; }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:start;
+      margin-top:18px;
+    }
+    @media (max-width: 980px){ .grid-hero{ grid-template-columns:1fr; } }
 
     .panel{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
@@ -217,67 +240,66 @@
       padding:18px;
       box-shadow: var(--shadow2);
     }
+    h2{ margin:0; font-size:22px; letter-spacing:-0.02em; color:var(--blue); }
+    .small{ color:var(--muted); font-size:14px; margin:10px 0 0; }
 
-    .about-top{ display:flex; gap:14px; align-items:flex-start; }
-    .avatar{
-      width:78px; height:78px;
-      border-radius:18px;
-      border:1px solid rgba(11,31,59,0.16);
-      background:linear-gradient(135deg, rgba(11,31,59,0.06), rgba(14,165,233,0.10));
-      display:grid; place-items:center;
-      font-weight:950;
-      color:var(--blue);
-      flex:0 0 auto;
-      box-shadow: var(--shadow);
+    .bullets{ margin:12px 0 0; padding-left:18px; color:var(--muted); font-size:14px; }
+    .bullets li{ margin:8px 0; }
+
+    main section{ padding:44px 0; }
+    .section-head{ margin-bottom:16px; }
+    .lead{ margin:10px 0 0; color:var(--muted); max-width:72rem; font-size:15px; }
+
+    /* ✅ Services should land cleanly when clicked */
+    #services{
+      padding-top: 56px; /* gives a nicer “snap” feel */
+      background: linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
     }
-    .about-top h3{ margin:0; color:var(--blue); font-size:18px; font-weight:950; letter-spacing:-0.01em; }
-    .small{ color:var(--muted); font-size:14px; margin:8px 0 0; }
 
-    .grid2{
+    .grid3{
       display:grid;
-      grid-template-columns:1fr 1.2fr;
+      grid-template-columns:repeat(3,1fr);
       gap:16px;
-      align-items:start;
-      margin-top:16px;
     }
-    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
 
-    .contact-card{
+    .tile{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px;
-      box-shadow: var(--shadow2);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      min-height: 190px;
+      box-shadow: var(--shadow);
+      text-decoration:none;
+      display:block;
+      height:100%;
+      position:relative;
+      overflow:hidden;
     }
-    .contact-title{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin-bottom:10px;
+    .tile:hover{
+      transform: translateY(-2px);
+      border-color: rgba(11,31,59,0.22);
+      box-shadow: 0 24px 80px rgba(11,31,59,0.14);
     }
-    .contact-title h3{ margin:0; font-size:16px; color:var(--blue); font-weight:950; }
-
-    form{ display:grid; gap:12px; }
-    label{ font-size:13px; color:var(--muted2); display:block; margin-bottom:6px; font-weight:750; }
-    input, textarea, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(11,31,59,0.16);
-      background:#ffffff;
-      color:var(--ink);
-      font-size:14px;
-      outline:none;
+    .tile h3{
+      margin:0 0 8px;
+      font-size:16px;
+      color:var(--blue);
+      font-weight:950;
+      letter-spacing:-0.01em;
+      position:relative;
+      z-index:1;
     }
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(14,165,233,0.55);
-      box-shadow: var(--focus);
+    .tile p{ margin:0; color:var(--muted); font-size:14px; position:relative; z-index:1; }
+    .tile-meta{
+      display:flex; justify-content:space-between; gap:10px;
+      margin-top:14px; padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted2); font-size:13px;
+      position:relative; z-index:1;
     }
-    textarea{ min-height:120px; resize:vertical; }
-
-    .row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    @media (max-width: 700px){ .row2{grid-template-columns:1fr} }
-
-    .note{ margin:10px 0 0; color:var(--muted2); font-size:12px; }
-    .fineprint{ margin-top:10px; color:var(--muted2); font-size:12px; line-height:1.5; }
+    .price{ color:var(--blue); font-weight:950; white-space:nowrap; }
 
     .footer{
       padding:24px 0 40px;
@@ -288,10 +310,6 @@
     }
     .footer a{ color:var(--blue2); text-decoration:none; font-weight:850; }
     .footer a:hover{ text-decoration:underline; }
-
-    /* Helps ensure buttons are always clickable */
-    .btn{ position:relative; z-index:2; }
-    .contact-card{ position:relative; }
   </style>
 </head>
 
@@ -310,13 +328,13 @@
       </div>
 
       <nav class="links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
+        <a class="active" href="index.html">Home</a>
+        <a href="#services">Services</a>
         <a href="blog.html">Publications</a>
-        <a class="active" href="contact.html">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
-      <a class="btn" href="#inquiry">Request a Consultation →</a>
+      <a class="btn" href="contact.html#inquiry">Request a Consultation →</a>
     </div>
   </div>
 
@@ -335,142 +353,113 @@
       </div>
       <div class="drawer-body">
         <a href="index.html" class="mLink">Home <span>›</span></a>
-        <a href="index.html#services" class="mLink">Services <span>›</span></a>
+        <a href="#services" class="mLink">Services <span>›</span></a>
         <a href="blog.html" class="mLink">Publications <span>›</span></a>
         <a href="contact.html" class="mLink">Contact <span>›</span></a>
-        <a href="#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
+        <a href="contact.html#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
       </div>
     </div>
   </div>
 
   <header class="hero">
     <div class="wrap">
-      <div class="badge"><span class="dot"></span> Contact</div>
-      <h1>Let’s talk.</h1>
+      <div class="badge"><span class="dot"></span> Decision grade advisory</div>
+      <h1>Clarity for high-stakes decisions.</h1>
       <p class="sub">
-        Share context and I will respond with next steps.
+        KayBold Consulting supports governments, development partners, and mission-driven organizations with decision-ready policy, political economy, and delivery advisory across African markets.
       </p>
+
+      <div class="grid-hero">
+        <div class="panel">
+          <h2>Who we are</h2>
+          <p class="small">
+            We are a specialist advisory working at the intersection of policy choices, institutional feasibility, and delivery.
+            Outputs are concise, practical, and action-oriented.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h2>What we offer</h2>
+          <ul class="bullets">
+            <li><b>Executive counsel:</b> prioritization, sequencing, and implementation choices</li>
+            <li><b>Political economy:</b> stakeholder mapping, risk assessment, and feasibility diagnostics</li>
+            <li><b>Delivery support:</b> roadmaps, governance, and accountability routines</li>
+            <li><b>Energy transition:</b> critical minerals strategy and supply chain policy</li>
+          </ul>
+
+          <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-outline" href="#services">Explore services →</a>
+            <a class="btn" href="contact.html#inquiry">Contact →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- ABOUT (simplified) -->
-    <section aria-label="About">
+    <section id="services">
       <div class="wrap">
-        <div class="panel">
-          <div class="about-top">
-            <div class="avatar" aria-hidden="true">BK</div>
-            <div>
-              <h3>Benita Kayembe</h3>
-              <p class="small" style="max-width:52rem;">
-                Decision-ready advisory on policy choices, political economy trade-offs, and delivery across African markets.
-              </p>
-              <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-                <a class="btn btn-outline" href="blog.html">Publications →</a>
-                <a class="btn btn-outline" href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-              </div>
-            </div>
-          </div>
+        <div class="section-head">
+          <h2>Services</h2>
+          <p class="lead">
+            Select a service to begin. We scope engagements quickly and confirm deliverables before work begins.
+          </p>
         </div>
 
-        <p class="lead" style="margin-top:14px;">
-          If you have a deadline, include it. If you are not sure what you need yet, start with the decision.
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="inquiry" aria-label="Inquiry">
-      <div class="wrap">
-        <h2>Request a consultation</h2>
-        <p class="lead">Share a few details and I will respond with next steps.</p>
-
-        <div class="grid2">
-          <div class="contact-card">
-            <div class="contact-title"><h3>Direct contact</h3></div>
-
-            <p class="small" style="margin:0 0 14px;">
-              Prefer email. Reach me directly and I will reply with scheduling options.
-            </p>
-
-            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-              <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
-                Email KayBold Consulting →
-              </a>
-
-              <a class="btn btn-outline"
-                 href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry"
-                 target="_blank" rel="noreferrer">
-                Open in Gmail ↗
-              </a>
-
-              <a class="btn btn-outline"
-                 href="https://outlook.office.com/mail/deeplink/compose?to=kayboldllc@gmail.com&subject=KayBold%20Consulting%20Inquiry"
-                 target="_blank" rel="noreferrer">
-                Open in Outlook ↗
-              </a>
-
-              <button class="btn btn-outline" type="button" id="copyEmailBtn">
-                Copy email
-              </button>
+        <div class="grid3">
+          <a class="tile" href="contact.html?engagement=Strategic%20Consultation#inquiry">
+            <h3>Strategic Consultation</h3>
+            <p>A senior session to clarify the decision, options, and next steps.</p>
+            <div class="tile-meta">
+              <span>Typical timeline: 1 week</span>
+              <span class="price">Pricing on request</span>
             </div>
+          </a>
 
-            <p class="note" id="copyStatus" aria-live="polite"></p>
-
-            <p class="note">Typical response time: 1 to 2 business days.</p>
-            <div class="fineprint">
-              If your inquiry is time sensitive, include your deadline and preferred meeting windows.
+          <a class="tile" href="contact.html?engagement=Policy%20%26%20Political%20Economy%20Diagnostic#inquiry">
+            <h3>Policy & Political Economy Diagnostic</h3>
+            <p>Stakeholder mapping, feasibility analysis, and implementation risks.</p>
+            <div class="tile-meta">
+              <span>Typical timeline: 2–3 weeks</span>
+              <span class="price">Pricing on request</span>
             </div>
-          </div>
+          </a>
 
-          <div class="contact-card">
-            <div class="contact-title"><h3>Inquiry form</h3></div>
+          <a class="tile" href="contact.html?engagement=Strategic%20Advisory%20Engagement#inquiry">
+            <h3>Strategic Advisory Engagement</h3>
+            <p>Ongoing support for reforms and multi-stakeholder initiatives.</p>
+            <div class="tile-meta">
+              <span>Typical timeline: 4–12 weeks</span>
+              <span class="price">Pricing on request</span>
+            </div>
+          </a>
 
-            <form id="inquiryForm" action="https://formspree.io/f/xeeakvvd" method="POST">
-              <div class="row2">
-                <div>
-                  <label for="name">Name</label>
-                  <input id="name" name="name" type="text" autocomplete="name" required />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" autocomplete="email" required />
-                </div>
-              </div>
+          <a class="tile" href="contact.html?engagement=Case%20Study%20Development#inquiry">
+            <h3>Case Study Development</h3>
+            <p>Decision-grade cases and teaching materials for leaders.</p>
+            <div class="tile-meta">
+              <span>Timeline: scoped per case</span>
+              <span class="price">Pricing on request</span>
+            </div>
+          </a>
 
-              <div class="row2">
-                <div>
-                  <label for="org">Organization</label>
-                  <input id="org" name="organization" type="text" autocomplete="organization" />
-                </div>
-                <div>
-                  <label for="type">Engagement type</label>
-                  <select id="type" name="engagement_type" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option>Strategic Consultation</option>
-                    <option>Policy & Political Economy Diagnostic</option>
-                    <option>Strategic Advisory Engagement</option>
-                    <option>Case Study Development</option>
-                    <option>DRC Market & Government Connections</option>
-                    <option>Custom Scope</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-              </div>
+          <a class="tile" href="contact.html?engagement=DRC%20Market%20%26%20Government%20Connections#inquiry">
+            <h3>DRC Market & Government Connections</h3>
+            <p>Introductions and curated access across public and private stakeholders.</p>
+            <div class="tile-meta">
+              <span>Scope dependent</span>
+              <span class="price">Pricing on request</span>
+            </div>
+          </a>
 
-              <div>
-                <label for="message">What are you working on</label>
-                <textarea id="message" name="message" placeholder="Context, objective, country/region, decision needed, timeline, and constraints." required></textarea>
-              </div>
-
-              <button class="btn" id="submitBtn" type="submit">Send inquiry →</button>
-              <p class="note" id="formStatus" aria-live="polite"></p>
-
-              <div class="fineprint">
-                By submitting, you agree KayBold Consulting may contact you about this inquiry.
-              </div>
-            </form>
-          </div>
+          <a class="tile" href="contact.html?engagement=Not%20sure%20yet#inquiry">
+            <h3>Not sure yet</h3>
+            <p>Start with the decision, timeline, and constraints. We will propose the right scope.</p>
+            <div class="tile-meta">
+              <span>Response: 1–2 business days</span>
+              <span class="price">Pricing on request</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -523,70 +512,22 @@
       if (mobileMenu.classList.contains("open")) shutMenu();
     }));
 
-    // Prefill engagement type from ?engagement=...
-    const params = new URLSearchParams(window.location.search);
-    const engagement = params.get("engagement");
-    const select = document.getElementById("type");
-    if (engagement && select) {
-      const exists = Array.from(select.options).some(o => o.textContent === engagement);
-      if (exists) select.value = engagement;
-    }
-
-    // AJAX form submit
-    const form = document.getElementById("inquiryForm");
-    const statusEl = document.getElementById("formStatus");
-    const submitBtn = document.getElementById("submitBtn");
-
-    if (form){
-      form.addEventListener("submit", async (e) => {
+    // Smooth scroll for in-page anchors (keeps the landing clean)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href");
+        if (!href || href === "#") return;
         e.preventDefault();
-        statusEl.textContent = "Sending…";
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = "0.75";
-
-        try{
-          const formData = new FormData(form);
-          const res = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: { "Accept": "application/json" }
-          });
-
-          if(res.ok){
-            statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
-            form.reset();
-          } else {
-            statusEl.textContent = "Something went wrong sending the form. Please try again, or email kayboldllc@gmail.com.";
-          }
-        } catch(err){
-          statusEl.textContent = "Network error. Please try again, or email kayboldllc@gmail.com.";
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = "";
-        }
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+        history.pushState(null, "", href);
       });
-    }
+    });
 
-    // Copy email button
-    const copyBtn = document.getElementById("copyEmailBtn");
-    const copyStatus = document.getElementById("copyStatus");
-    const email = "kayboldllc@gmail.com";
-
-    if (copyBtn){
-      copyBtn.addEventListener("click", async () => {
-        try{
-          await navigator.clipboard.writeText(email);
-          copyStatus.textContent = "Email copied.";
-        } catch(e){
-          const ta = document.createElement("textarea");
-          ta.value = email;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          copyStatus.textContent = "Email copied.";
-        }
-      });
+    // If page loads with #services etc.
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) setTimeout(() => el.scrollIntoView({behavior:"smooth", block:"start"}), 50);
     }
   </script>
 </body>
