@@ -385,12 +385,27 @@
           <div class="contact-card">
             <div class="contact-title"><h3>Direct contact</h3></div>
             <p class="small" style="margin:0 0 14px;">
-              Prefer email. Reach me directly and I will reply with scheduling options.
-            </p>
+  Prefer email. Reach me directly and I will reply with scheduling options.
+</p>
 
-            <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
-              Email KayBold Consulting →
-            </a>
+<div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+  <a class="btn" href="mailto:kayboldllc@gmail.com?subject=KayBold%20Consulting%20Inquiry">
+    Email KayBold Consulting →
+  </a>
+
+  <a class="btn btn-outline"
+     href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry"
+     target="_blank" rel="noreferrer">
+    Open in Gmail ↗
+  </a>
+
+  <button class="btn btn-outline" type="button" id="copyEmailBtn">
+    Copy email
+  </button>
+</div>
+
+<p class="note" id="copyStatus" aria-live="polite"></p>
+
 
             <p class="note">Typical response time: 1 to 2 business days.</p>
             <div class="fineprint">
@@ -537,7 +552,30 @@
       } finally {
         submitBtn.disabled = false;
         submitBtn.style.opacity = "";
+      }<script>
+  const copyBtn = document.getElementById("copyEmailBtn");
+  const status = document.getElementById("copyStatus");
+  const email = "kayboldllc@gmail.com";
+
+  if (copyBtn){
+    copyBtn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(email);
+        status.textContent = "Email copied.";
+      } catch(e){
+        // fallback for older browsers
+        const ta = document.createElement("textarea");
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        status.textContent = "Email copied.";
       }
+    });
+  }
+</script>
+
     });
   </script>
 </body>
