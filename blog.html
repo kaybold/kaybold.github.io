@@ -5,129 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Publications & Contributions | KayBold Consulting</title>
   <meta name="description" content="Selected publications, institutional contributions, and case studies across political economy, delivery, and investment decisions in African markets." />
+  <meta name="theme-color" content="#0b1f3b" />
 
   <style>
     :root{
+      --ink:#0b0c0f;
+      --muted:#4b5563;
+      --muted2:#6b7280;
       --blue:#0b1f3b;
       --blue2:#0a2a52;
+      --accent:#0ea5e9;
       --bg:#ffffff;
-      --text:#0b0c0f;
-      --muted:#4d5562;
-      --muted2:#6b7280;
-
-      --line:rgba(11,31,59,0.14);
-      --panel:#ffffff;
-      --panel2:#f4f7fb;
-
-      --radius:14px;
+      --panel2:#f5f7fb;
+      --line:rgba(11,31,59,0.12);
+      --radius:16px;
       --shadow: 0 18px 55px rgba(11,31,59,0.10);
-
-      --content:1180px;
+      --shadow2: 0 26px 90px rgba(11,31,59,0.12);
+      --content:1160px;
       --focus: 0 0 0 4px rgba(14,165,233,0.22);
+      --navH:72px;
     }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.55;
-    }
-    a{color:inherit;text-decoration:none}
-    a:focus-visible{outline:none; box-shadow:var(--focus); border-radius:12px}
+    html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--navH) + 16px); }
+    body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
+    a{color:inherit; text-decoration:none}
+    :focus-visible{ outline:none; box-shadow: var(--focus); border-radius:12px; }
+    .wrap{ max-width:var(--content); margin:0 auto; padding:0 22px; }
+    @media (min-width: 1200px){ .wrap{padding:0 28px} }
+    section[id]{ scroll-margin-top: calc(var(--navH) + 16px); }
 
-    .wrap{ max-width:var(--content); margin:0 auto; padding:0 24px; }
+    /* NAV (same as index/contact) */
+    .nav{ position:sticky; top:0; z-index:30; background:rgba(255,255,255,0.92); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--line); }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:var(--navH); gap:14px; }
+    .left{ display:flex; align-items:center; gap:12px; min-width:0; }
+    .mark{ width:38px; height:38px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg, rgba(11,31,59,1), rgba(10,42,82,1)); color:#fff; font-weight:950; letter-spacing:0.02em; box-shadow: 0 14px 35px rgba(11,31,59,0.20); flex:0 0 auto; }
+    .brand{ display:flex; flex-direction:column; line-height:1.05; min-width:0; }
+    .brand strong{ font-weight:950; color:var(--blue); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .brand span{ font-size:12px; color:var(--muted2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; }
+    .links{ display:flex; gap:12px; align-items:center; font-size:14px; color:var(--muted); }
+    .links a{ padding:9px 10px; border-radius:12px; font-weight:750; }
+    .links a:hover{ background:rgba(11,31,59,0.06); color:var(--blue); }
+    .active{ background:rgba(11,31,59,0.06); color:var(--blue); }
 
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:30;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      height:68px; gap:14px;
-    }
-    .brand{
-      font-weight:900; color:var(--blue); letter-spacing:0.2px; white-space:nowrap;
-    }
-    .links{
-      display:flex; gap:14px; font-size:14px; color:var(--muted);
-      flex-wrap:wrap; justify-content:flex-end;
-    }
-    .links a:hover{ color:var(--blue); }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:999px; background:var(--blue); color:#fff; font-weight:950; font-size:14px; border:1px solid rgba(11,31,59,0.10); cursor:pointer; transition: transform .12s ease, opacity .12s ease; box-shadow: 0 12px 26px rgba(11,31,59,0.14); gap:10px; white-space:nowrap; position:relative; z-index:2; }
+    .btn:hover{ opacity:0.97; transform: translateY(-1px); }
+    .btn-outline{ background:#fff; color:var(--blue); border:1px solid rgba(11,31,59,0.18); box-shadow:none; }
+    .btn-outline:hover{ background:rgba(11,31,59,0.04); }
 
-    /* HERO */
+    .hamburger{ width:44px; height:44px; border-radius:12px; border:1px solid rgba(11,31,59,0.16); background:#fff; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 10px 26px rgba(11,31,59,0.08); position:relative; z-index:3; }
+    .hamburger span{ display:block; width:18px; height:2px; background:var(--blue2); border-radius:999px; position:relative; }
+    .hamburger span::before,.hamburger span::after{ content:""; position:absolute; left:0; width:18px; height:2px; background:var(--blue2); border-radius:999px; }
+    .hamburger span::before{ top:-6px; }
+    .hamburger span::after{ top:6px; }
+
+    .drawer{ position:fixed; inset:0; background:rgba(0,0,0,0.35); display:none; z-index:50; }
+    .drawer.open{ display:block; }
+    .drawer-panel{ position:absolute; top:12px; left:12px; right:12px; max-width:540px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow: 0 30px 90px rgba(0,0,0,0.22); overflow:hidden; }
+    .drawer-head{ display:flex; align-items:center; justify-content:space-between; padding:14px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#ffffff 0%, var(--panel2) 100%); }
+    .drawer-close{ width:40px; height:40px; border-radius:12px; border:1px solid rgba(11,31,59,0.16); background:#fff; cursor:pointer; }
+    .drawer-body{ padding:10px 10px 14px; display:grid; gap:8px; }
+    .drawer-body a{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 12px; border-radius:14px; border:1px solid rgba(11,31,59,0.12); background:#fff; color:var(--blue2); font-weight:900; }
+    .drawer-body a:hover{ background:rgba(11,31,59,0.06); }
+
+    @media (max-width: 900px){ .links{display:none} .hamburger{display:inline-flex} }
+    @media (max-width: 560px){ .nav .btn{display:none} .brand span{display:none} }
+
+    /* Page */
     .hero{
-      padding:44px 0 22px;
+      padding:54px 0 26px;
       background:
         radial-gradient(900px 520px at 15% -10%, rgba(11,31,59,0.10) 0%, rgba(255,255,255,0) 60%),
-        radial-gradient(780px 520px at 85% 0%, rgba(11,31,59,0.07) 0%, rgba(255,255,255,0) 55%),
-        #ffffff;
+        radial-gradient(780px 520px at 85% 0%, rgba(14,165,233,0.10) 0%, rgba(255,255,255,0) 55%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 55%, rgba(11,31,59,0.03) 100%);
       border-bottom:1px solid var(--line);
     }
-    .kicker{
-      font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
-      font-weight:800; color:var(--blue2); margin-bottom:10px;
-    }
-    h1{
-      font-size:42px; margin:0 0 10px; color:var(--blue); letter-spacing:-0.03em;
-    }
-    .sub{
-      color:var(--muted); font-size:16px; max-width:60rem; margin:0;
-    }
+    .kicker{ font-size:12px; letter-spacing:0.18em; text-transform:uppercase; font-weight:900; color:var(--blue2); margin-bottom:10px; }
+    h1{ font-size:42px; margin:0 0 10px; color:var(--blue); letter-spacing:-0.03em; }
+    @media (max-width: 520px){ h1{font-size:34px} }
+    .sub{ color:var(--muted); font-size:16px; max-width:60rem; margin:0; }
 
-    /* SECTION NAV */
-    .section-nav{
-      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .pill{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px; border-radius:999px;
-      border:1px solid rgba(11,31,59,0.16);
-      background:#fff; color:var(--blue2);
-      font-weight:900; font-size:13px;
-    }
+    .section-nav{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .pill{ display:inline-flex; align-items:center; justify-content:center; padding:10px 12px; border-radius:999px; border:1px solid rgba(11,31,59,0.16); background:#fff; color:var(--blue2); font-weight:900; font-size:13px; }
     .pill:hover{ background:rgba(11,31,59,0.04); }
 
-    /* SECTIONS */
-    .section{
-      padding:28px 0 46px;
-      background:linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%);
-    }
+    main{ padding:28px 0 46px; background:linear-gradient(180deg, rgba(11,31,59,0.04) 0%, rgba(255,255,255,0) 100%); }
     .block{ margin-top:18px; }
-    .block h2{
-      margin:0; font-size:20px; color:var(--blue); letter-spacing:-0.01em;
-    }
-    .block p{
-      margin:8px 0 0; color:var(--muted); font-size:14px; max-width:70rem;
-    }
-    .hint{
-      margin-top:8px;
-      padding:10px 12px;
-      border:1px dashed rgba(11,31,59,0.20);
-      border-radius:12px;
-      color:var(--muted2);
-      background:rgba(255,255,255,0.7);
-      font-size:13px;
-      max-width:70rem;
-    }
+    .block h2{ margin:0; font-size:20px; color:var(--blue); }
+    .block p{ margin:8px 0 0; color:var(--muted); font-size:14px; max-width:70rem; }
+    .hint{ margin-top:8px; padding:10px 12px; border:1px dashed rgba(11,31,59,0.20); border-radius:12px; color:var(--muted2); background:rgba(255,255,255,0.7); font-size:13px; max-width:70rem; }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:16px;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr}
-      h1{font-size:36px}
-    }
+    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:16px; }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
 
-    /* CARDS */
     .card{
       background:linear-gradient(180deg, #ffffff 0%, var(--panel2) 100%);
       border:1px solid var(--line);
@@ -139,110 +108,68 @@
       flex-direction:column;
       min-height: 320px;
     }
-    .card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 22px 70px rgba(11,31,59,0.14);
-      border-color:rgba(11,31,59,0.22);
-    }
-
-    .thumb{
-      width:100%;
-      height:160px;
-      object-fit:cover;
-      display:block;
-      background:#e9eef7;
-      border-bottom:1px solid var(--line);
-    }
-
-    .card-body{
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      height:100%;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(11,31,59,0.18);
-      font-size:12px;
-      font-weight:900;
-      color:var(--blue2);
-      margin-bottom:10px;
-      background:#fff;
-      width:max-content;
-    }
-    .tag .dot{
-      width:8px; height:8px;
-      border-radius:999px;
-      background:rgba(14,165,233,0.9);
-      box-shadow:0 0 0 4px rgba(14,165,233,0.18);
-    }
-
-    .card h3{
-      font-size:16px; margin:0 0 8px; color:var(--blue); letter-spacing:-0.01em;
-    }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 22px 70px rgba(11,31,59,0.14); border-color:rgba(11,31,59,0.22); }
+    .thumb{ width:100%; height:160px; object-fit:cover; display:block; background:#e9eef7; border-bottom:1px solid var(--line); }
+    .card-body{ padding:18px; display:flex; flex-direction:column; height:100%; }
+    .tag{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid rgba(11,31,59,0.18); font-size:12px; font-weight:900; color:var(--blue2); margin-bottom:10px; background:#fff; width:max-content; }
+    .tag .dot{ width:8px; height:8px; border-radius:999px; background:rgba(14,165,233,0.9); box-shadow:0 0 0 4px rgba(14,165,233,0.18); }
+    .card h3{ font-size:16px; margin:0 0 8px; color:var(--blue); }
     .card p{ margin:0; font-size:14px; color:var(--muted); }
-
-    .meta{
-      margin-top:auto;
-      padding-top:12px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      font-size:13px;
-      color:var(--muted2);
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .ext{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(11,31,59,0.16);
-      background:#fff;
-      font-size:13px;
-      font-weight:900;
-      color:var(--blue2);
-    }
+    .meta{ margin-top:auto; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; font-size:13px; color:var(--muted2); align-items:center; flex-wrap:wrap; }
+    .ext{ display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:12px; border:1px solid rgba(11,31,59,0.16); background:#fff; font-size:13px; font-weight:900; color:var(--blue2); }
     .ext:hover{ background:rgba(11,31,59,0.04); }
 
-    /* FOOTER */
-    .footer{
-      padding:22px 0 34px;
-      border-top:1px solid var(--line);
-      font-size:13px;
-      color:var(--muted2);
-      background:#fff;
-    }
-    .footer a{color:var(--blue2); font-weight:800}
-
-    /* Small utility */
-    .sr-only{
-      position:absolute !important;
-      width:1px;height:1px;
-      padding:0;margin:-1px;
-      overflow:hidden;clip:rect(0,0,0,0);
-      white-space:nowrap;border:0;
-    }
+    .footer{ padding:24px 0 40px; border-top:1px solid var(--line); color:var(--muted2); font-size:13px; background:#ffffff; }
+    .footer a{ color:var(--blue2); text-decoration:none; font-weight:850; }
+    .footer a:hover{ text-decoration:underline; }
   </style>
 </head>
 
 <body>
   <div class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="index.html">KayBold Consulting</a>
-      <div class="links">
+      <div class="left">
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span>
+        </button>
+        <div class="mark" aria-hidden="true">KB</div>
+        <div class="brand">
+          <strong>KayBold Consulting</strong>
+          <span>Policy • Political Economy • Delivery</span>
+        </div>
+      </div>
+
+      <nav class="links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#services">Services</a>
-        <a href="blog.html" style="color:var(--blue);font-weight:900;">Publications</a>
-        <a href="index.html#contact">Contact</a>
+        <a class="active" href="blog.html">Publications</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="btn" href="contact.html#inquiry">Request a Consultation →</a>
+    </div>
+  </div>
+
+  <div class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div class="brand" style="gap:0;">
+            <strong>KayBold Consulting</strong>
+            <span style="display:block">Menu</span>
+          </div>
+        </div>
+        <button class="drawer-close" id="closeMenu" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-body">
+        <a href="index.html" class="mLink">Home <span>›</span></a>
+        <a href="index.html#approach" class="mLink">Approach <span>›</span></a>
+        <a href="index.html#services" class="mLink">Services <span>›</span></a>
+        <a href="blog.html" class="mLink">Publications <span>›</span></a>
+        <a href="contact.html" class="mLink">Contact <span>›</span></a>
+        <a href="contact.html#inquiry" class="btn mLink" style="justify-content:center;">Request a Consultation →</a>
       </div>
     </div>
   </div>
@@ -251,9 +178,7 @@
     <div class="wrap">
       <div class="kicker">Selected work</div>
       <h1>Publications & contributions</h1>
-      <p class="sub">
-        A curated selection of peer-reviewed publications, institutional contributions, and published case studies.
-      </p>
+      <p class="sub">A curated selection of peer-reviewed publications, institutional contributions, and published case studies.</p>
 
       <div class="section-nav" aria-label="Jump to section">
         <a class="pill" href="#publications">Publications</a>
@@ -263,24 +188,18 @@
     </div>
   </header>
 
-  <main class="section">
+  <main>
     <div class="wrap">
 
-      <!-- PUBLICATIONS -->
       <section id="publications" class="block" aria-label="Publications">
         <h2>Publications</h2>
         <p>Peer-reviewed and formal publications (author / co-author).</p>
 
-        <div class="hint">
-          Publications = I am an author or co-author. 
-        </div>
+        <div class="hint">Publications = I am an author or co-author. Reports where I am cited or provided expert input belong under Contributions.</div>
 
         <div class="grid">
           <a class="card" href="https://www.sciencedirect.com/science/article/pii/S2211467X25000896" target="_blank" rel="noreferrer">
-            <!-- Branded thumbnail (no broken images, consistent look) -->
-            <img class="thumb"
-              alt="Publication thumbnail: Sustainable futures (Energy Strategy Reviews)"
-              loading="lazy"
+            <img class="thumb" alt="Publication thumbnail" loading="lazy"
               src='data:image/svg+xml;utf8,
               <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
                 <defs>
@@ -290,38 +209,27 @@
                   </linearGradient>
                 </defs>
                 <rect width="1200" height="600" fill="url(%23g)"/>
-                <circle cx="980" cy="150" r="240" fill="rgba(14,165,233,0.22)"/>
-                <circle cx="250" cy="520" r="310" fill="rgba(255,255,255,0.10)"/>
-                <text x="72" y="150" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">Publication</text>
-                <text x="72" y="230" font-family="Inter, Arial" font-size="40" fill="white" font-weight="900">Sustainable futures</text>
-                <text x="72" y="288" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Just energy transition • climate action • justice</text>
-                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Energy Strategy Reviews (ScienceDirect)</text>
+                <text x="72" y="170" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">Publication</text>
+                <text x="72" y="250" font-family="Inter, Arial" font-size="36" fill="rgba(255,255,255,0.92)" font-weight="800">Sustainable futures</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Energy Strategy Reviews</text>
               </svg>' />
-
             <div class="card-body">
               <span class="tag"><span class="dot"></span> Elsevier / ScienceDirect</span>
               <h3>Sustainable futures: Aligning climate actions and socio economic justice through the just energy transition</h3>
               <p>Energy Strategy Reviews. Open access.</p>
-              <div class="meta">
-                <span>Peer-reviewed</span>
-                <span class="ext">Open ↗</span>
-              </div>
+              <div class="meta"><span>Peer-reviewed</span><span class="ext">Open ↗</span></div>
             </div>
           </a>
         </div>
       </section>
 
-      <!-- CONTRIBUTIONS -->
       <section id="contributions" class="block" aria-label="Contributions">
         <h2>Contributions</h2>
         <p>Institutional reports and published articles where I am cited, interviewed, or otherwise included as a contributor.</p>
 
         <div class="grid">
-          <!-- Featured: WEF Report (PDF) — should be first -->
           <a class="card" href="https://reports.weforum.org/docs/WEF_Powering_the_Future_2025.pdf" target="_blank" rel="noreferrer">
-            <img class="thumb"
-              alt="Contribution thumbnail: World Economic Forum report Powering the Future 2025"
-              loading="lazy"
+            <img class="thumb" alt="WEF report thumbnail" loading="lazy"
               src='data:image/svg+xml;utf8,
               <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
                 <defs>
@@ -331,100 +239,63 @@
                   </linearGradient>
                 </defs>
                 <rect width="1200" height="600" fill="url(%23g2)"/>
-                <rect x="70" y="70" width="1060" height="460" rx="26" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.20)"/>
-                <text x="110" y="165" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">World Economic Forum</text>
-                <text x="110" y="245" font-family="Inter, Arial" font-size="46" fill="white" font-weight="900">Powering the Future 2025</text>
-                <text x="110" y="305" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Institutional report (PDF)</text>
-                <text x="110" y="500" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Contribution / citation</text>
+                <text x="72" y="170" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">World Economic Forum</text>
+                <text x="72" y="250" font-family="Inter, Arial" font-size="36" fill="rgba(255,255,255,0.92)" font-weight="800">Powering the Future 2025</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Institutional report (PDF)</text>
               </svg>' />
-
             <div class="card-body">
               <span class="tag"><span class="dot"></span> World Economic Forum</span>
               <h3>Powering the Future 2025 (report)</h3>
               <p>Institutional report (PDF). I am a contributor in this report.</p>
-              <div class="meta">
-                <span>PDF</span>
-                <span class="ext">Open ↗</span>
-              </div>
+              <div class="meta"><span>PDF</span><span class="ext">Open ↗</span></div>
             </div>
           </a>
 
-          <!-- WEF Article -->
           <a class="card" href="https://www.weforum.org/stories/2024/11/14-experts-on-how-to-implement-responsible-resource-use-as-the-energy-transition-accelerates/" target="_blank" rel="noreferrer">
-            <img
-              class="thumb"
+            <img class="thumb"
               src="https://assets.weforum.org/article/image/large_LVukmsZkuMjbOScsiiUAfXIG570co8kl6zKgxXocfYw.jpg"
-              alt="Solar park image used on the World Economic Forum article"
-              loading="lazy"
-            />
+              alt="WEF article thumbnail"
+              loading="lazy" />
             <div class="card-body">
               <span class="tag"><span class="dot"></span> World Economic Forum</span>
               <h3>14 experts on implementing responsible resource use as the energy transition accelerates</h3>
               <p>A World Economic Forum story compiling expert perspectives on responsible resource use.</p>
-              <div class="meta">
-                <span>Published Nov 2024</span>
-                <span class="ext">Open ↗</span>
-              </div>
+              <div class="meta"><span>Published Nov 2024</span><span class="ext">Open ↗</span></div>
             </div>
           </a>
-          <a class="card"
-   href="https://openknowledge.worldbank.org/server/api/core/bitstreams/65601cc8-e958-4ed6-b82a-31a92fd375a3/content"
-   target="_blank"
-   rel="noreferrer">
 
-  <img class="thumb"
-    alt="World Bank report"
-    loading="lazy"
-    src='data:image/svg+xml;utf8,
-    <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
-      <defs>
-        <linearGradient id="wb" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="%230b1f3b"/>
-          <stop offset="1" stop-color="%23123a6b"/>
-        </linearGradient>
-      </defs>
-      <rect width="1200" height="600" fill="url(%23wb)"/>
-      <text x="80" y="180" font-family="Inter, Arial" font-size="46" fill="white" font-weight="900">
-        World Bank
-      </text>
-      <text x="80" y="260" font-family="Inter, Arial" font-size="30" fill="rgba(255,255,255,0.85)" font-weight="700">
-        Institutional report
-      </text>
-      <text x="80" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.75)" font-weight="700">
-        Citation / expert contribution
-      </text>
-    </svg>' />
-
-  <div class="card-body">
-    <span class="tag"><span class="dot"></span> World Bank</span>
-
-    <h3>World Bank institutional report</h3>
-
-    <p>
-      Includes citation.
-    </p>
-
-    <div class="meta">
-      <span>PDF</span>
-      <span class="ext">Open ↗</span>
-    </div>
-  </div>
-</a>
-
-          <!-- Optional: add more contributions here using the same pattern -->
+          <a class="card" href="https://openknowledge.worldbank.org/server/api/core/bitstreams/65601cc8-e958-4ed6-b82a-31a92fd375a3/content" target="_blank" rel="noreferrer">
+            <img class="thumb" alt="World Bank report thumbnail" loading="lazy"
+              src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+                <defs>
+                  <linearGradient id="wb" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="%230b1f3b"/>
+                    <stop offset="1" stop-color="%23123a6b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="1200" height="600" fill="url(%23wb)"/>
+                <text x="72" y="190" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">World Bank</text>
+                <text x="72" y="270" font-family="Inter, Arial" font-size="30" fill="rgba(255,255,255,0.86)" font-weight="800">Institutional report</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Citation / expert input</text>
+              </svg>' />
+            <div class="card-body">
+              <span class="tag"><span class="dot"></span> World Bank</span>
+              <h3>World Bank institutional report</h3>
+              <p>Includes citation and expert input.</p>
+              <div class="meta"><span>PDF</span><span class="ext">Open ↗</span></div>
+            </div>
+          </a>
         </div>
       </section>
 
-      <!-- CASE STUDIES -->
       <section id="case-studies" class="block" aria-label="Case studies">
         <h2>Case studies</h2>
         <p>Published case studies and teaching materials.</p>
 
         <div class="grid">
           <a class="card" href="https://ministerialleadership.harvard.edu/wp-content/uploads/2023/10/2023-Forum_Sierra-Leone-Case-Study_FINAL.pdf" target="_blank" rel="noreferrer">
-            <img class="thumb"
-              alt="Case study thumbnail: Ministerial Leadership Forum Sierra Leone"
-              loading="lazy"
+            <img class="thumb" alt="Case study thumbnail" loading="lazy"
               src='data:image/svg+xml;utf8,
               <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
                 <defs>
@@ -434,21 +305,15 @@
                   </linearGradient>
                 </defs>
                 <rect width="1200" height="600" fill="url(%23g3)"/>
-                <circle cx="220" cy="180" r="190" fill="rgba(14,165,233,0.22)"/>
-                <text x="72" y="150" font-family="Inter, Arial" font-size="42" fill="white" font-weight="800">Case study</text>
-                <text x="72" y="230" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">Sierra Leone</text>
-                <text x="72" y="290" font-family="Inter, Arial" font-size="26" fill="rgba(255,255,255,0.85)" font-weight="700">Ministerial Leadership Forum</text>
-                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Harvard Ministerial Leadership Program (PDF)</text>
+                <text x="72" y="170" font-family="Inter, Arial" font-size="44" fill="white" font-weight="900">Case study</text>
+                <text x="72" y="250" font-family="Inter, Arial" font-size="36" fill="rgba(255,255,255,0.92)" font-weight="800">Sierra Leone</text>
+                <text x="72" y="520" font-family="Inter, Arial" font-size="24" fill="rgba(255,255,255,0.78)" font-weight="700">Harvard Ministerial Leadership Program</text>
               </svg>' />
-
             <div class="card-body">
               <span class="tag"><span class="dot"></span> Harvard MLP</span>
               <h3>Ministerial Leadership Forum case study: Sierra Leone</h3>
               <p>Published PDF hosted by the Harvard Ministerial Leadership Program.</p>
-              <div class="meta">
-                <span>PDF</span>
-                <span class="ext">Open ↗</span>
-              </div>
+              <div class="meta"><span>PDF</span><span class="ext">Open ↗</span></div>
             </div>
           </a>
         </div>
@@ -459,13 +324,45 @@
 
   <footer class="footer">
     <div class="wrap">
-      © <span id="y"></span> KayBold Consulting ·
-      <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="mark" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;">KB</div>
+          <div>© <span id="y"></span> KayBold Consulting</div>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="blog.html">Publications</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const closeMenu = document.getElementById("closeMenu");
+
+    function openMenu(){
+      mobileMenu.classList.add("open");
+      menuBtn.setAttribute("aria-expanded","true");
+      document.body.style.overflow="hidden";
+    }
+    function shutMenu(){
+      mobileMenu.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded","false");
+      document.body.style.overflow="";
+    }
+
+    if (menuBtn) menuBtn.addEventListener("click", openMenu);
+    if (closeMenu) closeMenu.addEventListener("click", shutMenu);
+    if (mobileMenu){
+      mobileMenu.addEventListener("click", (e)=>{ if(e.target===mobileMenu) shutMenu(); });
+    }
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && mobileMenu.classList.contains("open")) shutMenu(); });
+    document.querySelectorAll(".mLink").forEach(a => a.addEventListener("click", shutMenu));
   </script>
 </body>
 </html>
