@@ -4,22 +4,252 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Why Delivery Fails | KayBold Consulting</title>
+  <meta name="description" content="Reform failure is rarely technical. It begins with misaligned incentives, unclear authority, and unrealistic sequencing." />
+  <meta name="theme-color" content="#0b1f3b" />
+
+  <style>
+    :root {
+      --ink: #171717;
+      --navy: #0b1f3b;
+      --muted: #525252;
+      --light: #a3a3a3;
+      --line: #e5e5e5;
+      --bg: #ffffff;
+      --content: 720px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 48px 0 0;
+    }
+
+    @media (min-width: 640px) {
+      body { padding: 80px 0 0; }
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Links */
+    .link {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+    .link:hover {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      height: 52px;
+      width: auto;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
+    @media (max-width: 580px) {
+      .nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    /* Article */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 12px;
+      line-height: 1.3;
+    }
+
+    .meta {
+      color: var(--light);
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    article {
+      font-size: 1.125rem;
+    }
+
+    article p {
+      margin: 0 0 24px;
+    }
+
+    article p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 96px;
+      padding-bottom: 56px;
+      font-size: 1.15rem;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 4px 0;
+    }
+
+    .footer-row span {
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .footer-row hr {
+      flex: 1;
+      border: none;
+      border-top: 1px dotted var(--line);
+      margin: 0;
+    }
+
+    .footer-row a {
+      flex-shrink: 0;
+    }
+
+    .copyright {
+      margin-top: 32px;
+      color: var(--light);
+      font-size: 0.875rem;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <header class="nav">
+      <a href="../index.html" class="nav-brand">
+        <img src="../logos/kBULB-02.png" alt="KayBold logo" class="nav-logo" />
+        <span class="nav-name">KayBold</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#services">Services</a>
+        <a href="../blog.html">Publications</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </header>
 
-  <h1>Why delivery fails before implementation begins</h1>
+    <main>
+      <a class="link back-link" href="../blog.html#insights">← Back to Publications</a>
 
-  <p>
-    Reform failure is rarely technical. It begins with misaligned incentives, unclear authority, and unrealistic sequencing.
-  </p>
+      <h1>Why delivery fails before implementation begins</h1>
+      <p class="meta">March 2026</p>
 
-  <p>
-    ( click here for more.)
-  </p>
+      <article>
+        <p>
+          Reform failure is rarely technical. It begins with misaligned incentives, unclear authority, and unrealistic sequencing.
+        </p>
 
-  <p>
-    <a href="../contact.html">Request a consultation →</a>
-  </p>
+        <p>
+          Most delivery challenges surface long before implementation starts. The root causes are predictable: competing priorities among stakeholders, ambiguous decision rights, insufficient political cover, or timelines that ignore institutional capacity.
+        </p>
 
+        <p>
+          Effective delivery requires more than good plans. It requires clarity about who decides, who benefits, who bears costs, and what happens when priorities conflict. Without this groundwork, even well-resourced initiatives stall.
+        </p>
+
+        <p>
+          The question is not whether obstacles will arise. The question is whether leaders have the structures, authority, and accountability routines to navigate them.
+        </p>
+
+        <div class="cta">
+          <p>
+            <a class="link" href="../contact.html">Request a consultation →</a>
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-row">
+        <span>LinkedIn</span>
+        <hr />
+        <a class="link" href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">@benitakayembe</a>
+      </div>
+      <div class="footer-row">
+        <span>Email</span>
+        <hr />
+        <a class="link" href="mailto:kayboldllc@gmail.com">kayboldllc@gmail.com</a>
+      </div>
+      <div class="copyright">© <span id="y"></span> KayBold Consulting</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
