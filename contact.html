@@ -27,10 +27,30 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(
+        135deg,
+        #dceef9,
+        #f9f5e0,
+        #def2e9,
+        #e6f2fa,
+        #f8f4de,
+        #dceef9
+      );
+      background-size: 500% 500%;
+      animation: gradient-shift 25s ease infinite;
       color: var(--muted);
       line-height: 1.7;
       padding: 48px 0 0;
+      min-height: 100vh;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      20% { background-position: 40% 80%; }
+      40% { background-position: 100% 50%; }
+      60% { background-position: 60% 20%; }
+      80% { background-position: 20% 60%; }
+      100% { background-position: 0% 50%; }
     }
 
     @media (min-width: 640px) {
@@ -98,6 +118,20 @@
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--ink);
+    }
+
+    .nav-cta {
+      padding: 6px 14px;
+      border: 1.5px solid #3b82a0;
+      border-radius: 50px;
+      color: #3b82a0;
+      font-weight: 500;
+      margin-top: -6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-cta:hover {
+      background: #3b82a0;
+      color: white;
     }
 
     @media (max-width: 580px) {
@@ -327,16 +361,16 @@
       <nav class="nav-links">
         <a href="index.html#services">Services</a>
         <a href="blog.html">Publications</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="contact.html" class="nav-cta">Request Consultation</a>
       </nav>
     </header>
 
     <main>
       <h1>Let's talk.</h1>
-      <p class="subtitle">Whether you have a specific decision to make, a reform to design, or a challenge you're still trying to frame, we'd like to hear about it. Share some context and we'll respond with how we can help.</p>
+      <p class="subtitle">Whether you have a specific decision to make, a reform to design, or a challenge you're still trying to frame, we'd like to hear about it. Share some context and we'll respond with how we can help!</p>
 
       <section class="section">
-        <p class="about-name">Benita Kayembe</p>
+        <p class="about-name">Benita Kayembe, Founder & Principal</p>
         <p>
           Benita Kayembe is the founder of KayBold Consulting. She holds degrees from Harvard University and Cornell University, and has built her career at the intersection of policy, health, and sustainable development across Sub-Saharan Africa.
         </p>
@@ -359,7 +393,7 @@
         <div class="contact-grid">
           <div>
             <h3 class="section-title">Direct contact</h3>
-            <p>Prefer email. Reach me directly and I will reply with scheduling options.</p>
+            <p>Prefer email. Reach out directly and we will reply with scheduling options.</p>
 
             <div class="contact-methods">
               <a class="contact-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=kayboldllc@gmail.com&su=KayBold%20Consulting%20Inquiry" target="_blank" rel="noreferrer">
@@ -476,7 +510,7 @@
           });
 
           if (res.ok) {
-            statusEl.textContent = "Thanks. I received your inquiry and will reply with next steps.";
+            statusEl.textContent = "Thanks! We received your inquiry and will reply with next steps.";
             form.reset();
           } else {
             statusEl.textContent = "Something went wrong. Please try again, or email kayboldllc@gmail.com.";
