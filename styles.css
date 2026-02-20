@@ -29,6 +29,11 @@
   --section-padding-mobile: 48px;
 }
 
+/* Selection color */
+::selection {
+  background: rgba(37, 99, 235, 0.15);
+}
+
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -138,12 +143,16 @@ ul, ol {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--gray-600);
-  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.15s;
 }
 
 .header__link:hover,
 .header__link--active {
   color: var(--navy);
+  text-decoration-color: var(--gray-300);
 }
 
 .header__cta {
@@ -220,10 +229,11 @@ ul, ol {
 }
 
 .hero__tagline {
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 1rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--gray-300);
   margin-bottom: 16px;
 }
@@ -280,10 +290,11 @@ ul, ol {
 }
 
 .section__tagline {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 1rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--accent);
   margin-bottom: 12px;
 }
@@ -310,12 +321,12 @@ ul, ol {
   border: 1px solid var(--gray-200);
   border-radius: 8px;
   padding: 32px;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
+  background: var(--gray-50);
+  border-color: var(--gray-300);
 }
 
 .card__icon {
@@ -343,10 +354,14 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gray-300);
+  transition: text-decoration-color 0.15s;
 }
 
 .card__link:hover {
-  text-decoration: underline;
+  text-decoration-color: var(--accent);
 }
 
 /* Services List */
@@ -409,7 +424,9 @@ ul, ol {
 
 .service-item__meta {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gray-500);
 }
 
 /* About Section */
@@ -472,12 +489,12 @@ ul, ol {
   border: 1px solid var(--gray-200);
   border-radius: 8px;
   overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .insight-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
+  background: var(--gray-50);
+  border-color: var(--gray-300);
 }
 
 .insight-card__image {
@@ -492,10 +509,10 @@ ul, ol {
 }
 
 .insight-card__meta {
-  font-size: 0.8rem;
-  color: var(--gray-400);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gray-500);
   margin-bottom: 12px;
 }
 
@@ -548,7 +565,9 @@ ul, ol {
 
 .pub-item__meta {
   font-size: 0.85rem;
-  color: var(--gray-400);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gray-500);
   margin-bottom: 8px;
 }
 
@@ -663,11 +682,15 @@ ul, ol {
 .footer__links a {
   font-size: 0.9rem;
   color: var(--gray-600);
-  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.15s;
 }
 
 .footer__links a:hover {
   color: var(--navy);
+  text-decoration-color: var(--gray-400);
 }
 
 .footer__bottom {
@@ -893,7 +916,9 @@ ul, ol {
 }
 
 .article-header__meta {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-serif);
+  font-style: italic;
   color: var(--gray-500);
   margin-bottom: 16px;
 }
@@ -947,6 +972,19 @@ ul, ol {
 }
 
 /* Utility Classes */
+/* Subtle link style (ekzhang-inspired) */
+.link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gray-300);
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.link:hover {
+  color: var(--navy);
+  text-decoration-color: var(--navy);
+}
+
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
