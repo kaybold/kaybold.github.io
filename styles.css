@@ -118,12 +118,12 @@ ul, ol {
 }
 
 .header__logo {
-  height: 44px;
+  height: 56px;
   width: auto;
 }
 
 .header__name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--navy);
 }
@@ -598,8 +598,8 @@ ul, ol {
 
 /* Footer */
 .footer {
-  background: var(--navy-dark);
-  color: var(--gray-300);
+  background: var(--gray-50);
+  color: var(--gray-700);
   padding: 64px 0 32px;
 }
 
@@ -638,13 +638,13 @@ ul, ol {
 .footer__brand-name {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--navy);
 }
 
 .footer__desc {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 .footer__col-title {
@@ -652,7 +652,7 @@ ul, ol {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--white);
+  color: var(--navy);
   margin-bottom: 16px;
 }
 
@@ -662,12 +662,12 @@ ul, ol {
 
 .footer__links a {
   font-size: 0.9rem;
-  color: var(--gray-400);
+  color: var(--gray-600);
   transition: color 0.15s;
 }
 
 .footer__links a:hover {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .footer__bottom {
@@ -675,7 +675,7 @@ ul, ol {
   justify-content: space-between;
   align-items: center;
   padding-top: 32px;
-  border-top: 1px solid var(--gray-700);
+  border-top: 1px solid var(--gray-300);
   font-size: 0.85rem;
   color: var(--gray-500);
 }
@@ -694,12 +694,12 @@ ul, ol {
 }
 
 .footer__social a {
-  color: var(--gray-400);
+  color: var(--gray-500);
   transition: color 0.15s;
 }
 
 .footer__social a:hover {
-  color: var(--white);
+  color: var(--navy);
 }
 
 /* Contact Page */
