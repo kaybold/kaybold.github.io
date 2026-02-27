@@ -1086,3 +1086,6 @@ ul, ol {
 .mt-2 { margin-top: 16px; }
 .mt-3 { margin-top: 24px; }
 .mt-4 { margin-top: 32px; }
+
+/* Draft posts - hidden until published */
+.draft { display: none; }
