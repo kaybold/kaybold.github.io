@@ -145,7 +145,7 @@
           </div>
         </a>
 
-        <a href="insights/US–DRC-Strategic-Partnership.html" class="insight-card">
+        <a id="latest-insight" href="insights/US–DRC-Strategic-Partnership.html" class="insight-card">
           <div class="insight-card__content">
             <p class="insight-card__meta">Insight</p>
             <h3 class="insight-card__title">The U.S.–DRC Strategic Partnership Agreement</h3>
@@ -239,6 +239,38 @@
         header.classList.remove('header--scrolled');
       }
     });
+
+    // Load latest insight from blog.html
+    fetch('blog.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        // Find the Insights section (the one with "Insights" as h2 text)
+        const sections = doc.querySelectorAll('.mb-4');
+        let insightsSection = null;
+        sections.forEach(section => {
+          const h2 = section.querySelector('h2');
+          if (h2 && h2.textContent.trim() === 'Insights') {
+            insightsSection = section;
+          }
+        });
+        if (insightsSection) {
+          const firstPost = insightsSection.querySelector('.pub-item');
+          if (firstPost) {
+            const title = firstPost.querySelector('.pub-item__title')?.textContent || '';
+            const desc = firstPost.querySelector('.pub-item__desc')?.textContent || '';
+            const href = firstPost.getAttribute('href') || '';
+            const card = document.getElementById('latest-insight');
+            if (card) {
+              card.setAttribute('href', href);
+              card.querySelector('.insight-card__title').textContent = title;
+              card.querySelector('.insight-card__excerpt').textContent = desc;
+            }
+          }
+        }
+      })
+      .catch(err => console.log('Could not load latest insight:', err));
   </script>
 </body>
 </html>
