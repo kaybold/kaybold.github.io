@@ -358,6 +358,27 @@
       text-decoration: underline;
     }
 
+    /* LANGUAGE NOTE */
+    .lang-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--smoke);
+      letter-spacing: 0.04em;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-note::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7C8D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cpath d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+      background-size: contain;
+      flex-shrink: 0;
+    }
+
     /* FOOTER */
     .site-footer {
       background: var(--navy);
@@ -453,6 +474,8 @@
 
   <main>
     <div class="article-wrap">
+
+      <p class="lang-note">Originally written in English</p>
 
       <p class="article-lead">
         The U.S.–DRC Strategic Partnership Agreement is the kind of deal people love to overrate
