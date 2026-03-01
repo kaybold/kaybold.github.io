@@ -75,6 +75,33 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: rgba(255,255,255,0.9); }
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 300;
+    }
+    .menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
 
     /* HERO */
     .hero {
@@ -363,7 +390,26 @@
 
     @media (max-width: 720px) {
       .site-nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      .menu-btn { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(26,46,68,0.98);
+        flex-direction: column;
+        padding: 24px;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.85rem;
+      }
       .hero { padding: 100px 24px 64px; }
       .article-wrap { padding: 56px 20px 72px; }
       .pullquote { margin: 36px -20px; padding: 32px 24px; }
@@ -376,7 +422,12 @@
 
   <nav class="site-nav">
     <a href="../index.html" class="nav-logo"><img src="../logos/kBULB-01.png" alt="KayBold logo"> KayBold</a>
-    <ul class="nav-links">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="../index.html">Home</a></li>
       <li><a href="../blog.html">Insights</a></li>
       <li><a href="../contact.html">Contact</a></li>
@@ -542,6 +593,15 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    // Reveal animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
