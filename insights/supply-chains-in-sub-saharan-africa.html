@@ -2,375 +2,576 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Supply Chains in Sub Saharan Africa | KayBold</title>
-  <meta name="description" content="From bottlenecks to strategic capability: why African supply chains are now a policy frontier shaping trade, food systems, manufacturing, and critical minerals." />
-  <meta name="theme-color" content="#0a1628" />
-  <link rel="icon" type="image/png" href="../logos/favicon-32x32.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Real Bottleneck in Sub-Saharan Africa Isn't What You Think | KayBold</title>
+  <meta name="description" content="Most governments treat supply chains as a logistics problem. That framing is costing them — and it's starting to change.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .pull-quote {
-      font-size: 1.35rem;
-      line-height: 1.4;
-      font-weight: 650;
-      margin: 2.5rem 0;
-      padding: 1.75rem 2rem;
-      border-left: 4px solid var(--accent);
-      background: rgba(10, 22, 40, 0.04);
-      color: var(--primary);
+    :root {
+      --navy:  #1A2E44;
+      --blue:  #2E6DA4;
+      --gold:  #C9A84C;
+      --sand:  #f9f7f4;
+      --ink:   #1C1C1C;
+      --smoke: #6B7C8D;
+      --rule:  #D5C9B8;
+      --light: #E8F2FA;
     }
 
-    .pull-quote--center {
-      text-align: center;
-      border-left: none;
-      border-top: 3px solid var(--accent);
-      border-bottom: 3px solid var(--accent);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--sand);
+      color: var(--ink);
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.9;
     }
 
-    .pull-quote cite {
-      display: block;
-      font-size: 0.95rem;
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(26,46,68,0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 56px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
       font-weight: 500;
-      margin-top: 0.75rem;
-      opacity: 0.8;
-      font-style: normal;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
     }
+    .nav-links a:hover { color: rgba(255,255,255,0.9); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 8px 18px;
+    }
+    .nav-cta:hover { background: #e0bc66 !important; }
 
-    .article-figure {
-      margin: 1.75rem 0 2.25rem;
-      border: 1px solid rgba(10, 22, 40, 0.10);
-      border-radius: 12px;
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
       overflow: hidden;
-      background: rgba(10, 22, 40, 0.02);
     }
-
-    .article-figure img {
-      width: 100%;
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 85% 15%, rgba(46,109,164,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 65% at 8% 85%, rgba(201,168,76,0.09) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(46,109,164,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,109,164,0.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
       display: block;
-      height: auto;
+      width: 36px; height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 26px;
+    }
+    .hero h1 .italic {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+    .hero-deck {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+    }
+    .hero-meta .tag {
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      padding: 3px 10px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .article-figure figcaption {
-      font-size: 0.95rem;
-      padding: 0.9rem 1rem;
-      opacity: 0.85;
+    /* ARTICLE */
+    .article-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+    }
+    .article-lead {
+      font-size: 1.22rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.82;
+      color: var(--blue);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .article-wrap p {
+      font-size: 1rem;
+      line-height: 1.88;
+      color: #2C2C2C;
+      margin-bottom: 26px;
+    }
+    .article-wrap h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 56px 0 18px;
+      line-height: 1.3;
     }
 
-    @media (max-width: 640px) {
-      .pull-quote {
-        font-size: 1.15rem;
-        padding: 1.25rem 1.25rem;
-      }
+    /* PULL QUOTE */
+    .pullquote {
+      margin: 48px -48px;
+      padding: 40px 56px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .pullquote::before {
+      content: '\201C';
+      position: absolute;
+      top: -24px; left: 36px;
+      font-family: 'Merriweather', serif;
+      font-size: 10rem;
+      color: rgba(46,109,164,0.15);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .pullquote p {
+      font-family: 'Merriweather', serif;
+      font-size: 1.18rem !important;
+      font-style: italic;
+      color: #C0D8EE !important;
+      line-height: 1.72 !important;
+      margin: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .pullquote cite {
+      display: block;
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* SIGNAL CARDS */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #C2B49A;
+      margin: 40px 0;
+    }
+    .signal-card {
+      background: var(--sand);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+    .signal-card:hover { background: var(--light); }
+    .signal-num {
+      font-family: 'Merriweather', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--blue);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .signal-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .signal-card p {
+      font-size: 0.88rem !important;
+      line-height: 1.65 !important;
+      color: var(--smoke) !important;
+      margin: 0 !important;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: var(--navy);
+      padding: 52px 48px;
+      margin-top: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      right: -70px; top: -70px;
+      width: 260px; height: 260px;
+      border: 50px solid rgba(46,109,164,0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .cta-box h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .cta-box p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45) !important;
+      font-size: 0.93rem !important;
+      line-height: 1.65 !important;
+      max-width: 460px;
+      margin-bottom: 28px !important;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .btn:hover { background: #e0bc66; transform: translateX(4px); }
+    .btn::after { content: '→'; font-size: 1rem; }
+
+    .article-footnote {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      color: #9A8E7F;
+      line-height: 1.85;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--navy);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .site-footer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .site-footer a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .site-nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 64px; }
+      .article-wrap { padding: 56px 20px 72px; }
+      .pullquote { margin: 36px -20px; padding: 32px 24px; }
+      .signal-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 36px 24px; }
+      .site-footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
     }
   </style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="../index.html" class="header__brand">
-        <img src="../logos/kBULB-02.png" alt="KayBold" class="header__logo" />
-        <span class="header__name">KayBold</span>
-      </a>
 
-      <button class="header__menu-btn" id="menuBtn" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+  <nav class="site-nav">
+    <a href="../index.html" class="nav-logo"><img src="../logos/kBULB-01.png" alt="Kaybold logo"> KayBold</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html">Insights</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="KAYBOLD%20CONSULTING%20SUPPLY%20CHAINS%20INSIGHT%20BRIEF.pdf" class="nav-cta">Full Brief</a></li>
+    </ul>
+  </nav>
 
-      <nav class="header__nav" id="nav">
-        <a href="../about.html" class="header__link">About</a>
-        <a href="../index.html#services" class="header__link">Services</a>
-        <a href="../blog.html" class="header__link">Insights</a>
-        <a href="../contact.html" class="header__cta">Get in Touch</a>
-      </nav>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Supply Chain Strategy &nbsp;·&nbsp; Sub-Saharan Africa</div>
+      <h1>The Real Bottleneck<br>in Sub-Saharan Africa<br>Isn't <span class="italic">What You Think</span></h1>
+      <p class="hero-deck">Most governments treat supply chains as a logistics problem. That framing is costing them — and it's starting to change.</p>
+      <div class="hero-meta">
+        <span class="tag">Insight</span>
+        <span>·</span>
+        <span>2026</span>
+        <span>·</span>
+        <span>6 min read</span>
+        <span>·</span>
+        <span>KayBold Consulting</span>
+      </div>
     </div>
   </header>
 
-  <!-- Article Header -->
-  <section class="article-header">
-    <div class="container">
-      <p class="article-header__meta">
-        <a href="../blog.html" style="color: var(--accent);">&larr; Back to Insights</a>
-        &nbsp;&bull;&nbsp; February 2026
+  <main>
+    <div class="article-wrap">
+
+      <p class="article-lead">
+        Sub-Saharan Africa's supply chains are not a transport problem with an infrastructure solution.
+        They are a governance and coordination challenge with profound consequences for economic
+        transformation — and the window to address them strategically is opening right now.
       </p>
-      <h1 class="article-header__title">Supply Chains in Sub Saharan Africa</h1>
-      <p style="margin-top: .75rem; opacity: .9;">From Bottlenecks to Strategic Capability</p>
-    </div>
-  </section>
 
-  <!-- Article Content -->
-  <section class="article-content">
-    <div class="container container--narrow">
+      <p class="reveal">
+        Spend enough time working with firms and institutions across the region and a pattern becomes clear.
+        The conversation about supply chains almost always starts in the same place: roads, ports, the
+        financing gap, the last mile. These are real constraints. But they are also a frame that keeps the
+        conversation too narrow.
+      </p>
 
-      <p>Supply chains in Sub Saharan Africa are not just a logistics issue. They are central to economic resilience, regional integration, industrial policy, food systems, the future of critical minerals, and more.</p>
+      <p class="reveal">
+        What the evidence increasingly shows is that some of the highest-impact improvements in trade and
+        supply chain performance come not from capital expenditure, but from how borders are managed, how
+        documentation flows, and how agencies coordinate. Recent research on trade facilitation in Africa
+        finds that time-to-trade and logistics performance measures have significant, measurable effects on
+        trade outcomes — effects that don't require billion-dollar infrastructure programs to unlock.
+      </p>
 
-      <p>For many years, firms and governments across the region have operated within a difficult environment shaped by high transport costs, border delays, weak corridor infrastructure, fragmented regulation, and limited cold chain systems. These constraints are significant. Reuters reporting in 2025 noted that infrastructure financing needs in Africa still far exceed available investment, while border frictions continue to slow intra African trade. (Reuters 2025)</p>
-
-      <p>At the same time, the strategic context is changing. The African Continental Free Trade Area (AfCFTA) implementation, private logistics investment, and digital coordination tools are creating new opportunities for governments, development partners, and investors. Recent academic work also supports this shift, showing that logistics performance, digital adoption, and trade facilitation can materially shape trade outcomes and regional value chain development in Africa. (MDPI)</p>
-
-      <!-- Image (add your provided asset here) -->
-      <figure class="article-figure">
-        <!-- Update this path to where you store the image -->
-        <figcaption>Signals shaping the narrative: infrastructure finance constraints (Reuters) and logistics/digitalization evidence (MDPI).</figcaption>
-      </figure>
-
-      <blockquote class="pull-quote">
-        Treat supply chains as a policy capability, not only as a private sector efficiency function.
-      </blockquote>
-
-      <h2>Why this matters now</h2>
-      <p>Supply chain performance affects outcomes in sectors that define the region’s development trajectory.</p>
-      <ul>
-        <li>Food systems and agricultural exports</li>
-        <li>Health and pharmaceutical distribution</li>
-        <li>Regional manufacturing and processing</li>
-        <li>Cross border commerce and urban consumption</li>
-        <li>Critical minerals and energy transition industries</li>
-      </ul>
-      <p>This is why supply chains should be treated as a policy capability, not only as a private sector efficiency function.</p>
-
-      <h2>The constraints are still real</h2>
-      <p>Many of the region’s supply chains are and remain expensive, slow, and uneven in quality. Although familiar, these constraints are decisive.</p>
-
-      <h3>Infrastructure and connectivity gaps</h3>
-      <p>Road, rail, port, warehousing, and energy constraints continue to increase costs and reduce reliability. Reuters reporting has highlighted the scale of the financing gap and the continuing pressure on development finance for infrastructure and industrialization. (Reuters) AfDB also emphasizes the importance of stronger public and private financing partnerships to close infrastructure gaps. (African Development Bank)</p>
-
-      <h3>Border friction and non tariff barriers</h3>
-      <p>Tariff reform alone does not move goods efficiently. Customs delays, documentation burdens, and inconsistent procedures often create more practical friction than tariffs themselves. Reuters reporting on AfCFTA implementation points to these operational barriers as a major reason progress remains uneven. (Reuters) This aligns with World Bank and IMF analysis, which both emphasize that the largest gains from AfCFTA depend heavily on reducing non tariff barriers and improving trade facilitation. (World Bank)</p>
-
-      <h3>Uneven logistics capacity across countries and corridors</h3>
-      <p>Some hubs are modernizing rapidly, while others remain constrained by poor storage, weak handling capacity, and unreliable inland transport links. Academic research on logistics in Sub Saharan Africa shows that these structural constraints remain persistent and interact with institutional capacity and skills gaps. (MDPI)</p>
-
-      <h3>Cold chain limitations in agriculture and health</h3>
-      <p>Perishable goods, including fresh produce and temperature sensitive medical products, depend on reliable storage and transport systems. In many markets, cold chain capacity is still underdeveloped, which limits export competitiveness and increases losses. This remains a major practical constraint in food systems and health supply chains across the region, as reflected in policy and logistics research. (MDPI)</p>
-
-      <h2>AfCFTA changes the policy horizon</h2>
-      <p>The African Continental Free Trade Area is the most important policy development shaping supply chains on the continent. Its significance is not only about increasing trade volumes. It is about enabling regional value chains, reducing dependence on extra continental sourcing, and supporting local value addition.</p>
-
-      <p>Reuters reported that AfCFTA has created momentum, but implementation remains uneven, with only a subset of countries trading at scale under the preferential framework. (Reuters) This gap between policy ambition and operational execution is where supply chain reform becomes decisive.</p>
-
-      <p>World Bank analysis on AfCFTA shows that long term gains are strongest when countries reduce trade costs and improve border and logistics performance, not only when tariffs are lowered. (World Bank) IMF analysis similarly emphasizes the importance of implementation capacity and adjustment support for achieving the agreement’s full benefits. (IMF)</p>
-
-      <p>Recent academic work also reinforces this point. Research on AfCFTA related logistics challenges and future value chains argues that transport, coordination, and trade support systems are central to unlocking the agreement’s potential. (MDPI)</p>
-
-      <h2>Private investment is a strategic signal</h2>
-      <p>Private sector commitments suggest growing confidence in the region’s long term trade and consumption potential. DHL Group announced a planned investment of more than 300 million euros in Sub Saharan Africa to expand infrastructure and service capability across sectors such as commerce, perishables, energy, and healthcare. (DHL Group)</p>
-
-      <p>This matters because it signals two things. First, African supply chains are becoming more strategically important in global trade planning. Second, demand is shifting toward specialized logistics capability, including reliability, visibility, compliance, and sector specific solutions.</p>
-
-      <blockquote class="pull-quote">
-        The next phase is about quality and coordination as much as physical movement.
-      </blockquote>
-
-      <h2>Digital coordination is a real advantage</h2>
-      <p>One of the region’s strongest opportunities lies in digital coordination. In many markets, mobile first business environments have supported rapid adoption of digital payments, tracking tools, platform based freight matching, and commerce fulfillment systems.</p>
-
-      <p>Academic research on logistics in Sub Saharan Africa argues that digitalization can help firms operate more effectively despite infrastructure constraints, especially when paired with skills development and regulatory improvements. (MDPI) Research on AfCFTA logistics pathways also points to digital systems as a critical enabler of future regional value chains. (MDPI)</p>
-
-      <p>Digital tools do not replace roads, ports, or warehousing. They do, however, reduce information asymmetry, improve asset utilization, and support better coordination in fragmented operating environments.</p>
-
-      <h2>Trade facilitation is where gains become real</h2>
-      <p>One of the most important additions from the academic literature is clear evidence on trade facilitation. Recent research finds that time to trade, logistics performance, and trade enabling measures significantly influence trade outcomes in Africa. (Tandfonline)</p>
-
-      <p>This matters for policy design because it suggests that some high impact reforms are not always the most capital intensive. Improvements in customs processes, documentation harmonization, border agency coordination, and digital clearance systems can produce meaningful gains if implemented consistently.</p>
-
-      <p>UNCTAD also underscores the importance of reducing non tariff trade costs, streamlining import and export procedures, and upgrading infrastructure to support resilience and regional trade integration. (UN Trade and Development (UNCTAD))</p>
-
-      <h2>Agriculture and food systems need supply chain thinking</h2>
-      <p>Agricultural transformation in Sub Saharan Africa is often discussed in terms of production, inputs, and yields. But supply chain performance is just as important.</p>
-
-      <p>The strategic question is whether countries can build systems that support aggregation, quality control, storage, traceability, and reliable routes to domestic and export markets. Without this, productivity gains do not fully translate into incomes, competitiveness, or food system resilience.</p>
-
-      <p>This is where a supply chain lens becomes essential for development programming, especially in agriculture, public health, and regional trade initiatives. The policy literature and institutional reports consistently support this approach. (UN Trade and Development (UNCTAD))</p>
-
-      <h2>Critical minerals and industrial policy</h2>
-      <p>Sub Saharan Africa is also becoming more central to global supply chains because of the energy transition. Countries linked to copper, cobalt, lithium, and other strategic minerals are increasingly important to industrial policy and manufacturing resilience worldwide.</p>
-
-      <p>The key policy question is not only extraction. It is whether African economies can capture more value through processing, logistics services, and regional industrial linkages.</p>
-
-      <p>That outcome depends heavily on supply chain strategy, including corridor governance, reliable power, customs modernization, and coordination across mining, transport, finance, and trade institutions. Research and policy reports on regional trade and value chains strongly support this broader approach. (MDPI)</p>
-
-      <h2>What a stronger supply chain agenda looks like</h2>
-      <p>A credible supply chain strategy for Sub Saharan Africa should focus on implementation and institutional coordination.</p>
-
-      <h3>Corridor focused reform</h3>
-      <p>Prioritize a limited number of high impact corridors and reduce friction across ports, border posts, inland transport, warehousing, and customs processes.</p>
-
-      <h3>Trade facilitation reform</h3>
-      <p>Digitize customs and clearance procedures, harmonize documentation, and improve inter agency coordination. Academic evidence suggests these reforms can have large trade effects. (Tandfonline)</p>
-
-      <h3>Sector specific logistics capability</h3>
-      <p>Perishables, pharmaceuticals, and critical minerals require different infrastructure, compliance systems, and service models. A generic logistics improvement approach is usually not enough.</p>
-
-      <h3>Public and private delivery partnerships</h3>
-      <p>Infrastructure and capability gaps are too large to close through public finance alone. AfDB and Reuters reporting both point to the need for stronger financing and partnership models for regional infrastructure and industrial development. (African Development Bank)</p>
-
-      <h2>Conclusion</h2>
-      <p>Supply chains in Sub Saharan Africa remain constrained by infrastructure deficits, border friction, and uneven logistics capacity. But they are also becoming one of the region’s most important frontiers for economic transformation.</p>
-
-      <p>AfCFTA has changed the policy horizon. Private investment is signaling confidence. Digital tools are improving coordination. Academic research increasingly supports the case for trade facilitation and logistics reform as core development priorities. (DHL Group)</p>
-
-      <p>The opportunity now is to move from ambition to execution.</p>
-
-      <blockquote class="pull-quote">
-        For governments and development partners, the message is clear: treat supply chains as development infrastructure and state capability, not only as transport.
-      </blockquote>
-
-      <h2>Sources</h2>
-      <ol>
-        <li>
-          African Development Bank (AfDB) (2023) <em>Public private partnerships needed to bridge Africa's infrastructure development gap.</em>
-          <br />
-          <a href="https://www.afdb.org" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Abrego, L., de Zamaroczy, M., Gursoy, T., Nicholls, G., Perez Saiz, H. and Rosas, J. (2020)
-          <em>The African Continental Free Trade Area: Potential economic impact and challenges.</em> IMF Staff Discussion Note 2020 004.
-          <br />
-          <a href="https://www.imf.org" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          DHL Group (2025) <em>DHL Group commits more than 300 million euros to accelerate trade growth across Africa.</em>
-          <br />
-          <a href="https://www.dhl.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Kuteyi, D. and Winkler, H. (2022) <em>Logistics challenges in Sub Saharan Africa and opportunities for digitalization.</em> Sustainability, 14(4), 2399.
-          <br />
-          <a href="https://www.mdpi.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Maliszewska, M., Cancho, C., van der Mensbrugghe, D. and Osorio Roddarte, I. (2020)
-          <em>The African Continental Free Trade Area: Economic and distributional effects.</em> World Bank.
-          <br />
-          <a href="https://openknowledge.worldbank.org" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Nitsche, B. et al. (2024) <em>Leveraging the potential of the African Continental Free Trade Area: Logistics challenges and development paths for future value chains in Africa.</em> Logistics, 8(1), 25.
-          <br />
-          <a href="https://www.mdpi.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Reuters (2025) <em>'We are on our own': Africa looks within to weather growing global tariff turmoil.</em> Reuters, 18 July.
-          <br />
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Reuters (2026) <em>AfDB looks to boost ties to Arab funders to plug development finance gap.</em> Reuters, 13 January.
-          <br />
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          UNCTAD (2024) <em>Economic Development in Africa Report 2024: Unlocking Africa's trade potential, boosting regional markets and reducing risks.</em>
-          <br />
-          <a href="https://unctad.org" target="_blank" rel="noreferrer">View source</a>
-        </li>
-        <li>
-          Wassie, M.A., Kornher, L. and Zaki, C. (2025) <em>Revisiting the impact of trade facilitation measures in Africa.</em> The Journal of International Trade and Economic Development.
-          <br />
-          <a href="https://www.tandfonline.com" target="_blank" rel="noreferrer">View source</a>
-        </li>
-      </ol>
-
-      <!-- Share -->
-      <div class="article-share">
-        <p class="article-share__label">Share this article</p>
-        <a class="article-share__btn" href="#" target="_blank" rel="noreferrer" id="linkedinShare">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          Share on LinkedIn
-        </a>
+      <div class="pullquote reveal">
+        <p>The largest gains from AfCFTA depend heavily on reducing non-tariff barriers and improving
+        trade facilitation — not only on lowering tariffs.</p>
+        <cite>World Bank Group, 2020</cite>
       </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2 class="cta-section__title">Need strategic advisory on policy, trade, or market entry?</h2>
-    <p class="cta-section__text">Share your context and we&rsquo;ll respond with how we can help.</p>
-    <a href="../contact.html" class="cta-section__btn">Request a Consultation</a>
-  </section>
+      <h2 class="reveal">The AfCFTA Moment Is Real — But Execution Is Everything</h2>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__brand">
-            <img src="../logos/kBULB-02.png" alt="KayBold" />
-            <span class="footer__brand-name">KayBold</span>
-          </div>
-          <p class="footer__desc">Strategic counsel at the intersection of policy, politics, and implementation.</p>
+      <p class="reveal">
+        The African Continental Free Trade Area has changed what's possible on paper. But Reuters
+        reporting in 2025 makes clear that implementation remains uneven: only a subset of countries
+        are trading at scale under the preferential framework. The agreement exists. The institutional
+        machinery to operationalize it, in many corridors, does not yet.
+      </p>
+
+      <p class="reveal">
+        This gap — between signed commitments and operational reality — is exactly where supply chain
+        strategy becomes decisive. AfCFTA is not primarily a tariff story. It is a logistics,
+        coordination, and facilitation story. The countries and corridors that build the underlying
+        capability stand to capture a disproportionate share of the gains.
+      </p>
+
+      <h2 class="reveal">Three Signals Worth Taking Seriously</h2>
+
+      <div class="signal-grid reveal">
+        <div class="signal-card">
+          <div class="signal-num">01</div>
+          <div class="signal-label">Private Capital</div>
+          <p>DHL Group committed over €300M to Sub-Saharan Africa in 2025 — a clear long-term bet on the region's trade growth by one of the world's largest logistics operators.</p>
         </div>
-
-        <div>
-          <h4 class="footer__col-title">Navigation</h4>
-          <ul class="footer__links">
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../index.html#services">Services</a></li>
-            <li><a href="../blog.html">Insights</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-          </ul>
+        <div class="signal-card">
+          <div class="signal-num">02</div>
+          <div class="signal-label">Digital Leapfrog</div>
+          <p>Mobile-first markets are adopting digital freight, payments, and coordination tools faster than legacy infrastructure can be built. Digitalization is compressing the gap.</p>
         </div>
-
-        <div>
-          <h4 class="footer__col-title">Services</h4>
-          <ul class="footer__links">
-            <li><a href="../contact.html?engagement=Strategic%20Consultation">Strategic Consultation</a></li>
-            <li><a href="../contact.html?engagement=Policy%20Diagnostic">Policy Diagnostic</a></li>
-            <li><a href="../contact.html?engagement=Advisory%20Engagement">Advisory Engagement</a></li>
-            <li><a href="../contact.html?engagement=DRC%20Market%20Entry">DRC Market Entry</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__col-title">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            <li><a href="../contact.html">Get in Touch</a></li>
-          </ul>
+        <div class="signal-card">
+          <div class="signal-num">03</div>
+          <div class="signal-label">Critical Minerals</div>
+          <p>The energy transition has made the region's supply chain corridors geopolitically significant. How value is captured — not just extracted — is the next policy frontier.</p>
         </div>
       </div>
 
-      <div class="footer__bottom">
-        <p>&copy; <span id="year"></span> KayBold Consulting. All rights reserved.</p>
-        <div class="footer__social">
-          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
+      <h2 class="reveal">Agriculture Can't Transform Without Supply Chains</h2>
+
+      <p class="reveal">
+        Agricultural transformation is routinely framed around production: better inputs, higher yields,
+        improved seed varieties. But a farm that produces more cannot automatically access better markets.
+        The constraint is aggregation, cold chain, traceability, and reliable routes to buyers —
+        domestic and international.
+      </p>
+
+      <p class="reveal">
+        Without supply chain investment, productivity gains don't fully translate into income or
+        competitiveness. This is a systems problem, and it requires a systems response that connects
+        production support to market-facing logistics capability.
+      </p>
+
+      <h2 class="reveal">The Policy Implication</h2>
+
+      <p class="reveal">
+        Supply chains should be treated as development infrastructure and state capability — not
+        delegated entirely to the private sector as an efficiency problem. That means corridor-level
+        reform programs, trade facilitation investment, sector-specific logistics development for
+        perishables and critical minerals, and serious public-private partnership structures that
+        can mobilize financing the public purse alone cannot provide.
+      </p>
+
+      <p class="reveal">
+        The institutions that get this right — that build supply chain capability into their
+        development planning rather than treating it as an afterthought — will have a material
+        advantage in capturing AfCFTA's upside, attracting private investment, and building
+        resilient food and industrial systems.
+      </p>
+
+      <p class="reveal">
+        The constraints are familiar. The opportunity is new. The question is who moves first.
+      </p>
+
+      <div class="cta-box reveal">
+        <div class="cta-eyebrow">Going Deeper</div>
+        <h3>Read the Full Insight Brief</h3>
+        <p>
+          Infrastructure gaps, AfCFTA implementation, digital coordination, trade facilitation
+          evidence, and a practical four-pillar reform framework — fully cited.
+        </p>
+        <a href="KAYBOLD%20CONSULTING%20SUPPLY%20CHAINS%20INSIGHT%20BRIEF.pdf" class="btn">Read the Full Brief</a>
       </div>
+
+      <p class="article-footnote reveal">
+        Sources: Goko &amp; George (2025), Reuters &nbsp;·&nbsp; World Bank Group (2020) &nbsp;·&nbsp;
+        International Monetary Fund (2020) &nbsp;·&nbsp; Kuteyi &amp; Winkler (2022), Sustainability
+        &nbsp;·&nbsp; Nitsche et al. (2024), Logistics &nbsp;·&nbsp;
+        Mengistu Alamneh Wassie et al. (2025), Journal of International Trade &amp; Economic Development
+        &nbsp;·&nbsp; DHL Group (2025) &nbsp;·&nbsp; UN Trade &amp; Development (2025)
+        &nbsp;·&nbsp; African Development Bank (2023)
+      </p>
+
     </div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <p>© 2026 KayBold Consulting. All rights reserved.</p>
+    <a href="mailto:kayboldllc@gmail.com">kayboldllc@gmail.com</a>
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const nav = document.getElementById('nav');
-    menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('header__nav--open');
-    });
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) header.classList.add('header--scrolled');
-      else header.classList.remove('header--scrolled');
-    });
-
-    // LinkedIn share button
-    const linkedinShare = document.getElementById('linkedinShare');
-    if (linkedinShare) {
-      const shareUrl = 'https://kaybold.com' + window.location.pathname;
-      linkedinShare.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
