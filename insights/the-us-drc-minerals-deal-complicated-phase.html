@@ -1,193 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>U.S. DRC Minerals Deal in a Complicated Phase | KayBold</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The U.S. DRC Minerals Deal in a Complicated Phase | KayBold</title>
   <meta name="description" content="A thesis first assessment of the U.S. DRC minerals partnership as it collides with legal pressure, conflict dynamics, and geopolitical competition.">
-  <meta name="theme-color" content="#0a1628">
-  <link rel="icon" type="image/png" href="../logos/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .pull-quote {
-      font-size: 1.35rem;
-      line-height: 1.4;
-      font-weight: 650;
-      margin: 2.5rem 0;
-      padding: 1.75rem 2rem;
-      border-left: 4px solid var(--accent);
-      background: rgba(10, 22, 40, 0.04);
-      color: var(--primary);
+    :root {
+      --navy:  #1A2E44;
+      --blue:  #2E6DA4;
+      --gold:  #C9A84C;
+      --sand:  #f9f7f4;
+      --ink:   #1C1C1C;
+      --smoke: #6B7C8D;
+      --rule:  #D5C9B8;
+      --light: #E8F2FA;
     }
 
-    .pull-quote--center {
-      text-align: center;
-      border-left: none;
-      border-top: 3px solid var(--accent);
-      border-bottom: 3px solid var(--accent);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--sand);
+      color: var(--ink);
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.9;
     }
 
-    .pull-quote cite {
-      display: block;
-      font-size: 0.95rem;
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(26,46,68,0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 56px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
       font-weight: 500;
-      margin-top: 0.75rem;
-      opacity: 0.8;
-      font-style: normal;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: rgba(255,255,255,0.9); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 85% 15%, rgba(46,109,164,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 65% at 8% 85%, rgba(201,168,76,0.09) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(46,109,164,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,109,164,0.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px; height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 26px;
+    }
+    .hero h1 .italic {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+    .hero-deck {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+    }
+    .hero-meta .tag {
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      padding: 3px 10px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    @media (max-width: 640px) {
-      .pull-quote {
-        font-size: 1.15rem;
-        padding: 1.25rem 1.25rem;
-      }
+    /* ARTICLE */
+    .article-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+    }
+    .article-lead {
+      font-size: 1.22rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.82;
+      color: var(--blue);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .article-wrap p {
+      font-size: 1rem;
+      line-height: 1.88;
+      color: #2C2C2C;
+      margin-bottom: 26px;
+    }
+    .article-wrap h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 56px 0 18px;
+      line-height: 1.3;
+    }
+    .article-wrap ul, .article-wrap ol {
+      margin-bottom: 26px;
+      padding-left: 1.5em;
+    }
+    .article-wrap li {
+      font-size: 1rem;
+      line-height: 1.88;
+      color: #2C2C2C;
+      margin-bottom: 10px;
+    }
+
+    /* PULL QUOTE */
+    .pullquote {
+      margin: 48px -48px;
+      padding: 40px 56px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .pullquote::before {
+      content: '\201C';
+      position: absolute;
+      top: -24px; left: 36px;
+      font-family: 'Merriweather', serif;
+      font-size: 10rem;
+      color: rgba(46,109,164,0.15);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .pullquote p {
+      font-family: 'Merriweather', serif;
+      font-size: 1.18rem !important;
+      font-style: italic;
+      color: #C0D8EE !important;
+      line-height: 1.72 !important;
+      margin: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .pullquote cite {
+      display: block;
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: var(--navy);
+      padding: 52px 48px;
+      margin-top: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      right: -70px; top: -70px;
+      width: 260px; height: 260px;
+      border: 50px solid rgba(46,109,164,0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .cta-box h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .cta-box p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45) !important;
+      font-size: 0.93rem !important;
+      line-height: 1.65 !important;
+      max-width: 460px;
+      margin-bottom: 28px !important;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .btn:hover { background: #e0bc66; transform: translateX(4px); }
+    .btn::after { content: '\2192'; font-size: 1rem; }
+
+    .article-footnote {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      color: #9A8E7F;
+      line-height: 1.85;
+    }
+    .article-footnote a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .article-footnote a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--navy);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .site-footer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .site-footer a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .site-nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 64px; }
+      .article-wrap { padding: 56px 20px 72px; }
+      .pullquote { margin: 36px -20px; padding: 32px 24px; }
+      .cta-box { padding: 36px 24px; }
+      .site-footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
     }
   </style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="../index.html" class="header__brand">
-        <img src="../logos/kBULB-02.png" alt="KayBold" class="header__logo">
-        <span class="header__name">KayBold</span>
-      </a>
 
-      <button class="header__menu-btn" id="menuBtn" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <nav class="site-nav">
+    <a href="../index.html" class="nav-logo"><img src="../logos/kBULB-01.png" alt="KayBold logo"> KayBold</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html">Insights</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-      <nav class="header__nav" id="nav">
-        <a href="../about.html" class="header__link">About</a>
-        <a href="../index.html#services" class="header__link">Services</a>
-        <a href="../blog.html" class="header__link">Insights</a>
-        <a href="../contact.html" class="header__cta">Get in Touch</a>
-      </nav>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Critical Minerals &nbsp;&middot;&nbsp; DRC</div>
+      <h1>The U.S. DRC Minerals Deal<br>in a <span class="italic">Complicated Phase</span></h1>
+      <p class="hero-deck">What began as a supply chain initiative is now colliding with domestic legal pressure, active conflict dynamics, and intensifying geopolitical competition.</p>
+      <div class="hero-meta">
+        <span class="tag">Insight</span>
+        <span>&middot;</span>
+        <span>February 2026</span>
+        <span>&middot;</span>
+        <span>7 min read</span>
+        <span>&middot;</span>
+        <span>KayBold Consulting</span>
+      </div>
     </div>
   </header>
 
-  <!-- Article Header -->
-  <section class="article-header">
-    <div class="container">
-      <p class="article-header__meta">
-        <a href="../blog.html" style="color: var(--accent);">&larr; Back to Insights</a>
-        &nbsp;&bull;&nbsp; February 2026
+  <main>
+    <div class="article-wrap">
+
+      <p class="article-lead">
+        The U.S. DRC strategic minerals partnership has entered its first real stress test.
+        The question is no longer whether the partnership sounds strategic. The question is
+        whether implementation can survive contact with conditions on the ground.
       </p>
-      <h1 class="article-header__title">The U.S. DRC Minerals Deal in a Complicated Phase</h1>
-    </div>
-  </section>
 
-  <!-- Article Content -->
-  <section class="article-content">
-    <div class="container container--narrow">
+      <div class="pullquote reveal">
+        <p>A minerals partnership can be signed quickly. Operational control cannot.</p>
+      </div>
 
-      <p>The U.S. DRC strategic minerals partnership has entered its first real stress test.</p>
+      <p class="reveal">Three signals now define the moment:</p>
 
-      <p>What began as a supply chain initiative is now colliding with domestic legal pressure, active conflict dynamics, and intensifying geopolitical competition. The question is no longer whether the partnership sounds strategic. The question is whether implementation can survive contact with conditions on the ground.</p>
-
-      <blockquote class="pull-quote pull">
-        A minerals partnership can be signed quickly. Operational control cannot.
-      </blockquote>
-
-      <p>Three signals now define the moment.</p>
-
-      <ul>
+      <ul class="reveal">
         <li>A constitutional challenge inside the DRC.</li>
         <li>Western capital positioning around major assets, but selectively.</li>
         <li>Belgium pushing back on exclusive access to colonial era geological data.</li>
       </ul>
 
-      <p>Individually, each development is manageable. Taken together, they mark the shift from announcement to execution risk.</p>
+      <p class="reveal">Individually, each development is manageable. Taken together, they mark the shift from announcement to execution risk.</p>
 
-      <h2>Legal Pressure Is Building in Kinshasa</h2>
+      <h2 class="reveal">Legal Pressure Is Building in Kinshasa</h2>
 
-      <p>In January 2026, Congolese lawyers and civil society actors filed a constitutional challenge seeking to invalidate the U.S. DRC Strategic Partnership. Critics argue the agreement could reshape the legal framework governing natural resources without following required domestic procedures.(Oakland Institute, 2026)</p>
+      <p class="reveal">In January 2026, Congolese lawyers and civil society actors filed a constitutional challenge seeking to invalidate the U.S. DRC Strategic Partnership. Critics argue the agreement could reshape the legal framework governing natural resources without following required domestic procedures.</p>
 
-      <p>Even if the case fails, the signal is important. The partnership is now part of Congo’s internal sovereignty debate, not just an external economic initiative. For investors, this typically means longer timelines, tighter scrutiny of deal structure, and a higher policy risk premium.</p>
+      <p class="reveal">Even if the case fails, the signal is important. The partnership is now part of Congo's internal sovereignty debate, not just an external economic initiative. For investors, this typically means longer timelines, tighter scrutiny of deal structure, and a higher policy risk premium.</p>
 
-      <p>Legal friction rarely stops mining investment outright. But it can slow momentum at exactly the stage when governments are trying to convert political commitments into bankable projects.</p>
+      <p class="reveal">Legal friction rarely stops mining investment outright. But it can slow momentum at exactly the stage when governments are trying to convert political commitments into bankable projects.</p>
 
-      <h2>Kinshasa Is Expanding the Strategic Asset Pipeline</h2>
+      <h2 class="reveal">Kinshasa Is Expanding the Strategic Asset Pipeline</h2>
 
-      <p>Despite what some might call legal noise, the Congolese government is pushing forward commercially.</p>
+      <p class="reveal">Despite what some might call legal noise, the Congolese government is pushing forward commercially.</p>
 
-      <p>Recent reporting indicates the DRC has offered U.S. counterparts a shortlist of strategic assets, including the Rubaya coltan area, a zone influenced by the M23 AFC rebel coalition. The broader set spans copper, cobalt, lithium, manganese, and gold, with several assets linked to Gecamines.(Reuters, Jan. 2026. Reuters, Feb. 2026)</p>
+      <p class="reveal">Recent reporting indicates the DRC has offered U.S. counterparts a shortlist of strategic assets, including the Rubaya coltan area, a zone influenced by the M23 AFC rebel coalition. The broader set spans copper, cobalt, lithium, manganese, and gold, with several assets linked to Gecamines.</p>
 
-      <p>This is a meaningful shift. The partnership is no longer just diplomatic language. It now has a visible project funnel.</p>
+      <p class="reveal">This is a meaningful shift. The partnership is no longer just diplomatic language. It now has a visible project funnel.</p>
 
-      <blockquote class="pull-quote">
-        The execution bottleneck is not geology. It is governance, security, and enforceability.
-        <cite>Investor reality check.</cite>
-      </blockquote>
+      <div class="pullquote reveal">
+        <p>The execution bottleneck is not geology. It is governance, security, and enforceability.</p>
+        <cite>Investor reality check</cite>
+      </div>
 
-      <p>But the funnel overlaps with Congo’s most familiar risk concentration. Strategic minerals meeting contested ground control. That overlap is where supply chain ambitions tend to break down, not because the resources are absent, but because authority is fragmented.</p>
+      <p class="reveal">But the funnel overlaps with Congo's most familiar risk concentration. Strategic minerals meeting contested ground control. That overlap is where supply chain ambitions tend to break down, not because the resources are absent, but because authority is fragmented.</p>
 
-      <h2>Security Shock Near Rubaya</h2>
+      <h2 class="reveal">Security Shock Near Rubaya</h2>
 
-      <p>The security picture shifted again this week.</p>
+      <p class="reveal">The security picture shifted again this week.</p>
 
-      <p>A senior M23 spokesperson, Willy Ngoma, was reported killed in a drone strike near the Rubaya area, a key coltan hub that has become financially significant in the conflict economy.(Reuters, Feb. 24, 2026. AP News, 2026)</p>
+      <p class="reveal">A senior M23 spokesperson, Willy Ngoma, was reported killed in a drone strike near the Rubaya area, a key coltan hub that has become financially significant in the conflict economy.</p>
 
-      <p><strong>Why this matters.</strong></p>
+      <p class="reveal"><strong>Why this matters.</strong></p>
 
-      <p>This introduces two competing dynamics.</p>
+      <p class="reveal">This introduces two competing dynamics.</p>
 
-      <p><strong>In the short term.</strong></p>
-      <ul>
+      <p class="reveal"><strong>In the short term:</strong></p>
+      <ul class="reveal">
         <li>Higher risk of retaliation cycles.</li>
         <li>Potential disruption around the mining zone.</li>
         <li>Higher security costs and premiums for future investors.</li>
       </ul>
 
-      <p><strong>Over the medium term. Less certain.</strong></p>
-      <ul>
+      <p class="reveal"><strong>Over the medium term &mdash; less certain:</strong></p>
+      <ul class="reveal">
         <li>If government forces consolidate control, formalization becomes more plausible.</li>
         <li>If conflict escalates, Rubaya becomes even less investable and more central to illicit flows.</li>
       </ul>
 
-      <p>For now, the immediate effect is heightened volatility around a strategically important mineral node.</p>
+      <p class="reveal">For now, the immediate effect is heightened volatility around a strategically important mineral node.</p>
 
-      <h2>Early U.S. Aligned Capital Is Moving Carefully</h2>
+      <h2 class="reveal">Early U.S. Aligned Capital Is Moving Carefully</h2>
 
-      <p>Despite the noise, capital is testing entry points, but cautiously.</p>
+      <p class="reveal">Despite the noise, capital is testing entry points, but cautiously.</p>
 
-      <p>The clearest signal so far is the Orion Critical Mineral Consortium, backed in part by U.S. development finance, which is in talks to acquire a forty percent stake in Glencore’s major DRC copper and cobalt operations, including Mutanda and KCC.(Reuters, Feb. 2026)</p>
+      <p class="reveal">The clearest signal so far is the Orion Critical Mineral Consortium, backed in part by U.S. development finance, which is in talks to acquire a forty percent stake in Glencore's major DRC copper and cobalt operations, including Mutanda and KCC.</p>
 
-      <p>The positioning is deliberate. Early Western capital is prioritizing producing assets, established infrastructure, and faster paths to cash flow.</p>
+      <p class="reveal">The positioning is deliberate. Early Western capital is prioritizing producing assets, established infrastructure, and faster paths to cash flow.</p>
 
-      <p>Notably, this activity is concentrated in the relatively more stable southern Copperbelt, not eastern greenfield zones like Rubaya.</p>
+      <p class="reveal">Notably, this activity is concentrated in the relatively more stable southern Copperbelt, not eastern greenfield zones like Rubaya.</p>
 
-      <blockquote class="pull-quote">
-        Western capital is moving. It is still paying for certainty.
-      </blockquote>
+      <div class="pullquote reveal">
+        <p>Western capital is moving. It is still paying for certainty.</p>
+      </div>
 
-      <h2>Belgium Adds a New Layer. Control of Geological Data</h2>
+      <h2 class="reveal">Belgium Adds a New Layer: Control of Geological Data</h2>
 
-      <p>A new friction point has emerged in Europe.</p>
+      <p class="reveal">A new friction point has emerged in Europe.</p>
 
-      <p>Belgium’s Royal Museum for Central Africa reportedly declined to grant KoBold Metals exclusive access to extensive colonial era geological archives, arguing the data should remain broadly accessible rather than preferentially allocated to a single company.(Financial Times, 2026)</p>
+      <p class="reveal">Belgium's Royal Museum for Central Africa reportedly declined to grant KoBold Metals exclusive access to extensive colonial era geological archives, arguing the data should remain broadly accessible rather than preferentially allocated to a single company.</p>
 
-      <p>This does not block U.S. investment. But it highlights a growing competitive dimension in the minerals race. Data advantage.</p>
+      <p class="reveal">This does not block U.S. investment. But it highlights a growing competitive dimension in the minerals race: data advantage.</p>
 
-      <p>In the DRC, historical subsurface data remains exceptionally valuable. For AI driven exploration firms, access can accelerate targeting, reduce exploration risk, and shape who gets to the best ground first.</p>
+      <p class="reveal">In the DRC, historical subsurface data remains exceptionally valuable. For AI driven exploration firms, access can accelerate targeting, reduce exploration risk, and shape who gets to the best ground first.</p>
 
-      <p>Control of information is quietly becoming part of the strategic landscape.</p>
+      <p class="reveal">Control of information is quietly becoming part of the strategic landscape.</p>
 
-      <h2>The Structural Risks Are Now Clearly Visible</h2>
+      <h2 class="reveal">The Structural Risks Are Now Clearly Visible</h2>
 
-      <p>The geological case for the DRC has not changed. The country remains central to global cobalt supply, highly significant in copper, and increasingly relevant for lithium potential.</p>
+      <p class="reveal">The geological case for the DRC has not changed. The country remains central to global cobalt supply, highly significant in copper, and increasingly relevant for lithium potential.</p>
 
-      <p>The constraints are above ground.</p>
+      <p class="reveal">The constraints are above ground.</p>
 
-      <p><strong>Key pressure points to watch.</strong></p>
-      <ul>
+      <p class="reveal"><strong>Key pressure points to watch:</strong></p>
+      <ul class="reveal">
         <li>Domestic legal stability.</li>
         <li>Security around eastern mineral zones.</li>
         <li>Infrastructure reliability.</li>
@@ -195,162 +512,46 @@
         <li>Competitive positioning versus entrenched Chinese operators.</li>
       </ul>
 
-      <h2>Bottom Line</h2>
+      <h2 class="reveal">Bottom Line</h2>
 
-      <p>The U.S. DRC minerals partnership has crossed an important threshold. It is no longer theoretical. Western capital is positioning. Legal scrutiny is rising. And conflict dynamics are now directly intersecting with strategic mining zones.</p>
+      <p class="reveal">The U.S. DRC minerals partnership has crossed an important threshold. It is no longer theoretical. Western capital is positioning. Legal scrutiny is rising. And conflict dynamics are now directly intersecting with strategic mining zones.</p>
 
-      <p>The next twelve to twenty four months will reveal whether this partnership delivers durable supply chain gains, or advances more slowly than its architects intend.</p>
+      <p class="reveal">The next twelve to twenty four months will reveal whether this partnership delivers durable supply chain gains, or advances more slowly than its architects intend.</p>
 
-      <h2>References</h2>
-      <ol>
-        <li>
-          Oakland Institute. <em>U.S. DRC strategic partnership agreement faces constitutional challenge in court.</em> Published January 2026.
-          <br>
-          <a href="https://www.oaklandinstitute.org" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          Reuters. <em>Congo offers manganese, copper, cobalt, and lithium assets to U.S. investors under minerals pact.</em> Published January 2026.
-          <br>
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          Reuters. <em>Congo offers tantalum deposit under M23 control to U.S. in minerals pact.</em> Published February 2026.
-          <br>
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          Reuters. <em>M23 rebel spokesperson killed in drone strike in eastern Congo.</em> Published February 24, 2026.
-          <br>
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          Reuters. <em>Glencore in talks to sell forty percent stake in Congo mines to U.S. backed consortium.</em> Published February 2026.
-          <br>
-          <a href="https://www.reuters.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          AP News. <em>Drone strike in eastern Congo kills senior rebel official, escalating tensions.</em> Published February 2026.
-          <br>
-          <a href="https://apnews.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-        <li>
-          Financial Times. <em>Belgium refuses exclusive access to colonial Congo geological data sought by KoBold Metals.</em> Published 2026.
-          <br>
-          <a href="https://www.ft.com" target="_blank" rel="noreferrer">
-            View source
-          </a>
-        </li>
-      </ol>
-
-      <!-- Share -->
-      <div class="article-share">
-        <p class="article-share__label">Share this article</p>
-        <a class="article-share__btn" href="#" target="_blank" rel="noreferrer" id="linkedinShare">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          Share on LinkedIn
-        </a>
+      <div class="cta-box reveal">
+        <div class="cta-eyebrow">Strategic Advisory</div>
+        <h3>Need guidance on DRC market entry?</h3>
+        <p>
+          We help investors, development partners, and governments navigate political economy,
+          policy risk, and implementation in complex African markets.
+        </p>
+        <a href="../contact.html" class="btn">Request a Consultation</a>
       </div>
+
+      <p class="article-footnote reveal">
+        Sources: Oakland Institute (2026) &nbsp;&middot;&nbsp; Reuters (Jan. 2026, Feb. 2026) &nbsp;&middot;&nbsp;
+        AP News (2026) &nbsp;&middot;&nbsp; Financial Times (2026)
+      </p>
+
     </div>
-  </section>
+  </main>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2 class="cta-section__title">Need strategic advisory on policy, mining, or market entry?</h2>
-    <p class="cta-section__text">Share your context and we&rsquo;ll respond with how we can help.</p>
-    <a href="../contact.html" class="cta-section__btn">Request a Consultation</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__brand">
-            <img src="../logos/kBULB-02.png" alt="KayBold">
-            <span class="footer__brand-name">KayBold</span>
-          </div>
-          <p class="footer__desc">Strategic counsel at the intersection of policy, politics, and implementation.</p>
-        </div>
-
-        <div>
-          <h4 class="footer__col-title">Navigation</h4>
-          <ul class="footer__links">
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../index.html#services">Services</a></li>
-            <li><a href="../blog.html">Insights</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__col-title">Services</h4>
-          <ul class="footer__links">
-            <li><a href="../contact.html?engagement=Strategic%20Consultation">Strategic Consultation</a></li>
-            <li><a href="../contact.html?engagement=Policy%20Diagnostic">Policy Diagnostic</a></li>
-            <li><a href="../contact.html?engagement=Advisory%20Engagement">Advisory Engagement</a></li>
-            <li><a href="../contact.html?engagement=DRC%20Market%20Entry">DRC Market Entry</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__col-title">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            <li><a href="../contact.html">Get in Touch</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; <span id="year"></span> KayBold Consulting. All rights reserved.</p>
-        <div class="footer__social">
-          <a href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
+  <footer class="site-footer" id="contact">
+    <p>&copy; 2026 KayBold Consulting. All rights reserved.</p>
+    <a href="mailto:kayboldllc@gmail.com">kayboldllc@gmail.com</a>
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const nav = document.getElementById('nav');
-    menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('header__nav--open');
-    });
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('header--scrolled');
-      } else {
-        header.classList.remove('header--scrolled');
-      }
-    });
-
-    // LinkedIn share button
-    const linkedinShare = document.getElementById('linkedinShare');
-    if (linkedinShare) {
-      const shareUrl = 'https://kaybold.com' + window.location.pathname;
-      linkedinShare.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
