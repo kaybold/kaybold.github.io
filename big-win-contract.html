@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Workspace — When Governments Fail</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0F2140;
+    --blue:    #1E4D8C;
+    --mid:     #2E5FA3;
+    --sky:     #D6E4F5;
+    --orange:  #C96A00;
+    --amber:   #FEF0D0;
+    --green:   #12532A;
+    --mint:    #D1FAE5;
+    --red:     #8B1616;
+    --rose:    #FEE2E2;
+    --purple:  #4C1D95;
+    --lavender:#EDE9FE;
+    --white:   #FFFFFF;
+    --off:     #F7F8FA;
+    --border:  #E2E8F0;
+    --text:    #0F2140;
+    --muted:   #64748B;
+    --light:   #94A3B8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── LOGIN ── */
+  #login-screen {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeIn .4s ease;
+  }
+  .login-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 56px 48px;
+    width: 420px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+  }
+  .login-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .login-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; color: #fff; line-height: 1.2; margin-bottom: 8px;
+  }
+  .login-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 40px; }
+  .login-label { display: block; text-align: left; font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 8px; }
+  .login-input {
+    width: 100%; padding: 14px 18px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; font-size: 15px; color: #fff; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: border-color .2s;
+  }
+  .login-input::placeholder { color: rgba(255,255,255,0.25); }
+  .login-input:focus { border-color: rgba(255,255,255,0.4); }
+  .login-btn {
+    margin-top: 20px; width: 100%; padding: 15px;
+    background: #C96A00; border: none; border-radius: 10px;
+    font-size: 14px; font-weight: 600; color: #fff; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px;
+    transition: background .2s, transform .1s;
+  }
+  .login-btn:hover { background: #A85500; }
+  .login-btn:active { transform: scale(0.98); }
+
+  /* ── TOPBAR ── */
+  #topbar {
+    background: var(--navy); height: 52px;
+    display: flex; align-items: center; padding: 0 24px;
+    gap: 0; flex-shrink: 0; position: sticky; top: 0; z-index: 50;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .topbar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; color: #fff; font-weight: 700; margin-right: 20px;
+  }
+  .topbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); margin: 0 16px; }
+  .topbar-sub { font-size: 12px; color: rgba(255,255,255,0.4); flex: 1; }
+  .topbar-nav { display: flex; gap: 4px; }
+  .nav-btn {
+    padding: 6px 14px; border-radius: 6px; border: none;
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    background: transparent; color: rgba(255,255,255,0.5);
+    transition: all .2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav-btn.active { background: rgba(255,255,255,0.12); color: #fff; }
+  .nav-badge {
+    display: inline-block; background: var(--orange);
+    border-radius: 10px; padding: 1px 6px; font-size: 10px;
+    font-weight: 700; margin-left: 4px; color: #fff;
+  }
+  .topbar-user {
+    margin-left: 16px; background: rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 12px; color: rgba(255,255,255,0.8);
+  }
+
+  /* ── LAYOUT ── */
+  #app { display: flex; flex: 1; height: calc(100vh - 52px); }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: 220px; background: #fff; border-right: 1px solid var(--border);
+    overflow-y: auto; flex-shrink: 0; padding: 16px;
+  }
+  .sidebar-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 3px;
+    color: var(--light); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .phase-btn {
+    width: 100%; text-align: left; padding: 12px 14px; margin-bottom: 8px;
+    border-radius: 10px; border: 2px solid transparent;
+    background: var(--off); cursor: pointer; transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .phase-btn:hover { border-color: #CBD5E1; }
+  .phase-btn.active { border-color: currentColor; }
+  .phase-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 3px;
+  }
+  .phase-name { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .phase-dates { font-size: 11px; color: var(--muted); }
+  .phase-invoice { font-size: 12px; font-weight: 600; margin-top: 6px; }
+  .phase-count {
+    display: inline-block; border-radius: 10px; padding: 1px 7px;
+    font-size: 10px; font-weight: 700; color: #fff; float: right; margin-top: 2px;
+  }
+
+  /* ── MAIN ── */
+  #main { flex: 1; overflow-y: auto; padding: 28px; }
+
+  /* ── PHASE HEADER ── */
+  .phase-header {
+    border-radius: 12px; padding: 24px 28px; margin-bottom: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ph-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 4px;
+  }
+  .ph-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: #fff;
+  }
+  .ph-dates { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 6px; }
+  .ph-invoice { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; text-align: right; }
+  .ph-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px; font-weight: 700; color: #fff; text-align: right;
+  }
+
+  /* ── GRID ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .card-head {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .card-body { padding: 18px 20px; }
+
+  /* ── OUTPUTS ── */
+  .output-item {
+    display: flex; align-items: flex-start; gap: 10px; padding: 9px 0;
+    border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5;
+  }
+  .output-item:last-child { border-bottom: none; }
+  .output-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+  /* ── TOUCHPOINTS ── */
+  .tp-item { display: flex; gap: 14px; padding: 10px 0; }
+  .tp-connector { display: flex; flex-direction: column; align-items: center; }
+  .tp-badge {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #fff; flex-shrink: 0;
+    font-family: 'DM Mono', monospace; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .tp-line { width: 2px; flex: 1; min-height: 12px; background: var(--border); margin-top: 4px; }
+  .tp-content { flex: 1; padding-bottom: 4px; }
+  .tp-date { font-size: 11px; font-weight: 700; margin-bottom: 2px; font-family: 'DM Mono', monospace; }
+  .tp-label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .tp-action { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+  /* ── FEEDBACK SECTION ── */
+  .feedback-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 16px;
+  }
+  .fb-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+  .fb-head {
+    padding: 12px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .fb-type-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: #fff;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .fb-head-label { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .fb-head-date { font-size: 12px; color: var(--muted); }
+  .fb-body { padding: 16px 20px; }
+
+  /* ── EXISTING COMMENTS ── */
+  .comment {
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 10px;
+    border-left: 3px solid;
+  }
+  .comment-meta {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+  }
+  .comment-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    border-radius: 4px; padding: 2px 8px; text-transform: uppercase;
+  }
+  .comment-author { font-size: 12px; font-weight: 500; color: var(--muted); }
+  .comment-ts { font-size: 11px; color: var(--light); }
+  .comment-text { font-size: 13px; line-height: 1.55; }
+  .comment-del {
+    margin-left: auto; background: none; border: none;
+    color: var(--light); cursor: pointer; font-size: 16px; padding: 0 4px;
+    transition: color .2s; line-height: 1;
+  }
+  .comment-del:hover { color: var(--red); }
+
+  /* ── INPUT AREA ── */
+  .input-area {
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    transition: border-color .2s;
+  }
+  .input-area:focus-within { border-color: #93C5FD; }
+  .input-textarea {
+    width: 100%; padding: 12px 14px; border: none; outline: none;
+    font-size: 13px; color: var(--text); resize: vertical; min-height: 80px;
+    font-family: 'DM Sans', sans-serif; line-height: 1.5;
+    background: #FAFBFC;
+  }
+  .input-footer {
+    background: var(--off); border-top: 1px solid var(--border);
+    padding: 8px 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .tag-label { font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 2px; }
+  .tag-btn {
+    padding: 4px 10px; border-radius: 5px; border: 1px solid var(--border);
+    background: #fff; font-size: 11px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: all .15s;
+  }
+  .submit-btn {
+    margin-left: auto; padding: 7px 20px;
+    border: none; border-radius: 7px; font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all .2s;
+  }
+  .submit-btn:disabled { background: var(--border); color: var(--light); cursor: default; }
+  .submit-btn:not(:disabled):hover { filter: brightness(0.9); }
+
+  /* ── LOG VIEW ── */
+  #log-view { padding: 28px; flex: 1; overflow-y: auto; }
+  .log-header { margin-bottom: 24px; }
+  .log-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy); }
+  .log-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .log-empty { text-align: center; padding: 80px; color: var(--light); font-size: 15px; }
+  .log-item {
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 12px;
+  }
+  .log-item-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .log-phase-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #fff;
+    padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
+  }
+  .log-tp-label { font-size: 12px; color: var(--muted); }
+  .log-item-text { font-size: 13px; color: var(--text); line-height: 1.55; }
+
+  /* ── ANIM ── */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .slide-up { animation: slideUp .25s ease; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-eyebrow">Research Operations</div>
+    <div class="login-title">Client Workspace</div>
+    <div class="login-sub">When Governments Fail · Harvard Ministerial Leadership Program</div>
+    <label class="login-label">Your name</label>
+    <input class="login-input" id="name-input" type="text" placeholder="Enter your name to continue" autocomplete="off">
+    <button class="login-btn" onclick="enterWorkspace()">Enter workspace →</button>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div id="topbar" style="display:none">
+  <span class="topbar-title">When Governments Fail</span>
+  <div class="topbar-sep"></div>
+  <span class="topbar-sub">Research Operations Workspace</span>
+  <div class="topbar-nav">
+    <button class="nav-btn active" id="nav-phases" onclick="showView('phases')">Phases</button>
+    <button class="nav-btn" id="nav-log" onclick="showView('log')">Feedback Log <span class="nav-badge" id="log-count" style="display:none">0</span></button>
+  </div>
+  <div class="topbar-user" id="topbar-user">👤</div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div class="sidebar-label">Phases</div>
+    <div id="phase-nav"></div>
+  </div>
+
+  <!-- PHASES VIEW -->
+  <div id="phases-view" style="flex:1; overflow-y:auto; padding:28px;">
+    <div id="phase-header" class="phase-header"></div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-head" id="outputs-head">Outputs</div>
+        <div class="card-body" id="outputs-body"></div>
+      </div>
+      <div class="card">
+        <div class="card-head" id="tp-head">Client Touchpoints</div>
+        <div class="card-body" id="tp-body"></div>
+      </div>
+    </div>
+    <div class="feedback-title">Client Feedback</div>
+    <div id="feedback-area"></div>
+  </div>
+
+  <!-- LOG VIEW -->
+  <div id="log-view" style="display:none; flex:1; overflow-y:auto; padding:28px;">
+    <div class="log-header">
+      <div class="log-title">All Feedback</div>
+      <div class="log-sub" id="log-sub">0 items across all phases</div>
+    </div>
+    <div id="log-items"></div>
+  </div>
+</div>
+
+<script>
+const PHASES = [
+  {
+    id: 1, num: "01", name: "Foundation",
+    color: "#C96A00", light: "#FEF3C7",
+    dates: "Mar 3 – Mar 14, 2025", invoice: "$16,000",
+    touchpoints: [
+      { date: "Mar 3",     type: "call",  label: "Kick-off call",    action: "Align scope, confirm contacts, flag country-specific sensitivities. 60 min." },
+      { date: "Mar 10–13", type: "input", label: "Input window",     action: "Review draft methodology & country workplans. Written feedback due Mar 13." },
+      { date: "Mar 14",    type: "gate",  label: "✓ Approval gate",  action: "Written approval → Phase 2 starts → $16,000 invoiced." },
+    ],
+    outputs: [
+      "Research design & methodology document",
+      "Country workplans — one per case (×5)",
+      "Interview guides — government & youth versions",
+      "Social media data collection protocol",
+      "All tools and API access activated",
+    ]
+  },
+  {
+    id: 2, num: "02", name: "Desk Research",
+    color: "#1E4D8C", light: "#D6E4F5",
+    dates: "Mar 17 – May 23, 2025", invoice: "$50,000",
+    touchpoints: [
+      { date: "Apr 18",   type: "call",  label: "Progress call",    action: "Verbal update on desk research. No deliverables shared. Client flags new priorities. 60 min." },
+      { date: "May 9–16", type: "input", label: "Input window",     action: "Client reviews draft country briefs. Written comments due May 16." },
+      { date: "May 23",   type: "gate",  label: "✓ Approval gate",  action: "Written approval → Phase 3 starts → $50,000 invoiced." },
+    ],
+    outputs: [
+      "5 Country research briefs — 15–20 pages each",
+      "Social media & sentiment analysis report",
+      "Network & bot analysis findings",
+      "Interim synthesis note (cross-case patterns)",
+    ]
+  },
+  {
+    id: 3, num: "03", name: "Field & Analysis",
+    color: "#0F2140", light: "#E2E8F0",
+    dates: "May 26 – Jul 11, 2025", invoice: "$39,000",
+    touchpoints: [
+      { date: "May 23",    type: "call",  label: "Pre-field call",     action: "Review interview target list. Client provides additional contacts and priorities. 60 min." },
+      { date: "May 23–26", type: "input", label: "Input window",       action: "Submit additional interview targets or specific questions to probe across countries." },
+      { date: "Jun 27",    type: "call",  label: "Post-field debrief", action: "Verbal findings briefing across all 5 countries. Client redirects analytical emphasis. 60–90 min." },
+      { date: "Jul 11",    type: "gate",  label: "✓ Approval gate",    action: "Written approval → Phase 4 starts → $39,000 invoiced." },
+    ],
+    outputs: [
+      "30 interview summaries across 5 countries",
+      "Thematic analysis report — coded to 8 dimensions",
+      "Revised synthesis note incorporating field findings",
+    ]
+  },
+  {
+    id: 4, num: "04", name: "Production",
+    color: "#C96A00", light: "#FEF3C7",
+    dates: "Jul 14 – Sep 5, 2025", invoice: "$30,000",
+    touchpoints: [
+      { date: "Aug 1–8", type: "input", label: "Input window",           action: "Client reviews Jeannie Land scenario draft. Written comments due Aug 8. One revision round included." },
+      { date: "Aug 11",  type: "call",  label: "Revision call",          action: "Walk through feedback. Agree final revisions. Additional rounds at $700/day. 60 min." },
+      { date: "Sep 5",   type: "gate",  label: "✓ Handover + Gate",      action: "Final delivery. Written approval → $30,000 invoiced. Project closed." },
+    ],
+    outputs: [
+      "Jeannie Land scenario — draft + final (30–40 pages)",
+      "Facilitator's guide — questions, timing, debrief",
+      "Executive summary — 5 pages, standalone",
+      "Final design & handover package",
+    ]
+  }
+];
+
+const TYPE = {
+  call:  { bg: "#1E4D8C", light: "#EFF6FF", border: "#BFDBFE", label: "CALL",  text: "#1E4D8C" },
+  input: { bg: "#C96A00", light: "#FFFBEB", border: "#FDE68A", label: "INPUT", text: "#92400E" },
+  gate:  { bg: "#12532A", light: "#F0FDF4", border: "#86EFAC", label: "GATE",  text: "#12532A" },
+};
+
+const TAGS = [
+  { id: "must",    label: "Must change",   bg: "#FEE2E2", text: "#8B1616", border: "#FECACA", lbg: "#8B1616" },
+  { id: "should",  label: "Should change", bg: "#FEF3C7", text: "#92400E", border: "#FCD34D", lbg: "#C96A00" },
+  { id: "nice",    label: "Nice to have",  bg: "#EFF6FF", text: "#1E4D8C", border: "#BFDBFE", lbg: "#1E4D8C" },
+  { id: "question",label: "Question",      bg: "#F3E8FF", text: "#4C1D95", border: "#C4B5FD", lbg: "#4C1D95" },
+  { id: "approved",label: "Approved",      bg: "#F0FDF4", text: "#12532A", border: "#86EFAC", lbg: "#12532A" },
+];
+
+// State
+let currentUser = "";
+let activePhase = 1;
+let currentView = "phases";
+let feedback = {};   // key: "phaseId-tpIndex" → array of {id, author, text, tag, ts}
+let drafts = {};
+let activeTags = {};
+
+PHASES.forEach(ph => {
+  ph.touchpoints.forEach((_, ti) => {
+    const k = `${ph.id}-${ti}`;
+    feedback[k] = [];
+    drafts[k] = "";
+    activeTags[k] = "question";
+  });
+});
+
+function enterWorkspace() {
+  const n = document.getElementById("name-input").value.trim();
+  if (!n) return;
+  currentUser = n;
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("topbar").style.display = "flex";
+  document.getElementById("app").style.display = "flex";
+  document.getElementById("topbar-user").textContent = "👤 " + n;
+  buildSidebar();
+  renderPhase(1);
+}
+document.getElementById("name-input").addEventListener("keydown", e => e.key === "Enter" && enterWorkspace());
+
+function buildSidebar() {
+  const nav = document.getElementById("phase-nav");
+  nav.innerHTML = PHASES.map(ph => {
+    const count = Object.entries(feedback)
+      .filter(([k]) => k.startsWith(ph.id + "-"))
+      .reduce((s, [,v]) => s + v.length, 0);
+    return `<button class="phase-btn${activePhase===ph.id?' active':''}"
+      style="color:${ph.color}; background:${activePhase===ph.id?ph.light:'var(--off)'};
+             border-color:${activePhase===ph.id?ph.color:'transparent'}"
+      onclick="renderPhase(${ph.id})">
+      <div class="phase-num" style="color:${ph.color}">Phase ${ph.num}</div>
+      <div class="phase-name">${ph.name}
+        ${count>0?`<span class="phase-count" style="background:${ph.color}">${count}</span>`:''}
+      </div>
+      <div class="phase-dates">${ph.dates}</div>
+      <div class="phase-invoice" style="color:${ph.color}">${ph.invoice}</div>
+    </button>`;
+  }).join('');
+}
+
+function renderPhase(id) {
+  activePhase = id;
+  const ph = PHASES.find(p => p.id === id);
+  buildSidebar();
+
+  // Header
+  document.getElementById("phase-header").innerHTML = `
+    <div>
+      <div class="ph-eyebrow">Phase ${ph.num}</div>
+      <div class="ph-title">${ph.name}</div>
+      <div class="ph-dates">${ph.dates}</div>
+    </div>
+    <div>
+      <div class="ph-invoice">Invoice on approval</div>
+      <div class="ph-amount">${ph.invoice}</div>
+    </div>`;
+  document.getElementById("phase-header").style.background = ph.color;
+
+  // Outputs head
+  document.getElementById("outputs-head").style.color = ph.color;
+  document.getElementById("outputs-body").innerHTML = ph.outputs.map(o => `
+    <div class="output-item">
+      <div class="output-dot" style="background:${ph.color}"></div>
+      <span>${o}</span>
+    </div>`).join('');
+
+  // Touchpoints head
+  document.getElementById("tp-head").style.color = ph.color;
+  document.getElementById("tp-body").innerHTML = ph.touchpoints.map((tp, i) => {
+    const t = TYPE[tp.type];
+    const isLast = i === ph.touchpoints.length - 1;
+    return `<div class="tp-item">
+      <div class="tp-connector">
+        <div class="tp-badge" style="background:${t.bg}">${t.label}</div>
+        ${!isLast ? '<div class="tp-line"></div>' : ''}
+      </div>
+      <div class="tp-content">
+        <div class="tp-date" style="color:${t.bg}">${tp.date}</div>
+        <div class="tp-label">${tp.label}</div>
+        <div class="tp-action">${tp.action}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Feedback
+  renderFeedback(ph);
+  updateLogBadge();
+}
+
+function renderFeedback(ph) {
+  const area = document.getElementById("feedback-area");
+  area.innerHTML = ph.touchpoints.map((tp, ti) => {
+    const key = `${ph.id}-${ti}`;
+    const t = TYPE[tp.type];
+    const entries = feedback[key] || [];
+    const activeTag = activeTags[key] || "question";
+
+    const comments = entries.map(f => {
+      const tag = TAGS.find(t => t.id === f.tag) || TAGS[3];
+      return `<div class="comment slide-up" style="background:${tag.bg}; border-left-color:${tag.lbg}">
+        <div class="comment-meta">
+          <span class="comment-tag" style="background:${tag.lbg}; color:#fff">${tag.label}</span>
+          <span class="comment-author">${f.author}</span>
+          <span class="comment-ts">${f.ts}</span>
+          <button class="comment-del" onclick="deleteComment('${key}', ${f.id}, ${ph.id})" title="Delete">×</button>
+        </div>
+        <div class="comment-text">${escHtml(f.text)}</div>
+      </div>`;
+    }).join('');
+
+    const tagBtns = TAGS.map(tag => {
+      const isActive = activeTag === tag.id;
+      return `<button class="tag-btn" onclick="setTag('${key}', '${tag.id}', ${ph.id})"
+        style="background:${isActive?tag.bg:'#fff'}; color:${isActive?tag.text:'var(--muted)'}; border-color:${isActive?tag.border:'var(--border)'}"
+        >${tag.label}</button>`;
+    }).join('');
+
+    const submitColor = ph.color;
+
+    return `<div class="fb-card" id="fbcard-${key}">
+      <div class="fb-head" style="background:${t.light}">
+        <span class="fb-type-badge" style="background:${t.bg}">${t.label}</span>
+        <span class="fb-head-label">${tp.label}</span>
+        <span class="fb-head-date" style="color:var(--muted); margin-left:auto">${tp.date}${entries.length>0?` · <strong>${entries.length}</strong> comment${entries.length!==1?'s':''}`:''}</span>
+      </div>
+      <div class="fb-body">
+        ${comments}
+        <div class="input-area">
+          <textarea class="input-textarea" id="ta-${key}"
+            placeholder="Add feedback, question, or approval note..."
+            oninput="draftChanged('${key}')"
+          >${escHtml(drafts[key]||'')}</textarea>
+          <div class="input-footer">
+            <span class="tag-label">Tag:</span>
+            ${tagBtns}
+            <button class="submit-btn" id="sbtn-${key}"
+              onclick="submitComment('${key}', ${ph.id})"
+              style="background:${submitColor}; color:#fff"
+              ${!(drafts[key]||'').trim()?'disabled':''}>Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function draftChanged(key) {
+  const ta = document.getElementById("ta-"+key);
+  drafts[key] = ta ? ta.value : '';
+  const btn = document.getElementById("sbtn-"+key);
+  if (btn) {
+    btn.disabled = !drafts[key].trim();
+  }
+}
+
+function setTag(key, tagId, phId) {
+  activeTags[key] = tagId;
+  renderFeedback(PHASES.find(p => p.id === phId));
+  // Restore textarea value
+  const ta = document.getElementById("ta-"+key);
+  if (ta) ta.value = drafts[key] || '';
+}
+
+function submitComment(key, phId) {
+  const text = (drafts[key] || '').trim();
+  if (!text) return;
+  const tag = activeTags[key] || 'question';
+  const now = new Date();
+  const ts = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const entry = { id: Date.now(), author: currentUser, text, tag, ts, phaseId: phId, key };
+  feedback[key] = [...(feedback[key]||[]), entry];
+  drafts[key] = '';
+  activeTags[key] = 'question';
+  renderFeedback(PHASES.find(p => p.id === phId));
+  buildSidebar();
+  updateLogBadge();
+}
+
+function deleteComment(key, id, phId) {
+  feedback[key] = (feedback[key]||[]).filter(f => f.id !== id);
+  renderFeedback(PHASES.find(p => p.id === phId));
+  buildSidebar();
+  updateLogBadge();
+}
+
+function updateLogBadge() {
+  const total = Object.values(feedback).flat().length;
+  const badge = document.getElementById("log-count");
+  badge.textContent = total;
+  badge.style.display = total > 0 ? 'inline-block' : 'none';
+  if (currentView === 'log') renderLog();
+}
+
+function renderLog() {
+  const all = Object.values(feedback).flat().sort((a,b) => b.id - a.id);
+  document.getElementById("log-sub").textContent = `${all.length} item${all.length!==1?'s':''} across all phases`;
+  if (all.length === 0) {
+    document.getElementById("log-items").innerHTML = '<div class="log-empty">No feedback submitted yet. Go to Phases to add feedback.</div>';
+    return;
+  }
+  document.getElementById("log-items").innerHTML = all.map(f => {
+    const ph = PHASES.find(p => p.id === f.phaseId);
+    const tag = TAGS.find(t => t.id === f.tag) || TAGS[3];
+    const key = f.key;
+    const tpIdx = parseInt(key.split('-')[1]);
+    const tp = ph?.touchpoints[tpIdx];
+    return `<div class="log-item slide-up">
+      <div class="log-item-meta">
+        <span class="log-phase-badge" style="background:${ph?.color}">${ph?.name}</span>
+        <span class="log-tp-label">${tp?.label || ''}</span>
+        <span style="margin-left:auto"></span>
+        <span class="comment-tag" style="background:${tag.lbg}; color:#fff; font-size:10px; letter-spacing:1px; border-radius:4px; padding:2px 8px; text-transform:uppercase">${tag.label}</span>
+        <span class="comment-author">${f.author}</span>
+        <span class="comment-ts">${f.ts}</span>
+      </div>
+      <div class="log-item-text">${escHtml(f.text)}</div>
+    </div>`;
+  }).join('');
+}
+
+function showView(v) {
+  currentView = v;
+  document.getElementById("nav-phases").classList.toggle("active", v === "phases");
+  document.getElementById("nav-log").classList.toggle("active", v === "log");
+  document.getElementById("phases-view").style.display = v === "phases" ? "block" : "none";
+  document.getElementById("log-view").style.display = v === "log" ? "flex" : "none";
+  if (v === "log") renderLog();
+}
+</script>
+</body>
+</html>
