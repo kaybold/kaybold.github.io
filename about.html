@@ -11,6 +11,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .bio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -48,35 +63,32 @@
   <!-- Bio Section -->
   <section class="section">
     <div class="container container--narrow">
-      <div class="bio-section">
-        <h2 class="bio__name">Benita Kayembe, Founder & Principal</h2>
-        <p class="bio__text">Benita Kayembe is the founder of KayBold Consulting. She holds degrees from Harvard University and Cornell University, and has built her career at the intersection of policy, health, and sustainable development across Sub-Saharan Africa.</p>
-        <p class="bio__text">Originally from the Democratic Republic of the Congo's Katanga Province, one of the world's most significant mining regions, Benita brings firsthand understanding of the political economy of resource extraction, energy transition, and institutional reform. Her research on artisanal cobalt mining and the human dimensions of critical mineral supply chains has informed global policy discussions.</p>
-        <p class="bio__text">She has contributed to institutional reports for the World Economic Forum, published peer-reviewed research on just energy transitions, and developed case studies for the Harvard Ministerial Leadership Program. She served as President of the Harvard Africa Health Forum and has advised on delivery challenges across multiple African governments.</p>
-        <div class="bio__links">
-          <a class="bio__link" href="blog.html">Publications</a>
-          <a class="bio__link" href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="bio-grid">
+        <div class="bio-section">
+          <h2 class="bio__name">Benita Kayembe, Founder &amp; Principal</h2>
+          <p class="bio__text">Benita Kayembe is the founder of KayBold Consulting. She holds degrees from Harvard University and Cornell University, and has built her career at the intersection of policy, health, and sustainable development across Sub-Saharan Africa.</p>
+          <p class="bio__text">Originally from the Democratic Republic of the Congo's Katanga Province, one of the world's most significant mining regions, Benita brings firsthand understanding of the political economy of resource extraction, energy transition, and institutional reform. Her research on artisanal cobalt mining and the human dimensions of critical mineral supply chains has informed global policy discussions.</p>
+          <p class="bio__text">She has contributed to institutional reports for the World Economic Forum, published peer-reviewed research on just energy transitions, and developed case studies for the Harvard Ministerial Leadership Program. She served as President of the Harvard Africa Health Forum and has advised on delivery challenges across multiple African governments.</p>
+          <div class="bio__links">
+            <a class="bio__link" href="blog.html">Publications</a>
+            <a class="bio__link" href="https://www.linkedin.com/in/benitakayembe/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="bio-section">
+          <h2 class="bio__name">Hugue Nkoutchou, Senior Consultant</h2>
+          <p class="bio__text">Hugue Nkoutchou is a Cameroonian economist and the founder and current Executive Director of the Public Policy in Africa Initiative (PPiAI), one of Africa’s leading think tanks focused on developing alternatives to existing policies shaping the continent’s economies.</p>
+          <p class="bio__text">He earned a PhD in Management (Finance and Econometrics) from the University of Bath in England in 2017, and a Master’s degree Cum Laude (with Distinction) in Financial Management from the University of Johannesburg in South Africa.</p>
+          <p class="bio__text">Hugue has published in journals including <em>Science of the Total Environment</em>, <em>Agriculture &amp; Food Security</em>, <em>Journal of Economic and Financial Sciences</em>, and <em>Sustainability</em>. He is also the author of the book <em>Change: A New Development Model for African Countries</em>, which was selected as Book of the Week by Pecunia &amp; Bellum and voted Book of the Month by the Arete Book Club.</p>
+          <div class="bio__links">
+            <a class="bio__link" href="https://scholar.google.com/citations?user=XA3vWXUAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Publications</a>
+            <a class="bio__link" href="https://www.linkedin.com/in/hugue-nkoutchou-537b07166/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container container--narrow">
-    <div class="bio-section">
-      <h2 class="bio__name">Hugue Nkoutchou, Senior Consultant</h2>
-      <p class="bio__text">Hugue Nkoutchou is a Cameroonian economist and the founder and current Executive Director of the Public Policy in Africa Initiative (PPiAI), one of Africa’s leading think tanks focused on developing alternatives to existing policies shaping the continent’s economies.</p>
-      <p class="bio__text">He earned a PhD in Management (Finance and Econometrics) from the University of Bath in England in 2017, and a Master’s degree Cum Laude (with Distinction) in Financial Management from the University of Johannesburg in South Africa.</p>
-      <p class="bio__text">Hugue has published in journals including <em>Science of the Total Environment</em>, <em>Agriculture &amp; Food Security</em>, <em>Journal of Economic and Financial Sciences</em>, and <em>Sustainability</em>. He is also the author of the book <em>Change: A New Development Model for African Countries</em>, which was selected as Book of the Week by Pecunia &amp; Bellum and voted Book of the Month by the Arete Book Club.</p>
-      <div class="bio__links">
-        <a class="bio__link" href="https://scholar.google.com/citations?user=XA3vWXUAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Publications</a>
-        <a class="bio__link" href="https://www.linkedin.com/in/hugue-nkoutchou-537b07166/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-  
   <!-- CTA -->
   <section class="cta-section">
     <h2 class="cta-section__title">Ready to work together?</h2>
