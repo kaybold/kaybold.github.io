@@ -731,6 +731,35 @@
       color: #fff;
     }
 
+    .btn-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.75);
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-linkedin svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .btn-linkedin:hover {
+      border-color: rgba(255,255,255,.6);
+      color: #fff;
+      transform: translateX(4px);
+    }
+
     .article-footnote {
       margin-top: 60px;
       padding-top: 28px;
@@ -1015,6 +1044,19 @@
         <div class="cta-buttons">
           <a href="../contact.html" class="btn">Get In Touch</a>
           <a href="#" class="btn-ghost">Download the Full Brief</a>
+          <a
+            href="#"
+            class="btn-linkedin"
+            id="linkedinShareBtn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share this article on LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.03 2.03 0 0 0 3.2 5.03c0 1.1.9 2 2.03 2a2.02 2.02 0 0 0 2.02-2.02A2.02 2.02 0 0 0 5.25 3ZM20.8 12.97c0-3.47-1.85-5.09-4.31-5.09-1.99 0-2.88 1.1-3.38 1.87V8.5H9.74c.04.83 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.68.12-.93.27-.68.88-1.38 1.9-1.38 1.34 0 1.88 1.03 1.88 2.54V20H20.8v-7.03Z"/>
+            </svg>
+            <span>Share on LinkedIn</span>
+          </a>
         </div>
       </div>
 
@@ -1051,11 +1093,18 @@
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
+    const linkedinShareBtn = document.getElementById('linkedinShareBtn');
 
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('active');
       navLinks.classList.toggle('open');
     });
+
+    if (linkedinShareBtn) {
+      linkedinShareBtn.href =
+        'https://www.linkedin.com/sharing/share-offsite/?url=' +
+        encodeURIComponent(window.location.href);
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
